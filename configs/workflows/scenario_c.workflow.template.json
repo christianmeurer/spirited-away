@@ -26,24 +26,123 @@
         }
     },
     "4": {
-        "class_type": "EmptyLatentImage",
+        "class_type": "LoadImage",
         "inputs": {
-            "width": 1024,
-            "height": 1024,
-            "batch_size": 1
+            "image": "{{SUBJECT_IMAGE}}"
         }
     },
     "5": {
+        "class_type": "LoadImage",
+        "inputs": {
+            "image": "{{COMPANION_IMAGE_A}}"
+        }
+    },
+    "6": {
+        "class_type": "LoadImage",
+        "inputs": {
+            "image": "{{COMPANION_IMAGE_B}}"
+        }
+    },
+    "7": {
+        "class_type": "LoadImage",
+        "inputs": {
+            "image": "{{SUBJECT_MASK_IMAGE}}"
+        }
+    },
+    "8": {
+        "class_type": "LoadImage",
+        "inputs": {
+            "image": "{{COMPANION_MASK_IMAGE}}"
+        }
+    },
+    "9": {
+        "class_type": "Flux2MultiReference",
+        "inputs": {
+            "subject_image": [
+                "4",
+                0
+            ],
+            "reference_images": [
+                [
+                    "5",
+                    0
+                ],
+                [
+                    "6",
+                    0
+                ]
+            ],
+            "subject_strength": 1.0,
+            "reference_strength": 0.92
+        }
+    },
+    "10": {
+        "class_type": "ImageStitch",
+        "inputs": {
+            "base": [
+                "4",
+                0
+            ],
+            "overlays": [
+                [
+                    "5",
+                    0
+                ],
+                [
+                    "6",
+                    0
+                ]
+            ],
+            "layout": "context_stitching",
+            "canvas_width": 1024,
+            "canvas_height": 1024
+        }
+    },
+    "11": {
+        "class_type": "VAEEncode",
+        "inputs": {
+            "pixels": [
+                "10",
+                0
+            ],
+            "vae": [
+                "1",
+                2
+            ]
+        }
+    },
+    "12": {
+        "class_type": "TPBlendAttentionProcessor",
+        "inputs": {
+            "model": [
+                "1",
+                0
+            ],
+            "subject_mask": [
+                "7",
+                0
+            ],
+            "companion_mask": [
+                "8",
+                0
+            ],
+            "sasf_mode": "DSIN",
+            "use_ot": true,
+            "regularization": 0.02,
+            "boundary_strength": 0.9
+        }
+    },
+    "13": {
         "class_type": "KSampler",
         "inputs": {
             "seed": "{{SEED}}",
-            "steps": 34,
+            "steps": 36,
             "cfg": 5.2,
             "sampler_name": "dpmpp_2m",
             "scheduler": "karras",
-            "denoise": 1,
+            "denoise": 0.35,
             "model": [
-                "1",
+                "12",
                 0
             ],
             "positive": [
@@ -55,16 +154,16 @@
                 0
             ],
             "latent_image": [
-                "4",
+                "11",
                 0
             ]
         }
     },
-    "6": {
+    "14": {
         "class_type": "VAEDecode",
         "inputs": {
             "samples": [
-                "5",
+                "13",
                 0
             ],
             "vae": [
@@ -73,12 +172,27 @@
             ]
         }
     },
-    "7": {
+    "15": {
+        "class_type": "ComfyUI_PS_Blend_Node",
+        "inputs": {
+            "image_a": [
+                "10",
+                0
+            ],
+            "image_b": [
+                "14",
+                0
+            ],
+            "blend_mode": "{{PS_BLEND_MODE}}",
+            "blend_factor": 0.42
+        }
+    },
+    "16": {
         "class_type": "SaveImage",
         "inputs": {
             "filename_prefix": "{{FILENAME_PREFIX}}",
             "images": [
-                "6",
+                "15",
                 0
             ]
         }

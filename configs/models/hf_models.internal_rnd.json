@@ -7,43 +7,79 @@
     },
     "models": [
         {
-            "alias": "flux_base",
-            "repo_id": "black-forest-labs/FLUX.1-dev",
+            "alias": "flux2_dev",
+            "repo_id": "black-forest-labs/FLUX.2-dev",
             "revision": "main",
             "required": true,
-            "local_dir": "base/flux_base",
+            "local_dir": "base/flux2_dev",
             "download": {
-                "mode": "snapshot"
+                "mode": "snapshot",
+                "allow_patterns": [
+                    "*.safetensors",
+                    "*.json",
+                    "*.txt"
+                ]
             }
         },
         {
-            "alias": "anime_style_lora",
+            "alias": "anything2real_2601_a",
             "repo_id": "lrzjason/Anything2Real",
             "revision": "main",
-            "required": false,
-            "local_dir": "loras/anime_style",
+            "required": true,
+            "local_dir": "loras/anything2real_2601_a",
             "download": {
-                "mode": "snapshot"
+                "mode": "snapshot",
+                "allow_patterns": [
+                    "*pytorch_lora_weights.safetensors",
+                    "*.json",
+                    "*.txt"
+                ]
             }
         },
         {
             "alias": "qwen_edit_2511",
             "repo_id": "Qwen/Qwen-Image",
-            "revision": "main",
-            "required": false,
+            "revision": "2511",
+            "required": true,
             "local_dir": "editors/qwen_edit_2511",
             "download": {
-                "mode": "snapshot"
+                "mode": "snapshot",
+                "allow_patterns": [
+                    "*.safetensors",
+                    "*.json",
+                    "*.txt"
+                ]
             }
         },
         {
             "alias": "seedream_5_lite",
-            "repo_id": "ByteDance-Seed/Seedream-3.0",
+            "repo_id": "ByteDance-Seed/Seedream-v5.0-lite",
             "revision": "main",
-            "required": false,
+            "required": true,
             "local_dir": "editors/seedream_5_lite",
             "download": {
-                "mode": "snapshot"
+                "mode": "snapshot",
+                "allow_patterns": [
+                    "*.safetensors",
+                    "*.json",
+                    "*.txt"
+                ]
+            }
+        },
+        {
+            "alias": "mistral_small_3_1_text_encoder",
+            "repo_id": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+            "revision": "main",
+            "required": true,
+            "local_dir": "text_encoders/mistral_small_3_1",
+            "download": {
+                "mode": "snapshot",
+                "allow_patterns": [
+                    "*.safetensors",
+                    "*.json",
+                    "*.model",
+                    "*.txt"
+                ]
             }
         }
     ]

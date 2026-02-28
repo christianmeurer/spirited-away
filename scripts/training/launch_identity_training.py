@@ -22,6 +22,17 @@ def load_env_file(path: Path) -> None:
         os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
+def parse_boolish(value: str | bool) -> bool:
+    if isinstance(value, bool):
+        return value
+    normalized = str(value).strip().lower()
+    if normalized in {"1", "true", "yes", "on"}:
+        return True
+    if normalized in {"0", "false", "no", "off"}:
+        return False
+    raise ValueError(f"Invalid boolean-like value: {value}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Launch identity adapter training")
     parser.add_argument("--env-file", default="configs/env/digitalocean_h100.env")
@@ -32,12 +43,15 @@ def main() -> int:
     parser.add_argument("--batch-size", type=int, default=None)
     parser.add_argument("--learning-rate", type=float, default=None)
     parser.add_argument("--rank", type=int, default=None)
+    parser.add_argument("--enable-dop", default=None)
+    parser.add_argument("--timestep-bias", default=None)
+    parser.add_argument("--resolution", default=None)
     parser.add_argument(
         "--trainer-cmd",
         default=None,
         help=(
             "Command template with placeholders: {dataset_dir}, {output_dir}, {trigger_token}, "
-            "{steps}, {batch_size}, {learning_rate}, {rank}"
+            "{steps}, {batch_size}, {learning_rate}, {rank}, {enable_dop}, {timestep_bias}, {resolution}"
         ),
     )
     parser.add_argument("--dry-run", action="store_true")
@@ -52,6 +66,10 @@ def main() -> int:
     batch_size = args.batch_size or int(os.getenv("TRAIN_BATCH_SIZE", "2"))
     learning_rate = args.learning_rate or float(os.getenv("TRAIN_LEARNING_RATE", "0.0001"))
     rank = args.rank or int(os.getenv("TRAIN_ADAPTER_RANK", "32"))
+    enable_dop_raw = args.enable_dop if args.enable_dop is not None else os.getenv("TRAIN_ENABLE_DOP", "true")
+    enable_dop = parse_boolish(enable_dop_raw)
+    timestep_bias = args.timestep_bias or os.getenv("TRAIN_TIMESTEP_BIAS", "balanced")
+    resolution = args.resolution or os.getenv("TRAIN_RESOLUTION", "1024x1024,1408x1408")
 
     if not dataset_dir:
         raise SystemExit("dataset_dir is required (arg or IDENTITY_DATASET_DIR env)")
@@ -68,7 +86,8 @@ def main() -> int:
             "TRAINER_COMMAND_TEMPLATE not set. Provide --trainer-cmd. "
             "Example: python -m ostris_ai_toolkit.train --dataset {dataset_dir} "
             "--output {output_dir} --trigger {trigger_token} --steps {steps} "
-            "--batch-size {batch_size} --learning-rate {learning_rate} --rank {rank}"
+            "--batch-size {batch_size} --learning-rate {learning_rate} --rank {rank} "
+            "--enable-dop {enable_dop} --timestep-bias {timestep_bias} --resolution {resolution}"
         )
 
     command = trainer_cmd.format(
@@ -79,6 +98,9 @@ def main() -> int:
         batch_size=batch_size,
         learning_rate=learning_rate,
         rank=rank,
+        enable_dop=str(enable_dop).lower(),
+        timestep_bias=timestep_bias,
+        resolution=resolution,
     )
 
     launch_manifest = {
@@ -90,6 +112,9 @@ def main() -> int:
         "batch_size": batch_size,
         "learning_rate": learning_rate,
         "rank": rank,
+        "enable_dop": enable_dop,
+        "timestep_bias": timestep_bias,
+        "resolution": resolution,
         "trainer_command": command,
         "dry_run": args.dry_run,
     }

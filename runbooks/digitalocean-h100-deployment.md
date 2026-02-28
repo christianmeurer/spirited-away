@@ -69,6 +69,12 @@ cd /opt/aurora/Aurora-Fotos
 ./scripts/deploy/update_repo.sh configs/env/digitalocean_h100.env
 ```
 
+Install required mixed-media custom nodes (TP-Blend + PS Blend):
+
+```bash
+./scripts/deploy/install_custom_nodes.sh configs/env/digitalocean_h100.env
+```
+
 Acquire models from Hugging Face:
 
 ```bash
@@ -103,6 +109,23 @@ Run all scenarios (A/B/C) through ComfyUI:
 python scripts/pipeline/run_scenarios.py \
   --env-file configs/env/digitalocean_h100.env \
   --scenario all
+```
+
+First experiment (Scenario A, Anything2Real validation, style tokens excluded):
+
+```bash
+python scripts/pipeline/run_scenarios.py \
+  --env-file configs/env/digitalocean_h100.env \
+  --scenario scenario_a \
+  --prompt-override "Real portrait of [subj_name_2026] walking with two companions in natural daylight, physically plausible shadows, 85mm photography" \
+  --negative-prompt-override "cartoon, cel-shading, painterly textures"
+```
+
+OOM monitoring and mitigation:
+
+```bash
+watch -n 1 nvidia-smi
+# If memory pressure spikes during CAOF/attention fusion, reduce TRAIN_BATCH_SIZE in env and relaunch.
 ```
 
 Orchestrate full flow in one command:

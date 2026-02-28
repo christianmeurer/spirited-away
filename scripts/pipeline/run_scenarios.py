@@ -27,10 +27,12 @@ SCENARIO_PROMPTS = {
     "scenario_c": "Mixed-media composition: real [subj_name_2026] with 2D companions, clear style boundaries and grounded contact shadows",
 }
 SCENARIO_NEGATIVE = {
-    "scenario_a": "anime, cartoon, illustration",
+    "scenario_a": "cartoon, cel-shading, painterly textures",
     "scenario_b": "photoreal, live action, realistic skin",
     "scenario_c": "style bleed, boundary artifacts, inconsistent perspective",
 }
+
+FORBIDDEN_SCENARIO_A_TOKENS = {"anime", "illustration"}
 
 
 def load_env_file(path: Path) -> None:
@@ -46,6 +48,16 @@ def load_env_file(path: Path) -> None:
 
 def read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def validate_scenario_a_prompt_policy(prompt: str, negative_prompt: str) -> None:
+    text = f"{prompt} {negative_prompt}".lower()
+    hits = [token for token in FORBIDDEN_SCENARIO_A_TOKENS if token in text]
+    if hits:
+        raise ValueError(
+            "Scenario A prompt policy violation. Remove style tokens for Anything2Real photoreal translation: "
+            + ", ".join(sorted(hits))
+        )
 
 
 def replace_tokens(node: Any, values: dict[str, Any]) -> Any:
@@ -190,6 +202,8 @@ def main() -> int:
     parser.add_argument("--checkpoint-name", default="flux_base.safetensors")
     parser.add_argument("--seed-base", type=int, default=120000)
     parser.add_argument("--run-id", default=None)
+    parser.add_argument("--prompt-override", default=None)
+    parser.add_argument("--negative-prompt-override", default=None)
     args = parser.parse_args()
 
     load_env_file(Path(args.env_file))
@@ -209,8 +223,12 @@ def main() -> int:
         template_path = Path(args.workflow_dir) / f"{scenario_id}.workflow.template.json"
         workflow_template = read_json(template_path)
 
-        prompt = SCENARIO_PROMPTS[scenario_id]
-        negative_prompt = SCENARIO_NEGATIVE[scenario_id]
+        prompt = args.prompt_override or SCENARIO_PROMPTS[scenario_id]
+        negative_prompt = args.negative_prompt_override or SCENARIO_NEGATIVE[scenario_id]
+
+        if scenario_id == "scenario_a":
+            validate_scenario_a_prompt_policy(prompt, negative_prompt)
+
         seed = args.seed_base + idx
         filename_prefix = f"{run_id}_{scenario_id}"
 
@@ -220,6 +238,12 @@ def main() -> int:
             "NEGATIVE_PROMPT": negative_prompt,
             "SEED": seed,
             "FILENAME_PREFIX": filename_prefix,
+            "SUBJECT_IMAGE": "input/subject.png",
+            "COMPANION_IMAGE_A": "input/companion_a.png",
+            "COMPANION_IMAGE_B": "input/companion_b.png",
+            "SUBJECT_MASK_IMAGE": "input/subject_mask.png",
+            "COMPANION_MASK_IMAGE": "input/companion_mask.png",
+            "PS_BLEND_MODE": "Multiply",
         }
 
         workflow = replace_tokens(copy.deepcopy(workflow_template), values)
