@@ -1,0 +1,55 @@
+{
+    "version": "1.0.0",
+    "track_id": "track_a",
+    "usage_scope": "INTERNAL_RND",
+    "internal_tag": "INTERNAL_RND",
+    "scenario_id": "scenario_a",
+    "thresholds": {
+        "anatomy_failure_rate_max": 0.015,
+        "identity_mean_min": 0.86,
+        "identity_min_min": 0.74,
+        "style_fidelity_min": 0.8,
+        "pairing_score_min": 0.84,
+        "metadata_completeness_exact": 1.0
+    },
+    "required_manifest_fields": [
+        "run_id",
+        "track_id",
+        "scenario_id",
+        "usage_scope",
+        "internal_tag",
+        "outputs",
+        "sharing_allowed",
+        "provider_policy_ack",
+        "manual_final_candidate_approval",
+        "batch"
+    ],
+    "required_batch_item_fields": [
+        "prompt",
+        "negative_prompt",
+        "seed",
+        "sampler",
+        "scheduler",
+        "base_model_hash",
+        "adapter_versions",
+        "postprocess_chain",
+        "external_component_provenance",
+        "external_component_licensing_notes",
+        "scenario_checks",
+        "metrics"
+    ],
+    "required_universal_gates": [
+        "human_review_approved",
+        "manual_final_candidate_approval",
+        "pre_export_guard_passed",
+        "track_isolation_passed"
+    ],
+    "provider_policy": {
+        "allowed_execution_order": [
+            "digitalocean_primary_region",
+            "digitalocean_secondary_region",
+            "local_fallback_for_pre_post_only"
+        ],
+        "disallow_multi_cloud_fallback": true
+    }
+}

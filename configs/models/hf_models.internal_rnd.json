@@ -1,0 +1,50 @@
+{
+    "version": "1.0.0",
+    "usage_scope": "INTERNAL_RND",
+    "download_policy": {
+        "pin_revisions": true,
+        "write_lockfile": true
+    },
+    "models": [
+        {
+            "alias": "flux_base",
+            "repo_id": "black-forest-labs/FLUX.1-dev",
+            "revision": "main",
+            "required": true,
+            "local_dir": "base/flux_base",
+            "download": {
+                "mode": "snapshot"
+            }
+        },
+        {
+            "alias": "anime_style_lora",
+            "repo_id": "lrzjason/Anything2Real",
+            "revision": "main",
+            "required": false,
+            "local_dir": "loras/anime_style",
+            "download": {
+                "mode": "snapshot"
+            }
+        },
+        {
+            "alias": "qwen_edit_2511",
+            "repo_id": "Qwen/Qwen-Image",
+            "revision": "main",
+            "required": false,
+            "local_dir": "editors/qwen_edit_2511",
+            "download": {
+                "mode": "snapshot"
+            }
+        },
+        {
+            "alias": "seedream_5_lite",
+            "repo_id": "ByteDance-Seed/Seedream-3.0",
+            "revision": "main",
+            "required": false,
+            "local_dir": "editors/seedream_5_lite",
+            "download": {
+                "mode": "snapshot"
+            }
+        }
+    ]
+}

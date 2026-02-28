@@ -1,0 +1,57 @@
+{
+    "version": "1.0.0",
+    "usage_scope": "INTERNAL_RND",
+    "required_batch_item_fields": [
+        "prompt",
+        "negative_prompt",
+        "seed",
+        "sampler",
+        "scheduler",
+        "base_model_hash",
+        "adapter_versions",
+        "postprocess_chain",
+        "external_component_provenance",
+        "external_component_licensing_notes",
+        "scenario_checks"
+    ],
+    "scenarios": {
+        "scenario_a": {
+            "track_id": "track_a",
+            "required_item_checks": [
+                "identity_adapter_loaded",
+                "multi_reference_routing",
+                "light_shadow_coherence",
+                "perspective_consistency"
+            ],
+            "require_mixed_media_boundary_approval": false
+        },
+        "scenario_b": {
+            "track_id": "track_b",
+            "required_item_checks": [
+                "anime_style_lora_loaded",
+                "anime_subject_routing",
+                "cel_watercolor_unification",
+                "photoreal_bleed_rejected"
+            ],
+            "require_mixed_media_boundary_approval": false
+        },
+        "scenario_c": {
+            "allowed_track_ids": [
+                "track_a",
+                "track_b"
+            ],
+            "required_manifest_fields": [
+                "declared_target_track",
+                "mixed_media_boundary_approval"
+            ],
+            "required_item_checks": [
+                "context_stitching_completed",
+                "attention_pairing_enabled",
+                "seam_refinement_passed",
+                "domain_isolation_passed",
+                "environmental_contact_grounded"
+            ],
+            "require_mixed_media_boundary_approval": true
+        }
+    }
+}

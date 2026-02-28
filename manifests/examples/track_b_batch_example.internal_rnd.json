@@ -1,0 +1,99 @@
+{
+    "run_id": "run_20260228_track_b_001",
+    "track_id": "track_b",
+    "scenario_id": "scenario_b",
+    "usage_scope": "INTERNAL_RND",
+    "internal_tag": "INTERNAL_RND",
+    "sharing_allowed": false,
+    "provider_policy_ack": true,
+    "manual_final_candidate_approval": true,
+    "provider_policy": {
+        "execution_order": [
+            "digitalocean_primary_region",
+            "digitalocean_secondary_region",
+            "local_fallback_for_pre_post_only"
+        ]
+    },
+    "gates": {
+        "human_review_approved": true,
+        "pre_export_guard_passed": true,
+        "track_isolation_passed": true
+    },
+    "outputs": [
+        {
+            "artifact_id": "track_b_img_001",
+            "destination": "spaces://aurora-internal-rnd/track-b/run_20260228_track_b_001/img_001.png",
+            "internal_only": true
+        }
+    ],
+    "batch": [
+        {
+            "item_id": "b_001",
+            "prompt": "[subj_name_2026] in 2D cel style, watercolor background, with anime companions",
+            "negative_prompt": "photoreal, live-action, 3d render",
+            "seed": 5172001,
+            "sampler": "dpmpp_2m",
+            "scheduler": "karras",
+            "base_model_hash": "flux2dev_sha256_example",
+            "adapter_versions": [
+                "identity_adapter_track_b_v2",
+                "anime_style_lora_miyazaki_like"
+            ],
+            "postprocess_chain": [
+                "line_cleanup",
+                "watercolor_harmonize"
+            ],
+            "external_component_provenance": [
+                "FLUX.2 [dev]",
+                "Seedream 5.0 Lite Edit"
+            ],
+            "external_component_licensing_notes": "Reviewed for internal R&D usage.",
+            "scenario_checks": {
+                "anime_style_lora_loaded": true,
+                "anime_subject_routing": true,
+                "cel_watercolor_unification": true,
+                "photoreal_bleed_rejected": true
+            },
+            "metrics": {
+                "anatomy_failed": false,
+                "identity_similarity": 0.87,
+                "style_fidelity": 0.92,
+                "pairing_score": 0.94
+            }
+        },
+        {
+            "item_id": "b_002",
+            "prompt": "[subj_name_2026] and companions crossing a bridge, anime frame composition",
+            "negative_prompt": "photoreal, lens blur, cinematic grain",
+            "seed": 5172002,
+            "sampler": "dpmpp_2m",
+            "scheduler": "karras",
+            "base_model_hash": "flux2dev_sha256_example",
+            "adapter_versions": [
+                "identity_adapter_track_b_v2",
+                "anime_style_lora_miyazaki_like"
+            ],
+            "postprocess_chain": [
+                "line_cleanup",
+                "watercolor_harmonize"
+            ],
+            "external_component_provenance": [
+                "FLUX.2 [dev]",
+                "Seedream 5.0 Lite Edit"
+            ],
+            "external_component_licensing_notes": "Reviewed for internal R&D usage.",
+            "scenario_checks": {
+                "anime_style_lora_loaded": true,
+                "anime_subject_routing": true,
+                "cel_watercolor_unification": true,
+                "photoreal_bleed_rejected": true
+            },
+            "metrics": {
+                "anatomy_failed": false,
+                "identity_similarity": 0.83,
+                "style_fidelity": 0.9,
+                "pairing_score": 0.91
+            }
+        }
+    ]
+}

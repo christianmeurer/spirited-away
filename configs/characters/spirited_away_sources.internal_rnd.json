@@ -1,0 +1,41 @@
+{
+    "version": "1.0.0",
+    "usage_scope": "INTERNAL_RND",
+    "policy": {
+        "require_rights_attestation": true,
+        "allowed_source_kinds": [
+            "licensed_url",
+            "manual_upload"
+        ],
+        "allowed_domains": [
+            "www.ghibli.jp",
+            "www.toho.co.jp",
+            "press.netflix.com",
+            "media-assets.example.com"
+        ]
+    },
+    "assets": [
+        {
+            "asset_id": "chihiro_ref_01",
+            "character": "chihiro",
+            "source_kind": "manual_upload",
+            "source_path": "/opt/aurora/data/manual_refs/chihiro_ref_01.jpg",
+            "rights": {
+                "status": "licensed",
+                "evidence": "Internal license record ID: REQUIRED_FILL"
+            },
+            "notes": "Primary face and clothing reference"
+        },
+        {
+            "asset_id": "haku_ref_01",
+            "character": "haku",
+            "source_kind": "manual_upload",
+            "source_path": "/opt/aurora/data/manual_refs/haku_ref_01.jpg",
+            "rights": {
+                "status": "licensed",
+                "evidence": "Internal license record ID: REQUIRED_FILL"
+            },
+            "notes": "Companion reference for composition"
+        }
+    ]
+}

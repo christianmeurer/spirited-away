@@ -1,0 +1,235 @@
+{
+  "summary": {
+    "count": 19,
+    "min_pixels": 1180800,
+    "max_pixels": 6996960,
+    "avg_brightness": 109.49637202212685,
+    "avg_contrast": 57.41619692350689,
+    "avg_sharpness": 217.65579645257247,
+    "lowest_sharpness_files": [
+      "a.jpg",
+      "WhatsApp Image 2026-02-26 at 21.00.30 (1).jpeg",
+      "c.jpg",
+      "WhatsApp Image 2026-02-26 at 21.00.30.jpeg",
+      "WhatsApp Image 2026-02-23 at 22.15.39 (3).jpeg"
+    ],
+    "highest_sharpness_files": [
+      "WhatsApp Image 2026-02-26 at 20.58.50.jpeg",
+      "WhatsApp Image 2026-02-23 at 22.15.39 (2).jpeg",
+      "WhatsApp Image 2026-02-23 at 22.15.39.jpeg",
+      "WhatsApp Image 2026-02-26 at 20.58.52.jpeg",
+      "WhatsApp Image 2026-02-23 at 22.15.41 (3).jpeg"
+    ]
+  },
+  "files": [
+    {
+      "file": "a.jpg",
+      "width": 2688,
+      "height": 2418,
+      "pixels": 6499584,
+      "brightness_mean": 105.62411499023438,
+      "contrast_std": 63.356101989746094,
+      "sharpness_laplacian_var": 20.785680770874023,
+      "dark_clip_pct": 4.167035921068178,
+      "bright_clip_pct": 0.1538560006301942
+    },
+    {
+      "file": "b.jpg",
+      "width": 1552,
+      "height": 2584,
+      "pixels": 4010368,
+      "brightness_mean": 105.66729736328125,
+      "contrast_std": 57.52569580078125,
+      "sharpness_laplacian_var": 61.59220886230469,
+      "dark_clip_pct": 6.286904343940507,
+      "bright_clip_pct": 0.04750187513963806
+    },
+    {
+      "file": "c.jpg",
+      "width": 2712,
+      "height": 2580,
+      "pixels": 6996960,
+      "brightness_mean": 107.17813873291016,
+      "contrast_std": 62.849639892578125,
+      "sharpness_laplacian_var": 32.81855773925781,
+      "dark_clip_pct": 7.013074249388305,
+      "bright_clip_pct": 0.0393599506071208
+    },
+    {
+      "file": "d.jpeg",
+      "width": 1200,
+      "height": 1600,
+      "pixels": 1920000,
+      "brightness_mean": 122.78661346435547,
+      "contrast_std": 67.7474136352539,
+      "sharpness_laplacian_var": 110.23806762695312,
+      "dark_clip_pct": 6.84046875,
+      "bright_clip_pct": 0.02109375
+    },
+    {
+      "file": "WhatsApp Image 2026-02-23 at 22.15.39 (1).jpeg",
+      "width": 1200,
+      "height": 1600,
+      "pixels": 1920000,
+      "brightness_mean": 131.1331787109375,
+      "contrast_std": 53.9549674987793,
+      "sharpness_laplacian_var": 131.1697998046875,
+      "dark_clip_pct": 2.860520833333333,
+      "bright_clip_pct": 0.014010416666666666
+    },
+    {
+      "file": "WhatsApp Image 2026-02-23 at 22.15.39 (2).jpeg",
+      "width": 1200,
+      "height": 1600,
+      "pixels": 1920000,
+      "brightness_mean": 105.17330932617188,
+      "contrast_std": 61.35765838623047,
+      "sharpness_laplacian_var": 236.4780731201172,
+      "dark_clip_pct": 7.8373437500000005,
+      "bright_clip_pct": 0.19010416666666669
+    },
+    {
+      "file": "WhatsApp Image 2026-02-23 at 22.15.39 (3).jpeg",
+      "width": 1200,
+      "height": 1600,
+      "pixels": 1920000,
+      "brightness_mean": 76.14305877685547,
+      "contrast_std": 48.29536437988281,
+      "sharpness_laplacian_var": 51.2794075012207,
+      "dark_clip_pct": 16.954739583333335,
+      "bright_clip_pct": 0.00036458333333333335
+    },
+    {
+      "file": "WhatsApp Image 2026-02-23 at 22.15.39.jpeg",
+      "width": 1200,
+      "height": 1600,
+      "pixels": 1920000,
+      "brightness_mean": 110.521484375,
+      "contrast_std": 60.306846618652344,
+      "sharpness_laplacian_var": 591.9381713867188,
+      "dark_clip_pct": 4.978072916666667,
+      "bright_clip_pct": 0.12473958333333335
+    },
+    {
+      "file": "WhatsApp Image 2026-02-23 at 22.15.41 (1).jpeg",
+      "width": 738,
+      "height": 1600,
+      "pixels": 1180800,
+      "brightness_mean": 95.22763061523438,
+      "contrast_std": 62.19538879394531,
+      "sharpness_laplacian_var": 127.75540161132812,
+      "dark_clip_pct": 15.829691734417345,
+      "bright_clip_pct": 0.8811822493224932
+    },
+    {
+      "file": "WhatsApp Image 2026-02-23 at 22.15.41 (2).jpeg",
+      "width": 738,
+      "height": 1600,
+      "pixels": 1180800,
+      "brightness_mean": 90.94986724853516,
+      "contrast_std": 64.9379653930664,
+      "sharpness_laplacian_var": 115.24623107910156,
+      "dark_clip_pct": 21.502625338753386,
+      "bright_clip_pct": 0.013888888888888888
+    },
+    {
+      "file": "WhatsApp Image 2026-02-23 at 22.15.41 (3).jpeg",
+      "width": 960,
+      "height": 1280,
+      "pixels": 1228800,
+      "brightness_mean": 124.02334594726562,
+      "contrast_std": 53.9486083984375,
+      "sharpness_laplacian_var": 1114.1016845703125,
+      "dark_clip_pct": 8.074951171875,
+      "bright_clip_pct": 0.011149088541666666
+    },
+    {
+      "file": "WhatsApp Image 2026-02-23 at 22.15.41.jpeg",
+      "width": 738,
+      "height": 1600,
+      "pixels": 1180800,
+      "brightness_mean": 93.80681610107422,
+      "contrast_std": 62.867671966552734,
+      "sharpness_laplacian_var": 121.91561126708984,
+      "dark_clip_pct": 17.9989837398374,
+      "bright_clip_pct": 0.8462059620596205
+    },
+    {
+      "file": "WhatsApp Image 2026-02-26 at 20.58.50.jpeg",
+      "width": 960,
+      "height": 1280,
+      "pixels": 1228800,
+      "brightness_mean": 80.03218841552734,
+      "contrast_std": 65.58601379394531,
+      "sharpness_laplacian_var": 201.8582763671875,
+      "dark_clip_pct": 28.101318359375,
+      "bright_clip_pct": 1.8401692708333335
+    },
+    {
+      "file": "WhatsApp Image 2026-02-26 at 20.58.51 (1).jpeg",
+      "width": 960,
+      "height": 1280,
+      "pixels": 1228800,
+      "brightness_mean": 129.47296142578125,
+      "contrast_std": 50.71251678466797,
+      "sharpness_laplacian_var": 69.93366241455078,
+      "dark_clip_pct": 2.516357421875,
+      "bright_clip_pct": 0.0
+    },
+    {
+      "file": "WhatsApp Image 2026-02-26 at 20.58.51.jpeg",
+      "width": 960,
+      "height": 1280,
+      "pixels": 1228800,
+      "brightness_mean": 127.82512664794922,
+      "contrast_std": 47.695526123046875,
+      "sharpness_laplacian_var": 172.3130340576172,
+      "dark_clip_pct": 0.28564453125,
+      "bright_clip_pct": 0.01318359375
+    },
+    {
+      "file": "WhatsApp Image 2026-02-26 at 20.58.52.jpeg",
+      "width": 1200,
+      "height": 1600,
+      "pixels": 1920000,
+      "brightness_mean": 129.17176818847656,
+      "contrast_std": 58.274200439453125,
+      "sharpness_laplacian_var": 784.3244018554688,
+      "dark_clip_pct": 1.8388020833333334,
+      "bright_clip_pct": 0.38385416666666666
+    },
+    {
+      "file": "WhatsApp Image 2026-02-26 at 20.58.53.jpeg",
+      "width": 1280,
+      "height": 1600,
+      "pixels": 2048000,
+      "brightness_mean": 120.80740356445312,
+      "contrast_std": 55.9570198059082,
+      "sharpness_laplacian_var": 120.53123474121094,
+      "dark_clip_pct": 2.461669921875,
+      "bright_clip_pct": 0.02099609375
+    },
+    {
+      "file": "WhatsApp Image 2026-02-26 at 21.00.30 (1).jpeg",
+      "width": 960,
+      "height": 1280,
+      "pixels": 1228800,
+      "brightness_mean": 121.1329574584961,
+      "contrast_std": 47.50812530517578,
+      "sharpness_laplacian_var": 26.252824783325195,
+      "dark_clip_pct": 0.0010579427083333335,
+      "bright_clip_pct": 0.0
+    },
+    {
+      "file": "WhatsApp Image 2026-02-26 at 21.00.30.jpeg",
+      "width": 1200,
+      "height": 1600,
+      "pixels": 1920000,
+      "brightness_mean": 103.7538070678711,
+      "contrast_std": 45.831016540527344,
+      "sharpness_laplacian_var": 44.92780303955078,
+      "dark_clip_pct": 4.34484375,
+      "bright_clip_pct": 0.0
+    }
+  ]
+}

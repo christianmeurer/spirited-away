@@ -1,0 +1,101 @@
+{
+    "run_id": "run_20260228_track_a_001",
+    "track_id": "track_a",
+    "scenario_id": "scenario_a",
+    "usage_scope": "INTERNAL_RND",
+    "internal_tag": "INTERNAL_RND",
+    "sharing_allowed": false,
+    "provider_policy_ack": true,
+    "manual_final_candidate_approval": true,
+    "provider_policy": {
+        "execution_order": [
+            "digitalocean_primary_region",
+            "digitalocean_secondary_region",
+            "local_fallback_for_pre_post_only"
+        ]
+    },
+    "gates": {
+        "human_review_approved": true,
+        "pre_export_guard_passed": true,
+        "track_isolation_passed": true
+    },
+    "outputs": [
+        {
+            "artifact_id": "track_a_img_001",
+            "destination": "spaces://aurora-internal-rnd/track-a/run_20260228_track_a_001/img_001.png",
+            "internal_only": true
+        }
+    ],
+    "batch": [
+        {
+            "item_id": "a_001",
+            "prompt": "[subj_name_2026] in a realistic sunset park, walking with two inspired companions",
+            "negative_prompt": "anime, illustration, cartoon",
+            "seed": 4172001,
+            "sampler": "dpmpp_2m",
+            "scheduler": "karras",
+            "base_model_hash": "flux2dev_sha256_example",
+            "adapter_versions": [
+                "identity_adapter_track_a_v4",
+                "anything2real_2601_a"
+            ],
+            "postprocess_chain": [
+                "low_denoise_refine",
+                "contact_shadow_balance"
+            ],
+            "external_component_provenance": [
+                "FLUX.2 [dev]",
+                "Qwen-Edit 2511",
+                "Anything2Real 2601 A"
+            ],
+            "external_component_licensing_notes": "Reviewed for internal R&D usage.",
+            "scenario_checks": {
+                "identity_adapter_loaded": true,
+                "multi_reference_routing": true,
+                "light_shadow_coherence": true,
+                "perspective_consistency": true
+            },
+            "metrics": {
+                "anatomy_failed": false,
+                "identity_similarity": 0.91,
+                "style_fidelity": 0.85,
+                "pairing_score": 0.9
+            }
+        },
+        {
+            "item_id": "a_002",
+            "prompt": "[subj_name_2026] and companions in realistic street market, natural camera perspective",
+            "negative_prompt": "anime, painting",
+            "seed": 4172002,
+            "sampler": "dpmpp_2m",
+            "scheduler": "karras",
+            "base_model_hash": "flux2dev_sha256_example",
+            "adapter_versions": [
+                "identity_adapter_track_a_v4",
+                "anything2real_2601_a"
+            ],
+            "postprocess_chain": [
+                "low_denoise_refine",
+                "contact_shadow_balance"
+            ],
+            "external_component_provenance": [
+                "FLUX.2 [dev]",
+                "Qwen-Edit 2511",
+                "Anything2Real 2601 A"
+            ],
+            "external_component_licensing_notes": "Reviewed for internal R&D usage.",
+            "scenario_checks": {
+                "identity_adapter_loaded": true,
+                "multi_reference_routing": true,
+                "light_shadow_coherence": true,
+                "perspective_consistency": true
+            },
+            "metrics": {
+                "anatomy_failed": false,
+                "identity_similarity": 0.88,
+                "style_fidelity": 0.83,
+                "pairing_score": 0.86
+            }
+        }
+    ]
+}
