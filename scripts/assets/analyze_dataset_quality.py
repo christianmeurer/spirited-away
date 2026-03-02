@@ -8,40 +8,11 @@ import json
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
 
-
-SUPPORTED = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tiff"}
-
-
-def laplacian_variance(gray: np.ndarray) -> float:
-    core = gray[1:-1, 1:-1]
-    lap = (
-        gray[:-2, 1:-1]
-        + gray[2:, 1:-1]
-        + gray[1:-1, :-2]
-        + gray[1:-1, 2:]
-        - 4.0 * core
-    )
-    return float(np.var(np.abs(lap)))
-
-
-def analyze_image(path: Path) -> dict:
-    with Image.open(path) as img:
-        gray = np.asarray(img.convert("L"), dtype=np.float32)
-
-    h, w = gray.shape
-    return {
-        "file": path.name,
-        "width": int(w),
-        "height": int(h),
-        "pixels": int(w * h),
-        "brightness_mean": float(gray.mean()),
-        "contrast_std": float(gray.std()),
-        "sharpness_laplacian_var": laplacian_variance(gray),
-        "dark_clip_pct": float((gray < 25).mean() * 100.0),
-        "bright_clip_pct": float((gray > 245).mean() * 100.0),
-    }
+try:
+    from scripts.assets.image_quality import SUPPORTED_EXTENSIONS, analyze_and_score, quality_sort_key
+except ModuleNotFoundError:
+    from image_quality import SUPPORTED_EXTENSIONS, analyze_and_score, quality_sort_key
 
 
 def main() -> int:
@@ -51,22 +22,37 @@ def main() -> int:
     args = parser.parse_args()
 
     input_dir = Path(args.input_dir)
-    files = sorted([p for p in input_dir.iterdir() if p.is_file() and p.suffix.lower() in SUPPORTED])
-    rows = [analyze_image(p) for p in files]
+    files = sorted(
+        [
+            path
+            for path in input_dir.iterdir()
+            if path.is_file() and path.suffix.lower() in SUPPORTED_EXTENSIONS
+        ]
+    )
+    rows = [analyze_and_score(path) for path in files]
 
-    rows_by_sharp = sorted(rows, key=lambda r: r["sharpness_laplacian_var"])
+    ranked = sorted(rows, key=quality_sort_key)
+    for rank, row in enumerate(ranked, start=1):
+        row["quality_rank"] = rank
+
+    rows_by_sharp = sorted(rows, key=lambda row: row["sharpness_laplacian_var"])
+    rows_by_quality = sorted(rows, key=quality_sort_key)
+
     summary = {
         "count": len(rows),
-        "min_pixels": min((r["pixels"] for r in rows), default=0),
-        "max_pixels": max((r["pixels"] for r in rows), default=0),
-        "avg_brightness": float(np.mean([r["brightness_mean"] for r in rows])) if rows else 0.0,
-        "avg_contrast": float(np.mean([r["contrast_std"] for r in rows])) if rows else 0.0,
-        "avg_sharpness": float(np.mean([r["sharpness_laplacian_var"] for r in rows])) if rows else 0.0,
-        "lowest_sharpness_files": [r["file"] for r in rows_by_sharp[:5]],
-        "highest_sharpness_files": [r["file"] for r in rows_by_sharp[-5:]],
+        "min_pixels": min((row["pixels"] for row in rows), default=0),
+        "max_pixels": max((row["pixels"] for row in rows), default=0),
+        "avg_brightness": float(np.mean([row["brightness_mean"] for row in rows])) if rows else 0.0,
+        "avg_contrast": float(np.mean([row["contrast_std"] for row in rows])) if rows else 0.0,
+        "avg_sharpness": float(np.mean([row["sharpness_laplacian_var"] for row in rows])) if rows else 0.0,
+        "avg_quality_score": float(np.mean([row["quality_score"] for row in rows])) if rows else 0.0,
+        "lowest_sharpness_files": [row["file"] for row in rows_by_sharp[:5]],
+        "highest_sharpness_files": [row["file"] for row in rows_by_sharp[-5:]],
+        "top_quality_files": [row["file"] for row in rows_by_quality[:5]],
+        "lowest_quality_files": [row["file"] for row in rows_by_quality[-5:]],
     }
 
-    payload = {"summary": summary, "files": rows}
+    payload = {"summary": summary, "files": sorted(rows, key=lambda row: row["quality_rank"])}
     text = json.dumps(payload, ensure_ascii=False, indent=2)
 
     if args.output:

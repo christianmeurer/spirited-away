@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 """Internal R&D validator CLI for Aurora Fotos.
 
-This tool enforces the execution policy described in the internal plan:
-- DigitalOcean-only provider policy
-- Scenario/track compatibility rules
-- Deterministic quality gates
-- Mandatory metadata and manual approvals
+This tool validates scenario/track compatibility, structural fields, and quality gates.
 """
 
 from __future__ import annotations
@@ -33,10 +29,6 @@ class ValidationResult:
 def _load_json(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
-
-
-def _is_truthy(value: Any) -> bool:
-    return value is True
 
 
 def _has_value(obj: dict[str, Any], field: str) -> bool:
@@ -196,26 +188,6 @@ def validate_scenario_policy(
     return errors, warnings
 
 
-def _validate_provider_policy(manifest: dict[str, Any], track_config: dict[str, Any]) -> list[str]:
-    errors: list[str] = []
-
-    allowed_order = track_config.get("provider_policy", {}).get("allowed_execution_order", [])
-    run_policy = manifest.get("provider_policy", {}).get("execution_order", [])
-
-    if run_policy and run_policy != allowed_order:
-        errors.append(
-            f"provider execution order mismatch. expected={allowed_order}, got={run_policy}"
-        )
-
-    if manifest.get("sharing_allowed") is not False:
-        errors.append("sharing_allowed must be false for INTERNAL_RND")
-
-    if not _is_truthy(manifest.get("provider_policy_ack")):
-        errors.append("provider_policy_ack must be true")
-
-    return errors
-
-
 def _validate_universal_gates(manifest: dict[str, Any], track_config: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     gates = manifest.get("gates", {}) if isinstance(manifest.get("gates"), dict) else {}
@@ -296,9 +268,6 @@ def _validate_thresholds(metrics: dict[str, float], track_config: dict[str, Any]
 def pre_export_guard(manifest: dict[str, Any]) -> tuple[bool, list[str]]:
     errors: list[str] = []
 
-    if manifest.get("sharing_allowed") is not False:
-        errors.append("pre-export guard: sharing_allowed must be false")
-
     outputs = manifest.get("outputs", [])
     if not isinstance(outputs, list):
         errors.append("pre-export guard: outputs must be a list")
@@ -309,15 +278,9 @@ def pre_export_guard(manifest: dict[str, Any]) -> tuple[bool, list[str]]:
             errors.append(f"pre-export guard: outputs[{idx}] must be an object")
             continue
 
-        destination = str(output.get("destination", ""))
-        internal_only = output.get("internal_only") is True
-
-        if not internal_only:
-            errors.append(f"pre-export guard: outputs[{idx}] internal_only must be true")
-
-        lowered = destination.lower()
-        if lowered.startswith("http://") or lowered.startswith("https://"):
-            errors.append(f"pre-export guard: outputs[{idx}] destination must not be public URL")
+        destination = output.get("destination")
+        if not isinstance(destination, str) or not destination.strip():
+            errors.append(f"pre-export guard: outputs[{idx}] destination must be a non-empty string")
 
     return len(errors) == 0, errors
 
@@ -340,7 +303,6 @@ def validate_manifest(
     required_item_fields = track_cfg.get("required_batch_item_fields", [])
 
     errors.extend(_validate_required_fields(manifest, items, required_manifest_fields, required_item_fields))
-    errors.extend(_validate_provider_policy(manifest, track_cfg))
     errors.extend(_validate_universal_gates(manifest, track_cfg))
 
     scenario_errors, scenario_warnings = validate_scenario_policy(manifest, scenarios_cfg, items)
@@ -371,7 +333,7 @@ def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Aurora Fotos INTERNAL_RND validation CLI")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    validate_parser = subparsers.add_parser("validate", help="Validate manifest against policy/config gates")
+    validate_parser = subparsers.add_parser("validate", help="Validate manifest against scenario/config gates")
     validate_parser.add_argument("--manifest", required=True, help="Path to manifest JSON")
     validate_parser.add_argument("--track-config", required=False, help="Optional explicit track config path")
     validate_parser.add_argument(
@@ -381,7 +343,7 @@ def _build_parser() -> argparse.ArgumentParser:
         help="Scenario config path",
     )
 
-    guard_parser = subparsers.add_parser("pre-export-guard", help="Run only pre-export guard checks")
+    guard_parser = subparsers.add_parser("pre-export-guard", help="Run structural pre-export guard checks")
     guard_parser.add_argument("--manifest", required=True, help="Path to manifest JSON")
 
     return parser

@@ -33,8 +33,16 @@ def main() -> int:
     parser.add_argument("--env-file", default="configs/env/digitalocean_h100.env")
     parser.add_argument("--dataset-input", default="Fotos-Aurora")
     parser.add_argument("--scenario", default="all", choices=["all", "scenario_a", "scenario_b", "scenario_c"])
+    parser.add_argument("--character-source-manifest", default=None)
+    parser.add_argument("--character-output-dir", default=None)
+    parser.add_argument("--character-source-root", default=None)
+    parser.add_argument("--character-quality-report", default=None)
+    parser.add_argument("--character-quality-audit-report", default=None)
+    parser.add_argument("--character-request-timeout", type=int, default=120)
+    parser.add_argument("--character-fail-on-missing-assets", action="store_true")
     parser.add_argument("--skip-models", action="store_true")
     parser.add_argument("--skip-character-acquisition", action="store_true")
+    parser.add_argument("--skip-character-quality-audit", action="store_true")
     parser.add_argument("--skip-dataset-prepare", action="store_true")
     parser.add_argument("--skip-training", action="store_true")
     parser.add_argument("--skip-generation", action="store_true")
@@ -44,6 +52,23 @@ def main() -> int:
     load_env_file(Path(args.env_file))
 
     python_exec = sys.executable
+    character_source_manifest = args.character_source_manifest or os.getenv(
+        "CHARACTER_SOURCE_MANIFEST",
+        "configs/characters/spirited_away_sources.internal_rnd.json",
+    )
+    character_output_dir = args.character_output_dir or os.getenv("CHARACTER_ASSET_OUTPUT_DIR", "data/character_refs")
+    character_source_root = args.character_source_root or os.getenv(
+        "CHARACTER_SOURCE_ROOT",
+        "data/character_refs_sources",
+    )
+    character_quality_report = args.character_quality_report or os.getenv(
+        "CHARACTER_QUALITY_REPORT",
+        "manifests/image_quality_report.json",
+    )
+    character_quality_audit_report = args.character_quality_audit_report or os.getenv(
+        "CHARACTER_QUALITY_AUDIT_REPORT",
+        "manifests/image_quality_report.audit.json",
+    )
 
     if not args.skip_models:
         run_cmd(
@@ -57,17 +82,33 @@ def main() -> int:
         )
 
     if not args.skip_character_acquisition:
+        acquire_cmd = [
+            python_exec,
+            "scripts/assets/acquire_character_refs.py",
+            "--source-manifest",
+            character_source_manifest,
+            "--output-dir",
+            character_output_dir,
+            "--local-source-root",
+            character_source_root,
+            "--quality-report",
+            character_quality_report,
+            "--request-timeout",
+            str(args.character_request_timeout),
+        ]
+        if args.character_fail_on_missing_assets:
+            acquire_cmd.append("--fail-on-missing-assets")
+        run_cmd(acquire_cmd)
+
+    if not args.skip_character_quality_audit:
         run_cmd(
             [
                 python_exec,
-                "scripts/assets/acquire_character_refs.py",
-                "--source-manifest",
-                os.getenv(
-                    "CHARACTER_SOURCE_MANIFEST",
-                    "configs/characters/spirited_away_sources.internal_rnd.json",
-                ),
-                "--output-dir",
-                os.getenv("CHARACTER_ASSET_OUTPUT_DIR", "data/character_refs"),
+                "scripts/assets/analyze_dataset_quality.py",
+                "--input-dir",
+                character_output_dir,
+                "--output",
+                character_quality_audit_report,
             ]
         )
 

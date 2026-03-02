@@ -1,0 +1,206 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-03-02T17:47:30.793699+00:00",
+  "input_dir": "data/Fotos-Aurora",
+  "group_mode": "dataset",
+  "name_prefix": "fotos_aurora",
+  "recursive": false,
+  "dry_run": false,
+  "summary": {
+    "count": 19,
+    "renamed": 0,
+    "unchanged": 19
+  },
+  "files": [
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score90__rank01.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score90__rank01.jpeg",
+      "quality_rank": 1,
+      "quality_bucket": 90,
+      "quality_score": 0.9110415929982227,
+      "sha256": "8485bc798070a0fdff731028ef3becce56caeaf59fe179e478f73717fbba81eb"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score88__rank02.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score88__rank02.jpeg",
+      "quality_rank": 2,
+      "quality_bucket": 88,
+      "quality_score": 0.883882049907126,
+      "sha256": "671fcf6656c6e1f52f92cfb5ca108f2d123268b58d3757eb5ef088b88669d5e7"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score87__rank03.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score87__rank03.jpeg",
+      "quality_rank": 3,
+      "quality_bucket": 87,
+      "quality_score": 0.8748180028416238,
+      "sha256": "794006c709a11335652a72500a824bf5fbc89dbf0cfc64a6873050e94d708111"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score85__rank04.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score85__rank04.jpeg",
+      "quality_rank": 4,
+      "quality_bucket": 85,
+      "quality_score": 0.8541551493964112,
+      "sha256": "18fd360dc1c27736aefea83bee3e815f970c3767ecade5e0562e2f0e8461c56d"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score81__rank05.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score81__rank05.jpeg",
+      "quality_rank": 5,
+      "quality_bucket": 81,
+      "quality_score": 0.8213307880057238,
+      "sha256": "539a45b0644f0c50ce54b88961456f71b35282c274d17cfd3b40861ffbcd9088"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score81__rank06.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score81__rank06.jpeg",
+      "quality_rank": 6,
+      "quality_bucket": 81,
+      "quality_score": 0.8133332689752084,
+      "sha256": "c43c6ee5e2f1eff05bd875b6664264bb48cb5fd33294f15d717e7c81af01ac00"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score77__rank07.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score77__rank07.jpeg",
+      "quality_rank": 7,
+      "quality_bucket": 77,
+      "quality_score": 0.7819363425495598,
+      "sha256": "faa679680f2b69304209045d735b69e276d92504fd9f0520f8b9766173d03da7"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score77__rank08.jpg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score77__rank08.jpg",
+      "quality_rank": 8,
+      "quality_bucket": 77,
+      "quality_score": 0.7817274384545457,
+      "sha256": "3f234d7f0483491e94dc4ecfec9bad9f5fe3d1d1e77d68e73705408f2afee136"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score77__rank09.jpg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score77__rank09.jpg",
+      "quality_rank": 9,
+      "quality_bucket": 77,
+      "quality_score": 0.7777994090097673,
+      "sha256": "4c458e77ab8acc317eb96d62a811aa7f6ad72e83fb9bdd1ac4ffa318206e02f4"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score76__rank10.jpg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score76__rank10.jpg",
+      "quality_rank": 10,
+      "quality_bucket": 76,
+      "quality_score": 0.7676812160093653,
+      "sha256": "19c2fa63e06ef2f7133019bfbb50fae12a25e024bf36c89c50c93695dc653881"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score74__rank11.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score74__rank11.jpeg",
+      "quality_rank": 11,
+      "quality_bucket": 74,
+      "quality_score": 0.7490995850589923,
+      "sha256": "91352eaa328ca74c27c1a2a4fdb7a3623f9b193ff65b5f61b205eb83a01e3d04"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score74__rank12.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score74__rank12.jpeg",
+      "quality_rank": 12,
+      "quality_bucket": 74,
+      "quality_score": 0.7479881540669558,
+      "sha256": "836c6777e4068a6792f613b99d027025cb44ef5a415df37690e5bfbbfd46abad"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score74__rank13.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score74__rank13.jpeg",
+      "quality_rank": 13,
+      "quality_bucket": 74,
+      "quality_score": 0.7475288506816258,
+      "sha256": "a5d096988a88cdbe3283fb866c31bf53abca8227c626093808cbdb0f85b07d68"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score70__rank14.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score70__rank14.jpeg",
+      "quality_rank": 14,
+      "quality_bucket": 70,
+      "quality_score": 0.7035035749463501,
+      "sha256": "ddde3264dedf3c958a976866044f407741c6077334e07d87e3c9319f6a3cec9a"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score69__rank15.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score69__rank15.jpeg",
+      "quality_rank": 15,
+      "quality_bucket": 69,
+      "quality_score": 0.7003901478848246,
+      "sha256": "0b264400c2c0d95829e0066a436860f4ca8b4f9c8c74efc66ee4ac545019d29e"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score69__rank16.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score69__rank16.jpeg",
+      "quality_rank": 16,
+      "quality_bucket": 69,
+      "quality_score": 0.6934320035161127,
+      "sha256": "368c4d1fcab9f3006be54839591e49bacab9072d11d077acba932ad5c03178fd"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score68__rank17.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score68__rank17.jpeg",
+      "quality_rank": 17,
+      "quality_bucket": 68,
+      "quality_score": 0.688397727599442,
+      "sha256": "1112f02d026337d1ce95f810365ce81c9a4778a084f7e16785edc724a9aaf75c"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score67__rank18.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score67__rank18.jpeg",
+      "quality_rank": 18,
+      "quality_bucket": 67,
+      "quality_score": 0.6811862982940738,
+      "sha256": "a59c982aaa7f92e60a588c67ad6216669e5d887d711be819375b43ef83d4eb72"
+    },
+    {
+      "group_key": "fotos_aurora",
+      "action": "unchanged",
+      "old_path": "data/Fotos-Aurora/fotos_aurora__score66__rank19.jpeg",
+      "new_path": "data/Fotos-Aurora/fotos_aurora__score66__rank19.jpeg",
+      "quality_rank": 19,
+      "quality_bucket": 66,
+      "quality_score": 0.6690202608383207,
+      "sha256": "1aec8a37746f606f4a24687c382bd914ebb22ee361ade0b71d47bcf0fae00e6b"
+    }
+  ]
+}

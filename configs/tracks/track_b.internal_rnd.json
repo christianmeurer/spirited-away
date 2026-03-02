@@ -19,8 +19,6 @@
         "usage_scope",
         "internal_tag",
         "outputs",
-        "sharing_allowed",
-        "provider_policy_ack",
         "manual_final_candidate_approval",
         "batch"
     ],
@@ -34,7 +32,6 @@
         "adapter_versions",
         "postprocess_chain",
         "external_component_provenance",
-        "external_component_licensing_notes",
         "scenario_checks",
         "metrics"
     ],

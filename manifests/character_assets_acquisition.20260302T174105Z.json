@@ -1,0 +1,2818 @@
+{
+  "valid": true,
+  "source_manifest": "configs/characters/spirited_away_sources.internal_rnd.json",
+  "output_dir": "data/character_refs",
+  "local_source_root": "data/character_refs_sources",
+  "state_file": "data/character_refs/.character_refs_state.json",
+  "quality_report": "manifests/image_quality_report.json",
+  "summary": {
+    "assets_configured": 13,
+    "assets_success": 13,
+    "assets_partial": 0,
+    "assets_failed": 0,
+    "refs_total": 78
+  },
+  "characters": [
+    {
+      "character_id": "akio_ogino",
+      "display_name": "Akio Ogino",
+      "aliases": [
+        "Akio"
+      ]
+    },
+    {
+      "character_id": "aogaeru",
+      "display_name": "Aogaeru",
+      "aliases": [
+        "Frog",
+        "Aogaeru (frog)"
+      ]
+    },
+    {
+      "character_id": "boh",
+      "display_name": "Boh",
+      "aliases": [
+        "Bou"
+      ]
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "display_name": "Chihiro Ogino",
+      "aliases": [
+        "Chihiro",
+        "Sen"
+      ]
+    },
+    {
+      "character_id": "haku",
+      "display_name": "Haku",
+      "aliases": [
+        "Nigihayami Kohakunushi"
+      ]
+    },
+    {
+      "character_id": "kamaji",
+      "display_name": "Kamaji",
+      "aliases": []
+    },
+    {
+      "character_id": "lin",
+      "display_name": "Lin",
+      "aliases": [
+        "Linha"
+      ]
+    },
+    {
+      "character_id": "no_face",
+      "display_name": "No-Face",
+      "aliases": [
+        "No Face",
+        "Kaonashi"
+      ]
+    },
+    {
+      "character_id": "river_spirit",
+      "display_name": "River Spirit",
+      "aliases": [
+        "Kawa no Kami"
+      ]
+    },
+    {
+      "character_id": "stink_spirit",
+      "display_name": "Stink Spirit",
+      "aliases": [
+        "Stink God"
+      ]
+    },
+    {
+      "character_id": "yubaba",
+      "display_name": "Yubaba",
+      "aliases": []
+    },
+    {
+      "character_id": "yuko_ogino",
+      "display_name": "Yuko Ogino",
+      "aliases": [
+        "Yuko"
+      ]
+    },
+    {
+      "character_id": "zeniba",
+      "display_name": "Zeniba",
+      "aliases": []
+    }
+  ],
+  "acquired": [
+    {
+      "character_id": "akio_ogino",
+      "path": "data/character_refs/akio_ogino__score71__rank01.png",
+      "sha256": "0674dc9be24ad3e07d64cc73623cae454e3ab189fc08518f68eef49900e9136a",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7165341307706747,
+      "source_asset_ids": [
+        "akio_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen05__seed632b812b.png"
+      ]
+    },
+    {
+      "character_id": "akio_ogino",
+      "path": "data/character_refs/akio_ogino__score71__rank02.png",
+      "sha256": "0a4eb30340b1958a2428fa33fce0e3c106e7c9bbb60800ca423ef90b1ccd191c",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7149064355574317,
+      "source_asset_ids": [
+        "akio_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen03__seed01476c8b.png"
+      ]
+    },
+    {
+      "character_id": "akio_ogino",
+      "path": "data/character_refs/akio_ogino__score70__rank03.png",
+      "sha256": "f7fadab9ca41d905a2436d283fe5cbfbf7ef8abc67a48e0c857523c2a5f13d50",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.7081838093818382,
+      "source_asset_ids": [
+        "akio_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen04__seeddce03029.png"
+      ]
+    },
+    {
+      "character_id": "akio_ogino",
+      "path": "data/character_refs/akio_ogino__score70__rank04.png",
+      "sha256": "f471f2d1f6f37d799a42e274ba54088c99110eb9add2307f8e304956e312e228",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7068097514809147,
+      "source_asset_ids": [
+        "akio_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen06__seed82c77a7a.png"
+      ]
+    },
+    {
+      "character_id": "akio_ogino",
+      "path": "data/character_refs/akio_ogino__score70__rank05.png",
+      "sha256": "53c6d2b307b3babe10a71ac02e4ae3ae1bcbd469d02794a64f63374ca996b4d7",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7022136920951187,
+      "source_asset_ids": [
+        "akio_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen01__seed81b2c838.png"
+      ]
+    },
+    {
+      "character_id": "akio_ogino",
+      "path": "data/character_refs/akio_ogino__score69__rank06.png",
+      "sha256": "a72ba52b7a2fba3f7c77bcd7974e3c0876dc30401aeb3f986ea5b6234d5629d8",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6993407124965568,
+      "source_asset_ids": [
+        "akio_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen02__seedf4e239fa.png"
+      ]
+    },
+    {
+      "character_id": "aogaeru",
+      "path": "data/character_refs/aogaeru__score72__rank01.png",
+      "sha256": "ed4cd9c8aa281d1565b8fdde65fdf7f3aee8f8c6ac93cbb4934c0b1a8b8ba82b",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7294399327861479,
+      "source_asset_ids": [
+        "aogaeru_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen06__seedfc232a9f.png"
+      ]
+    },
+    {
+      "character_id": "aogaeru",
+      "path": "data/character_refs/aogaeru__score71__rank02.png",
+      "sha256": "095ba22abd46c0d57b15f26a7358978004168654466f845f5363bcb444fde06f",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7172547769083857,
+      "source_asset_ids": [
+        "aogaeru_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen04__seed376d80f9.png"
+      ]
+    },
+    {
+      "character_id": "aogaeru",
+      "path": "data/character_refs/aogaeru__score71__rank03.png",
+      "sha256": "d47d9b802961b1bb30e6f2eb551591755bbeb737f72beda3cc16b84621448e2e",
+      "quality_rank": 3,
+      "quality_bucket": 71,
+      "quality_score": 0.717165777365299,
+      "source_asset_ids": [
+        "aogaeru_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen01__seed4a21dcd6.png"
+      ]
+    },
+    {
+      "character_id": "aogaeru",
+      "path": "data/character_refs/aogaeru__score71__rank04.png",
+      "sha256": "e718df2f04898dee7ba101c356e9b06b84654d3584109eac8ec5014c75582642",
+      "quality_rank": 4,
+      "quality_bucket": 71,
+      "quality_score": 0.7146254649454944,
+      "source_asset_ids": [
+        "aogaeru_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen02__seedf0dface3.png"
+      ]
+    },
+    {
+      "character_id": "aogaeru",
+      "path": "data/character_refs/aogaeru__score70__rank05.png",
+      "sha256": "80ad21cdb4f52179d8b79484d878d652dc05942d7deff5c85d73a535c76f8fa5",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7054342924843843,
+      "source_asset_ids": [
+        "aogaeru_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen05__seed7d3ee822.png"
+      ]
+    },
+    {
+      "character_id": "aogaeru",
+      "path": "data/character_refs/aogaeru__score69__rank06.png",
+      "sha256": "8d123fa710e1848f1a2a361a95515984952e1df99ead6c910e588997d47bca6a",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6985628837777876,
+      "source_asset_ids": [
+        "aogaeru_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen03__seed4d139352.png"
+      ]
+    },
+    {
+      "character_id": "boh",
+      "path": "data/character_refs/boh__score71__rank01.png",
+      "sha256": "e59fd2c11f4a25c2d77b71ab36ac35ff239f50bc1092bd03c2b82833bc5279a8",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7153284762035845,
+      "source_asset_ids": [
+        "boh_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen04__seed9e5cc99e.png"
+      ]
+    },
+    {
+      "character_id": "boh",
+      "path": "data/character_refs/boh__score71__rank02.png",
+      "sha256": "f3aad433d390e97bacec542436bb5b9f53961f5dad08c90ed03c579b535034d0",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.713742863455705,
+      "source_asset_ids": [
+        "boh_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen02__seedb197b35d.png"
+      ]
+    },
+    {
+      "character_id": "boh",
+      "path": "data/character_refs/boh__score70__rank03.png",
+      "sha256": "b6be436d6b66820b6abc8b927225b2d09bdd1786e31b4b468da1e9d90e44b947",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.7025504427015673,
+      "source_asset_ids": [
+        "boh_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen03__seed7d9332d0.png"
+      ]
+    },
+    {
+      "character_id": "boh",
+      "path": "data/character_refs/boh__score69__rank04.png",
+      "sha256": "356e1d7d0caf495c47772f49db62c5289ef88ea69f2cea1318131d97699ac08e",
+      "quality_rank": 4,
+      "quality_bucket": 69,
+      "quality_score": 0.701956222132054,
+      "source_asset_ids": [
+        "boh_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen01__seedf600e676.png"
+      ]
+    },
+    {
+      "character_id": "boh",
+      "path": "data/character_refs/boh__score69__rank05.png",
+      "sha256": "a90eaf23379f8c35e33c56b3731d2d63ad7741be32a36ec4780a625e92e76f4d",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6974592050318369,
+      "source_asset_ids": [
+        "boh_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen06__seed9d7cbc54.png"
+      ]
+    },
+    {
+      "character_id": "boh",
+      "path": "data/character_refs/boh__score68__rank06.png",
+      "sha256": "bceb910fb8de3fd4d29b79e7d2ef7319023e5d67a1a3298bea804c9c98b5d723",
+      "quality_rank": 6,
+      "quality_bucket": 68,
+      "quality_score": 0.6896698825825129,
+      "source_asset_ids": [
+        "boh_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen05__seede24b0588.png"
+      ]
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "path": "data/character_refs/chihiro_ogino__score72__rank01.png",
+      "sha256": "0bc00c4060b0dc7e2ed159e633017e73b6ff39666e57af7d1762d85f4dfb50bd",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7252780791567501,
+      "source_asset_ids": [
+        "chihiro_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen06__seedbbbc638e.png"
+      ]
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "path": "data/character_refs/chihiro_ogino__score71__rank02.png",
+      "sha256": "292bac9c78c0393f197dfa1fe1e8e81d97fd977ff3450635389ab24576be0d68",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7176529226902152,
+      "source_asset_ids": [
+        "chihiro_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen02__seed34771247.png"
+      ]
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "path": "data/character_refs/chihiro_ogino__score70__rank03.png",
+      "sha256": "9092cbb602bd1271424bfccf39fbb49365db8c44dda7ac8f0ede73e903757b50",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.71128126062941,
+      "source_asset_ids": [
+        "chihiro_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen01__seedfd0185b3.png"
+      ]
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "path": "data/character_refs/chihiro_ogino__score70__rank04.png",
+      "sha256": "13a66d6d80b2a5e3f01223da9422639b94d73232ad606f807f09ed12a5c61d6c",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7043097750233072,
+      "source_asset_ids": [
+        "chihiro_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen04__seed97b942a4.png"
+      ]
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "path": "data/character_refs/chihiro_ogino__score70__rank05.png",
+      "sha256": "264c188d13cf8f8af12e306908700bb2fc44898ddd94292a2e7306644182df13",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7034565479499802,
+      "source_asset_ids": [
+        "chihiro_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen05__seed5a7d8434.png"
+      ]
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "path": "data/character_refs/chihiro_ogino__score68__rank06.png",
+      "sha256": "5cf307488b55b7fb167c3b9f7efb3ecbd2c810121425e693e83169346fbc3e80",
+      "quality_rank": 6,
+      "quality_bucket": 68,
+      "quality_score": 0.6866612343203977,
+      "source_asset_ids": [
+        "chihiro_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen03__seedee1b5b90.png"
+      ]
+    },
+    {
+      "character_id": "haku",
+      "path": "data/character_refs/haku__score71__rank01.png",
+      "sha256": "6eb770b20cbf5a02f9629095f1fe3372d6f32af0a86039a1b10e7c8c827d31a1",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7142368246398061,
+      "source_asset_ids": [
+        "haku_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen05__seedc81d99ed.png"
+      ]
+    },
+    {
+      "character_id": "haku",
+      "path": "data/character_refs/haku__score70__rank02.png",
+      "sha256": "6146f1791f2ce247b66bd094c2d8cd60a294c3ac574f9285a6ae513eb791f6e2",
+      "quality_rank": 2,
+      "quality_bucket": 70,
+      "quality_score": 0.7104195039416817,
+      "source_asset_ids": [
+        "haku_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen06__seed8c0ba0b3.png"
+      ]
+    },
+    {
+      "character_id": "haku",
+      "path": "data/character_refs/haku__score70__rank03.png",
+      "sha256": "3311f77cc0f28e43be46a97bc1832007baf6a5a8da2a34f31e8bb3499acfd2f1",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.710270383257928,
+      "source_asset_ids": [
+        "haku_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen04__seedc4f86a47.png"
+      ]
+    },
+    {
+      "character_id": "haku",
+      "path": "data/character_refs/haku__score70__rank04.png",
+      "sha256": "ca4641d94a85047687d093c0ddd3e10d00e4b5c394ecd3968ab28323148ce081",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7070544467567358,
+      "source_asset_ids": [
+        "haku_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen02__seed6a5d1b46.png"
+      ]
+    },
+    {
+      "character_id": "haku",
+      "path": "data/character_refs/haku__score69__rank05.png",
+      "sha256": "4ed1701404b8298156a692c56633b80481b8006e6c24240b691156bc4571d618",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6988665807087998,
+      "source_asset_ids": [
+        "haku_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen03__seed3eece1b5.png"
+      ]
+    },
+    {
+      "character_id": "haku",
+      "path": "data/character_refs/haku__score69__rank06.png",
+      "sha256": "e5b2406d06385cafd437c2358ba85ee30b7ee777f763a3975d55121cc8d3f29a",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6932818149354516,
+      "source_asset_ids": [
+        "haku_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen01__seed839ec5b1.png"
+      ]
+    },
+    {
+      "character_id": "kamaji",
+      "path": "data/character_refs/kamaji__score72__rank01.png",
+      "sha256": "02b571fa3016b4196259c5072a907040bcd64887dd5d607d8f24d8676b0f7e2e",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7231840849619744,
+      "source_asset_ids": [
+        "kamaji_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen03__seed3d9e3edf.png"
+      ]
+    },
+    {
+      "character_id": "kamaji",
+      "path": "data/character_refs/kamaji__score70__rank02.png",
+      "sha256": "e09aaa28d8c4b71c2142868f3f6a872d91d53acb4b6abea2ffb964af3abfcd1b",
+      "quality_rank": 2,
+      "quality_bucket": 70,
+      "quality_score": 0.7114799111841341,
+      "source_asset_ids": [
+        "kamaji_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen06__seed542b980e.png"
+      ]
+    },
+    {
+      "character_id": "kamaji",
+      "path": "data/character_refs/kamaji__score70__rank03.png",
+      "sha256": "029a4bace58837cdca05a5b3469a041527bf920cf7038e57e11e3320b2ac1ea0",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.7110218812366124,
+      "source_asset_ids": [
+        "kamaji_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen04__seed5f3037cc.png"
+      ]
+    },
+    {
+      "character_id": "kamaji",
+      "path": "data/character_refs/kamaji__score70__rank04.png",
+      "sha256": "45daa3da24b6c4eb80bc6fa1184f294e67a46585950267a0126800f14e80e45e",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7068477412415208,
+      "source_asset_ids": [
+        "kamaji_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen01__seedfe672466.png"
+      ]
+    },
+    {
+      "character_id": "kamaji",
+      "path": "data/character_refs/kamaji__score69__rank05.png",
+      "sha256": "87d457da8861d3247b4121baeb7f4e435407195a156253ffe9f31b85acaf756c",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.7020074066739332,
+      "source_asset_ids": [
+        "kamaji_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen02__seedb10db382.png"
+      ]
+    },
+    {
+      "character_id": "kamaji",
+      "path": "data/character_refs/kamaji__score69__rank06.png",
+      "sha256": "d2b75aa21b520909c83303b14ddd4d3139cdfd949a9336e709357538d0ff00ed",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6984096831370138,
+      "source_asset_ids": [
+        "kamaji_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen05__seedf53ba0e2.png"
+      ]
+    },
+    {
+      "character_id": "lin",
+      "path": "data/character_refs/lin__score72__rank01.png",
+      "sha256": "90a369d23eb078f216b4d28f6e1ac1d02218bc660ebffaf1c346b513e1882c26",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7223815748996684,
+      "source_asset_ids": [
+        "lin_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen01__seedbdd327bb.png"
+      ]
+    },
+    {
+      "character_id": "lin",
+      "path": "data/character_refs/lin__score71__rank02.png",
+      "sha256": "59df3491ecb834a182bc7fcb618d620393450842c0a66b6bdba768f65260e3d7",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7186285319065667,
+      "source_asset_ids": [
+        "lin_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen04__seedb5fb1b9c.png"
+      ]
+    },
+    {
+      "character_id": "lin",
+      "path": "data/character_refs/lin__score71__rank03.png",
+      "sha256": "e1e82c884d4caa00f5f967bf623da70102a45ee32c240a59a1742efa50f2fcc0",
+      "quality_rank": 3,
+      "quality_bucket": 71,
+      "quality_score": 0.7144565469028934,
+      "source_asset_ids": [
+        "lin_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen06__seed63b72333.png"
+      ]
+    },
+    {
+      "character_id": "lin",
+      "path": "data/character_refs/lin__score70__rank04.png",
+      "sha256": "26ff4317c2e64b083e076f73779ff027ad82fbc752dd7ae726f76aa67e4f3a16",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7079400089177605,
+      "source_asset_ids": [
+        "lin_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen05__seed3a03dedc.png"
+      ]
+    },
+    {
+      "character_id": "lin",
+      "path": "data/character_refs/lin__score69__rank05.png",
+      "sha256": "ff9e75f0158b326e29cc03224383111a82fa34e1b2fb1341ae293e6ff32e330b",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6990866495994893,
+      "source_asset_ids": [
+        "lin_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen02__seed8cc08e20.png"
+      ]
+    },
+    {
+      "character_id": "lin",
+      "path": "data/character_refs/lin__score69__rank06.png",
+      "sha256": "9b1183820a68e73fb250303461e8a203cc70621ab57fd092bdd66801f3a243fd",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6980848818717785,
+      "source_asset_ids": [
+        "lin_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen03__seed300203bc.png"
+      ]
+    },
+    {
+      "character_id": "no_face",
+      "path": "data/character_refs/no_face__score72__rank01.png",
+      "sha256": "acb85ffdcf0015106dc6482e0eecedf648c05a51e2a06953a226f59348460644",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7224326575844325,
+      "source_asset_ids": [
+        "no_face_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen04__seed7d2867ef.png"
+      ]
+    },
+    {
+      "character_id": "no_face",
+      "path": "data/character_refs/no_face__score69__rank02.png",
+      "sha256": "215da5394255ac3a58cad2b166fd20bf40d491f58dabdd22ac1a1d1f0f20bca1",
+      "quality_rank": 2,
+      "quality_bucket": 69,
+      "quality_score": 0.6970873502341728,
+      "source_asset_ids": [
+        "no_face_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen05__seedeb2a7ff9.png"
+      ]
+    },
+    {
+      "character_id": "no_face",
+      "path": "data/character_refs/no_face__score69__rank03.png",
+      "sha256": "13e84c96930aa22a7340e90ea1819405c6da0f9b2df250b922053876ee650366",
+      "quality_rank": 3,
+      "quality_bucket": 69,
+      "quality_score": 0.6963574517524721,
+      "source_asset_ids": [
+        "no_face_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen01__seed356552f1.png"
+      ]
+    },
+    {
+      "character_id": "no_face",
+      "path": "data/character_refs/no_face__score69__rank04.png",
+      "sha256": "7fb709b0861b32817f5818666e1367c53d287a1fab4c9acf7dc0bbd5f98adaf0",
+      "quality_rank": 4,
+      "quality_bucket": 69,
+      "quality_score": 0.6959591396565964,
+      "source_asset_ids": [
+        "no_face_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen06__seed83258e62.png"
+      ]
+    },
+    {
+      "character_id": "no_face",
+      "path": "data/character_refs/no_face__score69__rank05.png",
+      "sha256": "bf7f627d900598eb7ecf9925416c03355cedfe2664365d0917f2a3e8cd06f1a3",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6928906765298918,
+      "source_asset_ids": [
+        "no_face_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen02__seedd55fff54.png"
+      ]
+    },
+    {
+      "character_id": "no_face",
+      "path": "data/character_refs/no_face__score68__rank06.png",
+      "sha256": "ad528b0a81d7c68c88dd51abc1c982717c175205b9157af75a54b3b817bf8e01",
+      "quality_rank": 6,
+      "quality_bucket": 68,
+      "quality_score": 0.6879027947702585,
+      "source_asset_ids": [
+        "no_face_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen03__seed4c2db0d0.png"
+      ]
+    },
+    {
+      "character_id": "river_spirit",
+      "path": "data/character_refs/river_spirit__score71__rank01.png",
+      "sha256": "7e22520abb7017fb8fc1358f7c1242c07f829f1e5deba4826a21f7ec309fc284",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7169350662393627,
+      "source_asset_ids": [
+        "river_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen04__seedf0c0e366.png"
+      ]
+    },
+    {
+      "character_id": "river_spirit",
+      "path": "data/character_refs/river_spirit__score71__rank02.png",
+      "sha256": "c3a0d1bb8a363d7cac2b4ee329f283366e078617f9ea42bb10e4f46f7733ee93",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7147559151646017,
+      "source_asset_ids": [
+        "river_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen05__seedfb4c52b3.png"
+      ]
+    },
+    {
+      "character_id": "river_spirit",
+      "path": "data/character_refs/river_spirit__score71__rank03.png",
+      "sha256": "8b2287abdcfeade5523cc17e4cfdf2453f986215f17f40298f51b35ed6b5dad8",
+      "quality_rank": 3,
+      "quality_bucket": 71,
+      "quality_score": 0.7127864062267723,
+      "source_asset_ids": [
+        "river_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen02__seed48b51a83.png"
+      ]
+    },
+    {
+      "character_id": "river_spirit",
+      "path": "data/character_refs/river_spirit__score70__rank04.png",
+      "sha256": "d76a74099d193b0dff5862d965340ad237ccd28dfc653b5052bea23efb9804b7",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7054323407188583,
+      "source_asset_ids": [
+        "river_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen03__seedafa61f22.png"
+      ]
+    },
+    {
+      "character_id": "river_spirit",
+      "path": "data/character_refs/river_spirit__score70__rank05.png",
+      "sha256": "93facba6fb2755410fef86f9b474f985970deebb604f2c13e1d29eed2ee3925f",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7038622633878526,
+      "source_asset_ids": [
+        "river_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen06__seedc6de4f83.png"
+      ]
+    },
+    {
+      "character_id": "river_spirit",
+      "path": "data/character_refs/river_spirit__score69__rank06.png",
+      "sha256": "c38f0806b893bcd320b1b4bb47c56659b061036eb3eb83301711b32bc83dd60a",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.7015264855832728,
+      "source_asset_ids": [
+        "river_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen01__seedc394bec4.png"
+      ]
+    },
+    {
+      "character_id": "stink_spirit",
+      "path": "data/character_refs/stink_spirit__score72__rank01.png",
+      "sha256": "b77663d99dd790972e95edea378cc3c90ec760bc2169b8b684ab8ee5fa852ce6",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.724041722633049,
+      "source_asset_ids": [
+        "stink_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen06__seeddfc9e84f.png"
+      ]
+    },
+    {
+      "character_id": "stink_spirit",
+      "path": "data/character_refs/stink_spirit__score71__rank02.png",
+      "sha256": "f716cbe9c05a6954b7e1ea9e9b75d4afdc1384dd37d60804c82eab923bec211b",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7163310376415911,
+      "source_asset_ids": [
+        "stink_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen04__seed5eaeb80a.png"
+      ]
+    },
+    {
+      "character_id": "stink_spirit",
+      "path": "data/character_refs/stink_spirit__score70__rank03.png",
+      "sha256": "d7aef87382a5e69d523ed2e6c2d46beaaaadc8b1a3ad2e1b10d450c1165269e6",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.708092591602202,
+      "source_asset_ids": [
+        "stink_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen03__seed16867185.png"
+      ]
+    },
+    {
+      "character_id": "stink_spirit",
+      "path": "data/character_refs/stink_spirit__score70__rank04.png",
+      "sha256": "b7121cc8a333fceaff9c444b2e9736ac2dbe413f5addc54ced0093c7138381a3",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7051471041157149,
+      "source_asset_ids": [
+        "stink_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen02__seed6b50b412.png"
+      ]
+    },
+    {
+      "character_id": "stink_spirit",
+      "path": "data/character_refs/stink_spirit__score69__rank05.png",
+      "sha256": "4312e0a7c9b28308b3aa2aa40f8d6df983535e519ea3ab3340c9b1af46ca571f",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6956336675026163,
+      "source_asset_ids": [
+        "stink_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen05__seed506b5958.png"
+      ]
+    },
+    {
+      "character_id": "stink_spirit",
+      "path": "data/character_refs/stink_spirit__score69__rank06.png",
+      "sha256": "6b3cc3b122470d07d823fd710b3d3e59e854bc55485a8a9660eac620fff285ec",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6939222799124242,
+      "source_asset_ids": [
+        "stink_spirit_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen01__seed449e89b4.png"
+      ]
+    },
+    {
+      "character_id": "yubaba",
+      "path": "data/character_refs/yubaba__score72__rank01.png",
+      "sha256": "1fa859634b41982f665b8072d9308f0d38f815b7204a7a2fc3dfb80d91a8b6d5",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7274471676155331,
+      "source_asset_ids": [
+        "yubaba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen06__seedb763c17f.png"
+      ]
+    },
+    {
+      "character_id": "yubaba",
+      "path": "data/character_refs/yubaba__score72__rank02.png",
+      "sha256": "eceb1999a74229366dc742dd1867410e85872d8646fc3c19d5205f9407bdaad6",
+      "quality_rank": 2,
+      "quality_bucket": 72,
+      "quality_score": 0.7232857389941301,
+      "source_asset_ids": [
+        "yubaba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen04__seed8b7b39eb.png"
+      ]
+    },
+    {
+      "character_id": "yubaba",
+      "path": "data/character_refs/yubaba__score71__rank03.png",
+      "sha256": "a0234cb53101050078d55e691f00295e7835e50f1257b8eb90a8fd733d357176",
+      "quality_rank": 3,
+      "quality_bucket": 71,
+      "quality_score": 0.7207785794253732,
+      "source_asset_ids": [
+        "yubaba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen03__seedf7894fdf.png"
+      ]
+    },
+    {
+      "character_id": "yubaba",
+      "path": "data/character_refs/yubaba__score71__rank04.png",
+      "sha256": "5382803a8908ddc3dfe4abf52de16c17f61e736ea79bdc2e40c592710be10276",
+      "quality_rank": 4,
+      "quality_bucket": 71,
+      "quality_score": 0.72014188536026,
+      "source_asset_ids": [
+        "yubaba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen05__seeda27cc05d.png"
+      ]
+    },
+    {
+      "character_id": "yubaba",
+      "path": "data/character_refs/yubaba__score70__rank05.png",
+      "sha256": "da530ae0ed92dddb49ec3a3b7569f086a42ac4cb2849e0cb3d9d374ba71e3b1f",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7096614721793886,
+      "source_asset_ids": [
+        "yubaba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen02__seed191e80e7.png"
+      ]
+    },
+    {
+      "character_id": "yubaba",
+      "path": "data/character_refs/yubaba__score70__rank06.png",
+      "sha256": "36e3a80263205eaa8309f1bcc9547d71fab05f69408d45dd80e507a4b93df751",
+      "quality_rank": 6,
+      "quality_bucket": 70,
+      "quality_score": 0.7051570672077536,
+      "source_asset_ids": [
+        "yubaba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen01__seedec9d29d3.png"
+      ]
+    },
+    {
+      "character_id": "yuko_ogino",
+      "path": "data/character_refs/yuko_ogino__score71__rank01.png",
+      "sha256": "e593d8f6d8a39d6bfb76e0c7b4c6ef692c9ea288cad241c4eef8c752ecf4960c",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7168348267847884,
+      "source_asset_ids": [
+        "yuko_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen05__seedd2d7a016.png"
+      ]
+    },
+    {
+      "character_id": "yuko_ogino",
+      "path": "data/character_refs/yuko_ogino__score71__rank02.png",
+      "sha256": "99af6ec11f3b34972e27e4c403f94872e9c2e4ca8e32d6e875ca8299bf3f36dd",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7123448643702289,
+      "source_asset_ids": [
+        "yuko_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen06__seed5c2884a9.png"
+      ]
+    },
+    {
+      "character_id": "yuko_ogino",
+      "path": "data/character_refs/yuko_ogino__score70__rank03.png",
+      "sha256": "fc33b0956e828586b0924d3133b8818c5d74d5633a7bcb7c379117638d4d290b",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.704149227855971,
+      "source_asset_ids": [
+        "yuko_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen03__seed60ec7a49.png"
+      ]
+    },
+    {
+      "character_id": "yuko_ogino",
+      "path": "data/character_refs/yuko_ogino__score68__rank04.png",
+      "sha256": "349fbd0004eecc109e1c05ee189b106877c99bbaa0c936680d534e566bce690c",
+      "quality_rank": 4,
+      "quality_bucket": 68,
+      "quality_score": 0.6914658578049023,
+      "source_asset_ids": [
+        "yuko_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen02__seed26198472.png"
+      ]
+    },
+    {
+      "character_id": "yuko_ogino",
+      "path": "data/character_refs/yuko_ogino__score68__rank05.png",
+      "sha256": "8d554a6a581db40366c270508976d165afbaa247d0867eb29c1f58079919c7c2",
+      "quality_rank": 5,
+      "quality_bucket": 68,
+      "quality_score": 0.6912169822732744,
+      "source_asset_ids": [
+        "yuko_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen04__seedaee19dd2.png"
+      ]
+    },
+    {
+      "character_id": "yuko_ogino",
+      "path": "data/character_refs/yuko_ogino__score68__rank06.png",
+      "sha256": "7ef514fe717175412ceba403d23c4f9bd391df933749b556934b83dd720b2f5c",
+      "quality_rank": 6,
+      "quality_bucket": 68,
+      "quality_score": 0.6911814577257371,
+      "source_asset_ids": [
+        "yuko_ogino_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen01__seed3422c710.png"
+      ]
+    },
+    {
+      "character_id": "zeniba",
+      "path": "data/character_refs/zeniba__score71__rank01.png",
+      "sha256": "96275951dbf0ef8cd087521b9e25786e7406a9bf34bb6c0ffe9958e836a22939",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7216841282435548,
+      "source_asset_ids": [
+        "zeniba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen02__seedb409951d.png"
+      ]
+    },
+    {
+      "character_id": "zeniba",
+      "path": "data/character_refs/zeniba__score71__rank02.png",
+      "sha256": "129a18cbcf774c60fae140fb3efc72b4777ea419a81c6bfa2afe1fc0f576cb68",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.712470958005755,
+      "source_asset_ids": [
+        "zeniba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen04__seed8610218d.png"
+      ]
+    },
+    {
+      "character_id": "zeniba",
+      "path": "data/character_refs/zeniba__score70__rank03.png",
+      "sha256": "eeb337d7aa6de5498791f6eb240e78c7a8d417e2ca80ab2a7dcf88e74134691b",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.7072299990943232,
+      "source_asset_ids": [
+        "zeniba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen03__seed17f4f967.png"
+      ]
+    },
+    {
+      "character_id": "zeniba",
+      "path": "data/character_refs/zeniba__score69__rank04.png",
+      "sha256": "6bfe6735967ba7e7132bee7d4394aed5af64f4e2daff00ea0416c831b91f2c0e",
+      "quality_rank": 4,
+      "quality_bucket": 69,
+      "quality_score": 0.7016701253682716,
+      "source_asset_ids": [
+        "zeniba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen06__seed4bd7f161.png"
+      ]
+    },
+    {
+      "character_id": "zeniba",
+      "path": "data/character_refs/zeniba__score69__rank05.png",
+      "sha256": "a56bb422c7248de99553d6a5cb321be51a77a9ecf23c942713b281cf47cd2181",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6934177822472208,
+      "source_asset_ids": [
+        "zeniba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen05__seedca5d2385.png"
+      ]
+    },
+    {
+      "character_id": "zeniba",
+      "path": "data/character_refs/zeniba__score67__rank06.png",
+      "sha256": "4f8c6bf54ea95ed9fb9223630e4864598e9ba9ed1ad11f98b3bb047b60551da1",
+      "quality_rank": 6,
+      "quality_bucket": 67,
+      "quality_score": 0.681285054114472,
+      "source_asset_ids": [
+        "zeniba_local_refs"
+      ],
+      "source_refs": [
+        "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen01__seedf9c925c0.png"
+      ]
+    }
+  ],
+  "file_transforms": [
+    {
+      "character_id": "akio_ogino",
+      "sha256": "0674dc9be24ad3e07d64cc73623cae454e3ab189fc08518f68eef49900e9136a",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/akio_ogino__score71__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7165341307706747
+    },
+    {
+      "character_id": "akio_ogino",
+      "sha256": "0a4eb30340b1958a2428fa33fce0e3c106e7c9bbb60800ca423ef90b1ccd191c",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/akio_ogino__score71__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7149064355574317
+    },
+    {
+      "character_id": "akio_ogino",
+      "sha256": "f7fadab9ca41d905a2436d283fe5cbfbf7ef8abc67a48e0c857523c2a5f13d50",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/akio_ogino__score70__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.7081838093818382
+    },
+    {
+      "character_id": "akio_ogino",
+      "sha256": "f471f2d1f6f37d799a42e274ba54088c99110eb9add2307f8e304956e312e228",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/akio_ogino__score70__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7068097514809147
+    },
+    {
+      "character_id": "akio_ogino",
+      "sha256": "53c6d2b307b3babe10a71ac02e4ae3ae1bcbd469d02794a64f63374ca996b4d7",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/akio_ogino__score70__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7022136920951187
+    },
+    {
+      "character_id": "akio_ogino",
+      "sha256": "a72ba52b7a2fba3f7c77bcd7974e3c0876dc30401aeb3f986ea5b6234d5629d8",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/akio_ogino__score69__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6993407124965568
+    },
+    {
+      "character_id": "aogaeru",
+      "sha256": "ed4cd9c8aa281d1565b8fdde65fdf7f3aee8f8c6ac93cbb4934c0b1a8b8ba82b",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/aogaeru__score72__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7294399327861479
+    },
+    {
+      "character_id": "aogaeru",
+      "sha256": "095ba22abd46c0d57b15f26a7358978004168654466f845f5363bcb444fde06f",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/aogaeru__score71__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7172547769083857
+    },
+    {
+      "character_id": "aogaeru",
+      "sha256": "d47d9b802961b1bb30e6f2eb551591755bbeb737f72beda3cc16b84621448e2e",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/aogaeru__score71__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 71,
+      "quality_score": 0.717165777365299
+    },
+    {
+      "character_id": "aogaeru",
+      "sha256": "e718df2f04898dee7ba101c356e9b06b84654d3584109eac8ec5014c75582642",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/aogaeru__score71__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 71,
+      "quality_score": 0.7146254649454944
+    },
+    {
+      "character_id": "aogaeru",
+      "sha256": "80ad21cdb4f52179d8b79484d878d652dc05942d7deff5c85d73a535c76f8fa5",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/aogaeru__score70__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7054342924843843
+    },
+    {
+      "character_id": "aogaeru",
+      "sha256": "8d123fa710e1848f1a2a361a95515984952e1df99ead6c910e588997d47bca6a",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/aogaeru__score69__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6985628837777876
+    },
+    {
+      "character_id": "boh",
+      "sha256": "e59fd2c11f4a25c2d77b71ab36ac35ff239f50bc1092bd03c2b82833bc5279a8",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/boh__score71__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7153284762035845
+    },
+    {
+      "character_id": "boh",
+      "sha256": "f3aad433d390e97bacec542436bb5b9f53961f5dad08c90ed03c579b535034d0",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/boh__score71__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.713742863455705
+    },
+    {
+      "character_id": "boh",
+      "sha256": "b6be436d6b66820b6abc8b927225b2d09bdd1786e31b4b468da1e9d90e44b947",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/boh__score70__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.7025504427015673
+    },
+    {
+      "character_id": "boh",
+      "sha256": "356e1d7d0caf495c47772f49db62c5289ef88ea69f2cea1318131d97699ac08e",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/boh__score69__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 69,
+      "quality_score": 0.701956222132054
+    },
+    {
+      "character_id": "boh",
+      "sha256": "a90eaf23379f8c35e33c56b3731d2d63ad7741be32a36ec4780a625e92e76f4d",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/boh__score69__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6974592050318369
+    },
+    {
+      "character_id": "boh",
+      "sha256": "bceb910fb8de3fd4d29b79e7d2ef7319023e5d67a1a3298bea804c9c98b5d723",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/boh__score68__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 68,
+      "quality_score": 0.6896698825825129
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "sha256": "0bc00c4060b0dc7e2ed159e633017e73b6ff39666e57af7d1762d85f4dfb50bd",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/chihiro_ogino__score72__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7252780791567501
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "sha256": "292bac9c78c0393f197dfa1fe1e8e81d97fd977ff3450635389ab24576be0d68",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/chihiro_ogino__score71__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7176529226902152
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "sha256": "9092cbb602bd1271424bfccf39fbb49365db8c44dda7ac8f0ede73e903757b50",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/chihiro_ogino__score70__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.71128126062941
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "sha256": "13a66d6d80b2a5e3f01223da9422639b94d73232ad606f807f09ed12a5c61d6c",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/chihiro_ogino__score70__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7043097750233072
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "sha256": "264c188d13cf8f8af12e306908700bb2fc44898ddd94292a2e7306644182df13",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/chihiro_ogino__score70__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7034565479499802
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "sha256": "5cf307488b55b7fb167c3b9f7efb3ecbd2c810121425e693e83169346fbc3e80",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/chihiro_ogino__score68__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 68,
+      "quality_score": 0.6866612343203977
+    },
+    {
+      "character_id": "haku",
+      "sha256": "6eb770b20cbf5a02f9629095f1fe3372d6f32af0a86039a1b10e7c8c827d31a1",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/haku__score71__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7142368246398061
+    },
+    {
+      "character_id": "haku",
+      "sha256": "6146f1791f2ce247b66bd094c2d8cd60a294c3ac574f9285a6ae513eb791f6e2",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/haku__score70__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 70,
+      "quality_score": 0.7104195039416817
+    },
+    {
+      "character_id": "haku",
+      "sha256": "3311f77cc0f28e43be46a97bc1832007baf6a5a8da2a34f31e8bb3499acfd2f1",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/haku__score70__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.710270383257928
+    },
+    {
+      "character_id": "haku",
+      "sha256": "ca4641d94a85047687d093c0ddd3e10d00e4b5c394ecd3968ab28323148ce081",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/haku__score70__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7070544467567358
+    },
+    {
+      "character_id": "haku",
+      "sha256": "4ed1701404b8298156a692c56633b80481b8006e6c24240b691156bc4571d618",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/haku__score69__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6988665807087998
+    },
+    {
+      "character_id": "haku",
+      "sha256": "e5b2406d06385cafd437c2358ba85ee30b7ee777f763a3975d55121cc8d3f29a",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/haku__score69__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6932818149354516
+    },
+    {
+      "character_id": "kamaji",
+      "sha256": "02b571fa3016b4196259c5072a907040bcd64887dd5d607d8f24d8676b0f7e2e",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/kamaji__score72__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7231840849619744
+    },
+    {
+      "character_id": "kamaji",
+      "sha256": "e09aaa28d8c4b71c2142868f3f6a872d91d53acb4b6abea2ffb964af3abfcd1b",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/kamaji__score70__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 70,
+      "quality_score": 0.7114799111841341
+    },
+    {
+      "character_id": "kamaji",
+      "sha256": "029a4bace58837cdca05a5b3469a041527bf920cf7038e57e11e3320b2ac1ea0",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/kamaji__score70__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.7110218812366124
+    },
+    {
+      "character_id": "kamaji",
+      "sha256": "45daa3da24b6c4eb80bc6fa1184f294e67a46585950267a0126800f14e80e45e",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/kamaji__score70__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7068477412415208
+    },
+    {
+      "character_id": "kamaji",
+      "sha256": "87d457da8861d3247b4121baeb7f4e435407195a156253ffe9f31b85acaf756c",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/kamaji__score69__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.7020074066739332
+    },
+    {
+      "character_id": "kamaji",
+      "sha256": "d2b75aa21b520909c83303b14ddd4d3139cdfd949a9336e709357538d0ff00ed",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/kamaji__score69__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6984096831370138
+    },
+    {
+      "character_id": "lin",
+      "sha256": "90a369d23eb078f216b4d28f6e1ac1d02218bc660ebffaf1c346b513e1882c26",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/lin__score72__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7223815748996684
+    },
+    {
+      "character_id": "lin",
+      "sha256": "59df3491ecb834a182bc7fcb618d620393450842c0a66b6bdba768f65260e3d7",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/lin__score71__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7186285319065667
+    },
+    {
+      "character_id": "lin",
+      "sha256": "e1e82c884d4caa00f5f967bf623da70102a45ee32c240a59a1742efa50f2fcc0",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/lin__score71__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 71,
+      "quality_score": 0.7144565469028934
+    },
+    {
+      "character_id": "lin",
+      "sha256": "26ff4317c2e64b083e076f73779ff027ad82fbc752dd7ae726f76aa67e4f3a16",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/lin__score70__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7079400089177605
+    },
+    {
+      "character_id": "lin",
+      "sha256": "ff9e75f0158b326e29cc03224383111a82fa34e1b2fb1341ae293e6ff32e330b",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/lin__score69__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6990866495994893
+    },
+    {
+      "character_id": "lin",
+      "sha256": "9b1183820a68e73fb250303461e8a203cc70621ab57fd092bdd66801f3a243fd",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/lin__score69__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6980848818717785
+    },
+    {
+      "character_id": "no_face",
+      "sha256": "acb85ffdcf0015106dc6482e0eecedf648c05a51e2a06953a226f59348460644",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/no_face__score72__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7224326575844325
+    },
+    {
+      "character_id": "no_face",
+      "sha256": "215da5394255ac3a58cad2b166fd20bf40d491f58dabdd22ac1a1d1f0f20bca1",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/no_face__score69__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 69,
+      "quality_score": 0.6970873502341728
+    },
+    {
+      "character_id": "no_face",
+      "sha256": "13e84c96930aa22a7340e90ea1819405c6da0f9b2df250b922053876ee650366",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/no_face__score69__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 69,
+      "quality_score": 0.6963574517524721
+    },
+    {
+      "character_id": "no_face",
+      "sha256": "7fb709b0861b32817f5818666e1367c53d287a1fab4c9acf7dc0bbd5f98adaf0",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/no_face__score69__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 69,
+      "quality_score": 0.6959591396565964
+    },
+    {
+      "character_id": "no_face",
+      "sha256": "bf7f627d900598eb7ecf9925416c03355cedfe2664365d0917f2a3e8cd06f1a3",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/no_face__score69__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6928906765298918
+    },
+    {
+      "character_id": "no_face",
+      "sha256": "ad528b0a81d7c68c88dd51abc1c982717c175205b9157af75a54b3b817bf8e01",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/no_face__score68__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 68,
+      "quality_score": 0.6879027947702585
+    },
+    {
+      "character_id": "river_spirit",
+      "sha256": "7e22520abb7017fb8fc1358f7c1242c07f829f1e5deba4826a21f7ec309fc284",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/river_spirit__score71__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7169350662393627
+    },
+    {
+      "character_id": "river_spirit",
+      "sha256": "c3a0d1bb8a363d7cac2b4ee329f283366e078617f9ea42bb10e4f46f7733ee93",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/river_spirit__score71__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7147559151646017
+    },
+    {
+      "character_id": "river_spirit",
+      "sha256": "8b2287abdcfeade5523cc17e4cfdf2453f986215f17f40298f51b35ed6b5dad8",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/river_spirit__score71__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 71,
+      "quality_score": 0.7127864062267723
+    },
+    {
+      "character_id": "river_spirit",
+      "sha256": "d76a74099d193b0dff5862d965340ad237ccd28dfc653b5052bea23efb9804b7",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/river_spirit__score70__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7054323407188583
+    },
+    {
+      "character_id": "river_spirit",
+      "sha256": "93facba6fb2755410fef86f9b474f985970deebb604f2c13e1d29eed2ee3925f",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/river_spirit__score70__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7038622633878526
+    },
+    {
+      "character_id": "river_spirit",
+      "sha256": "c38f0806b893bcd320b1b4bb47c56659b061036eb3eb83301711b32bc83dd60a",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/river_spirit__score69__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.7015264855832728
+    },
+    {
+      "character_id": "stink_spirit",
+      "sha256": "b77663d99dd790972e95edea378cc3c90ec760bc2169b8b684ab8ee5fa852ce6",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/stink_spirit__score72__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.724041722633049
+    },
+    {
+      "character_id": "stink_spirit",
+      "sha256": "f716cbe9c05a6954b7e1ea9e9b75d4afdc1384dd37d60804c82eab923bec211b",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/stink_spirit__score71__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7163310376415911
+    },
+    {
+      "character_id": "stink_spirit",
+      "sha256": "d7aef87382a5e69d523ed2e6c2d46beaaaadc8b1a3ad2e1b10d450c1165269e6",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/stink_spirit__score70__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.708092591602202
+    },
+    {
+      "character_id": "stink_spirit",
+      "sha256": "b7121cc8a333fceaff9c444b2e9736ac2dbe413f5addc54ced0093c7138381a3",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/stink_spirit__score70__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 70,
+      "quality_score": 0.7051471041157149
+    },
+    {
+      "character_id": "stink_spirit",
+      "sha256": "4312e0a7c9b28308b3aa2aa40f8d6df983535e519ea3ab3340c9b1af46ca571f",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/stink_spirit__score69__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6956336675026163
+    },
+    {
+      "character_id": "stink_spirit",
+      "sha256": "6b3cc3b122470d07d823fd710b3d3e59e854bc55485a8a9660eac620fff285ec",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/stink_spirit__score69__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 69,
+      "quality_score": 0.6939222799124242
+    },
+    {
+      "character_id": "yubaba",
+      "sha256": "1fa859634b41982f665b8072d9308f0d38f815b7204a7a2fc3dfb80d91a8b6d5",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yubaba__score72__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 72,
+      "quality_score": 0.7274471676155331
+    },
+    {
+      "character_id": "yubaba",
+      "sha256": "eceb1999a74229366dc742dd1867410e85872d8646fc3c19d5205f9407bdaad6",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yubaba__score72__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 72,
+      "quality_score": 0.7232857389941301
+    },
+    {
+      "character_id": "yubaba",
+      "sha256": "a0234cb53101050078d55e691f00295e7835e50f1257b8eb90a8fd733d357176",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yubaba__score71__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 71,
+      "quality_score": 0.7207785794253732
+    },
+    {
+      "character_id": "yubaba",
+      "sha256": "5382803a8908ddc3dfe4abf52de16c17f61e736ea79bdc2e40c592710be10276",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yubaba__score71__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 71,
+      "quality_score": 0.72014188536026
+    },
+    {
+      "character_id": "yubaba",
+      "sha256": "da530ae0ed92dddb49ec3a3b7569f086a42ac4cb2849e0cb3d9d374ba71e3b1f",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yubaba__score70__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 70,
+      "quality_score": 0.7096614721793886
+    },
+    {
+      "character_id": "yubaba",
+      "sha256": "36e3a80263205eaa8309f1bcc9547d71fab05f69408d45dd80e507a4b93df751",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yubaba__score70__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 70,
+      "quality_score": 0.7051570672077536
+    },
+    {
+      "character_id": "yuko_ogino",
+      "sha256": "e593d8f6d8a39d6bfb76e0c7b4c6ef692c9ea288cad241c4eef8c752ecf4960c",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yuko_ogino__score71__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7168348267847884
+    },
+    {
+      "character_id": "yuko_ogino",
+      "sha256": "99af6ec11f3b34972e27e4c403f94872e9c2e4ca8e32d6e875ca8299bf3f36dd",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yuko_ogino__score71__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.7123448643702289
+    },
+    {
+      "character_id": "yuko_ogino",
+      "sha256": "fc33b0956e828586b0924d3133b8818c5d74d5633a7bcb7c379117638d4d290b",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yuko_ogino__score70__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.704149227855971
+    },
+    {
+      "character_id": "yuko_ogino",
+      "sha256": "349fbd0004eecc109e1c05ee189b106877c99bbaa0c936680d534e566bce690c",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yuko_ogino__score68__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 68,
+      "quality_score": 0.6914658578049023
+    },
+    {
+      "character_id": "yuko_ogino",
+      "sha256": "8d554a6a581db40366c270508976d165afbaa247d0867eb29c1f58079919c7c2",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yuko_ogino__score68__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 68,
+      "quality_score": 0.6912169822732744
+    },
+    {
+      "character_id": "yuko_ogino",
+      "sha256": "7ef514fe717175412ceba403d23c4f9bd391df933749b556934b83dd720b2f5c",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/yuko_ogino__score68__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 68,
+      "quality_score": 0.6911814577257371
+    },
+    {
+      "character_id": "zeniba",
+      "sha256": "96275951dbf0ef8cd087521b9e25786e7406a9bf34bb6c0ffe9958e836a22939",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/zeniba__score71__rank01.png",
+      "quality_rank": 1,
+      "quality_bucket": 71,
+      "quality_score": 0.7216841282435548
+    },
+    {
+      "character_id": "zeniba",
+      "sha256": "129a18cbcf774c60fae140fb3efc72b4777ea419a81c6bfa2afe1fc0f576cb68",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/zeniba__score71__rank02.png",
+      "quality_rank": 2,
+      "quality_bucket": 71,
+      "quality_score": 0.712470958005755
+    },
+    {
+      "character_id": "zeniba",
+      "sha256": "eeb337d7aa6de5498791f6eb240e78c7a8d417e2ca80ab2a7dcf88e74134691b",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/zeniba__score70__rank03.png",
+      "quality_rank": 3,
+      "quality_bucket": 70,
+      "quality_score": 0.7072299990943232
+    },
+    {
+      "character_id": "zeniba",
+      "sha256": "6bfe6735967ba7e7132bee7d4394aed5af64f4e2daff00ea0416c831b91f2c0e",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/zeniba__score69__rank04.png",
+      "quality_rank": 4,
+      "quality_bucket": 69,
+      "quality_score": 0.7016701253682716
+    },
+    {
+      "character_id": "zeniba",
+      "sha256": "a56bb422c7248de99553d6a5cb321be51a77a9ecf23c942713b281cf47cd2181",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/zeniba__score69__rank05.png",
+      "quality_rank": 5,
+      "quality_bucket": 69,
+      "quality_score": 0.6934177822472208
+    },
+    {
+      "character_id": "zeniba",
+      "sha256": "4f8c6bf54ea95ed9fb9223630e4864598e9ba9ed1ad11f98b3bb047b60551da1",
+      "action": "created",
+      "from": null,
+      "to": "data/character_refs/zeniba__score67__rank06.png",
+      "quality_rank": 6,
+      "quality_bucket": 67,
+      "quality_score": 0.681285054114472
+    }
+  ],
+  "asset_results": [
+    {
+      "asset_id": "akio_ogino_local_refs",
+      "character": "akio_ogino",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen01__seed81b2c838.png",
+          "sha256": "53c6d2b307b3babe10a71ac02e4ae3ae1bcbd469d02794a64f63374ca996b4d7",
+          "quality_score": 0.7022136920951187,
+          "quality_bucket": 70,
+          "character_id": "akio_ogino",
+          "path": "data/character_refs/akio_ogino__score70__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen02__seedf4e239fa.png",
+          "sha256": "a72ba52b7a2fba3f7c77bcd7974e3c0876dc30401aeb3f986ea5b6234d5629d8",
+          "quality_score": 0.6993407124965568,
+          "quality_bucket": 69,
+          "character_id": "akio_ogino",
+          "path": "data/character_refs/akio_ogino__score69__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen03__seed01476c8b.png",
+          "sha256": "0a4eb30340b1958a2428fa33fce0e3c106e7c9bbb60800ca423ef90b1ccd191c",
+          "quality_score": 0.7149064355574317,
+          "quality_bucket": 71,
+          "character_id": "akio_ogino",
+          "path": "data/character_refs/akio_ogino__score71__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen04__seeddce03029.png",
+          "sha256": "f7fadab9ca41d905a2436d283fe5cbfbf7ef8abc67a48e0c857523c2a5f13d50",
+          "quality_score": 0.7081838093818382,
+          "quality_bucket": 70,
+          "character_id": "akio_ogino",
+          "path": "data/character_refs/akio_ogino__score70__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen05__seed632b812b.png",
+          "sha256": "0674dc9be24ad3e07d64cc73623cae454e3ab189fc08518f68eef49900e9136a",
+          "quality_score": 0.7165341307706747,
+          "quality_bucket": 71,
+          "character_id": "akio_ogino",
+          "path": "data/character_refs/akio_ogino__score71__rank01.png",
+          "quality_rank": 1
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\akio_ogino\\akio_ogino_local_refs__gen06__seed82c77a7a.png",
+          "sha256": "f471f2d1f6f37d799a42e274ba54088c99110eb9add2307f8e304956e312e228",
+          "quality_score": 0.7068097514809147,
+          "quality_bucket": 70,
+          "character_id": "akio_ogino",
+          "path": "data/character_refs/akio_ogino__score70__rank04.png",
+          "quality_rank": 4
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "aogaeru_local_refs",
+      "character": "aogaeru",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen01__seed4a21dcd6.png",
+          "sha256": "d47d9b802961b1bb30e6f2eb551591755bbeb737f72beda3cc16b84621448e2e",
+          "quality_score": 0.717165777365299,
+          "quality_bucket": 71,
+          "character_id": "aogaeru",
+          "path": "data/character_refs/aogaeru__score71__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen02__seedf0dface3.png",
+          "sha256": "e718df2f04898dee7ba101c356e9b06b84654d3584109eac8ec5014c75582642",
+          "quality_score": 0.7146254649454944,
+          "quality_bucket": 71,
+          "character_id": "aogaeru",
+          "path": "data/character_refs/aogaeru__score71__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen03__seed4d139352.png",
+          "sha256": "8d123fa710e1848f1a2a361a95515984952e1df99ead6c910e588997d47bca6a",
+          "quality_score": 0.6985628837777876,
+          "quality_bucket": 69,
+          "character_id": "aogaeru",
+          "path": "data/character_refs/aogaeru__score69__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen04__seed376d80f9.png",
+          "sha256": "095ba22abd46c0d57b15f26a7358978004168654466f845f5363bcb444fde06f",
+          "quality_score": 0.7172547769083857,
+          "quality_bucket": 71,
+          "character_id": "aogaeru",
+          "path": "data/character_refs/aogaeru__score71__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen05__seed7d3ee822.png",
+          "sha256": "80ad21cdb4f52179d8b79484d878d652dc05942d7deff5c85d73a535c76f8fa5",
+          "quality_score": 0.7054342924843843,
+          "quality_bucket": 70,
+          "character_id": "aogaeru",
+          "path": "data/character_refs/aogaeru__score70__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\aogaeru\\aogaeru_local_refs__gen06__seedfc232a9f.png",
+          "sha256": "ed4cd9c8aa281d1565b8fdde65fdf7f3aee8f8c6ac93cbb4934c0b1a8b8ba82b",
+          "quality_score": 0.7294399327861479,
+          "quality_bucket": 72,
+          "character_id": "aogaeru",
+          "path": "data/character_refs/aogaeru__score72__rank01.png",
+          "quality_rank": 1
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "boh_local_refs",
+      "character": "boh",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen01__seedf600e676.png",
+          "sha256": "356e1d7d0caf495c47772f49db62c5289ef88ea69f2cea1318131d97699ac08e",
+          "quality_score": 0.701956222132054,
+          "quality_bucket": 69,
+          "character_id": "boh",
+          "path": "data/character_refs/boh__score69__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen02__seedb197b35d.png",
+          "sha256": "f3aad433d390e97bacec542436bb5b9f53961f5dad08c90ed03c579b535034d0",
+          "quality_score": 0.713742863455705,
+          "quality_bucket": 71,
+          "character_id": "boh",
+          "path": "data/character_refs/boh__score71__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen03__seed7d9332d0.png",
+          "sha256": "b6be436d6b66820b6abc8b927225b2d09bdd1786e31b4b468da1e9d90e44b947",
+          "quality_score": 0.7025504427015673,
+          "quality_bucket": 70,
+          "character_id": "boh",
+          "path": "data/character_refs/boh__score70__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen04__seed9e5cc99e.png",
+          "sha256": "e59fd2c11f4a25c2d77b71ab36ac35ff239f50bc1092bd03c2b82833bc5279a8",
+          "quality_score": 0.7153284762035845,
+          "quality_bucket": 71,
+          "character_id": "boh",
+          "path": "data/character_refs/boh__score71__rank01.png",
+          "quality_rank": 1
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen05__seede24b0588.png",
+          "sha256": "bceb910fb8de3fd4d29b79e7d2ef7319023e5d67a1a3298bea804c9c98b5d723",
+          "quality_score": 0.6896698825825129,
+          "quality_bucket": 68,
+          "character_id": "boh",
+          "path": "data/character_refs/boh__score68__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\boh\\boh_local_refs__gen06__seed9d7cbc54.png",
+          "sha256": "a90eaf23379f8c35e33c56b3731d2d63ad7741be32a36ec4780a625e92e76f4d",
+          "quality_score": 0.6974592050318369,
+          "quality_bucket": 69,
+          "character_id": "boh",
+          "path": "data/character_refs/boh__score69__rank05.png",
+          "quality_rank": 5
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "chihiro_ogino_local_refs",
+      "character": "chihiro_ogino",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen01__seedfd0185b3.png",
+          "sha256": "9092cbb602bd1271424bfccf39fbb49365db8c44dda7ac8f0ede73e903757b50",
+          "quality_score": 0.71128126062941,
+          "quality_bucket": 70,
+          "character_id": "chihiro_ogino",
+          "path": "data/character_refs/chihiro_ogino__score70__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen02__seed34771247.png",
+          "sha256": "292bac9c78c0393f197dfa1fe1e8e81d97fd977ff3450635389ab24576be0d68",
+          "quality_score": 0.7176529226902152,
+          "quality_bucket": 71,
+          "character_id": "chihiro_ogino",
+          "path": "data/character_refs/chihiro_ogino__score71__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen03__seedee1b5b90.png",
+          "sha256": "5cf307488b55b7fb167c3b9f7efb3ecbd2c810121425e693e83169346fbc3e80",
+          "quality_score": 0.6866612343203977,
+          "quality_bucket": 68,
+          "character_id": "chihiro_ogino",
+          "path": "data/character_refs/chihiro_ogino__score68__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen04__seed97b942a4.png",
+          "sha256": "13a66d6d80b2a5e3f01223da9422639b94d73232ad606f807f09ed12a5c61d6c",
+          "quality_score": 0.7043097750233072,
+          "quality_bucket": 70,
+          "character_id": "chihiro_ogino",
+          "path": "data/character_refs/chihiro_ogino__score70__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen05__seed5a7d8434.png",
+          "sha256": "264c188d13cf8f8af12e306908700bb2fc44898ddd94292a2e7306644182df13",
+          "quality_score": 0.7034565479499802,
+          "quality_bucket": 70,
+          "character_id": "chihiro_ogino",
+          "path": "data/character_refs/chihiro_ogino__score70__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino\\chihiro_ogino_local_refs__gen06__seedbbbc638e.png",
+          "sha256": "0bc00c4060b0dc7e2ed159e633017e73b6ff39666e57af7d1762d85f4dfb50bd",
+          "quality_score": 0.7252780791567501,
+          "quality_bucket": 72,
+          "character_id": "chihiro_ogino",
+          "path": "data/character_refs/chihiro_ogino__score72__rank01.png",
+          "quality_rank": 1
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "haku_local_refs",
+      "character": "haku",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen01__seed839ec5b1.png",
+          "sha256": "e5b2406d06385cafd437c2358ba85ee30b7ee777f763a3975d55121cc8d3f29a",
+          "quality_score": 0.6932818149354516,
+          "quality_bucket": 69,
+          "character_id": "haku",
+          "path": "data/character_refs/haku__score69__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen02__seed6a5d1b46.png",
+          "sha256": "ca4641d94a85047687d093c0ddd3e10d00e4b5c394ecd3968ab28323148ce081",
+          "quality_score": 0.7070544467567358,
+          "quality_bucket": 70,
+          "character_id": "haku",
+          "path": "data/character_refs/haku__score70__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen03__seed3eece1b5.png",
+          "sha256": "4ed1701404b8298156a692c56633b80481b8006e6c24240b691156bc4571d618",
+          "quality_score": 0.6988665807087998,
+          "quality_bucket": 69,
+          "character_id": "haku",
+          "path": "data/character_refs/haku__score69__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen04__seedc4f86a47.png",
+          "sha256": "3311f77cc0f28e43be46a97bc1832007baf6a5a8da2a34f31e8bb3499acfd2f1",
+          "quality_score": 0.710270383257928,
+          "quality_bucket": 70,
+          "character_id": "haku",
+          "path": "data/character_refs/haku__score70__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen05__seedc81d99ed.png",
+          "sha256": "6eb770b20cbf5a02f9629095f1fe3372d6f32af0a86039a1b10e7c8c827d31a1",
+          "quality_score": 0.7142368246398061,
+          "quality_bucket": 71,
+          "character_id": "haku",
+          "path": "data/character_refs/haku__score71__rank01.png",
+          "quality_rank": 1
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\haku\\haku_local_refs__gen06__seed8c0ba0b3.png",
+          "sha256": "6146f1791f2ce247b66bd094c2d8cd60a294c3ac574f9285a6ae513eb791f6e2",
+          "quality_score": 0.7104195039416817,
+          "quality_bucket": 70,
+          "character_id": "haku",
+          "path": "data/character_refs/haku__score70__rank02.png",
+          "quality_rank": 2
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "kamaji_local_refs",
+      "character": "kamaji",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen01__seedfe672466.png",
+          "sha256": "45daa3da24b6c4eb80bc6fa1184f294e67a46585950267a0126800f14e80e45e",
+          "quality_score": 0.7068477412415208,
+          "quality_bucket": 70,
+          "character_id": "kamaji",
+          "path": "data/character_refs/kamaji__score70__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen02__seedb10db382.png",
+          "sha256": "87d457da8861d3247b4121baeb7f4e435407195a156253ffe9f31b85acaf756c",
+          "quality_score": 0.7020074066739332,
+          "quality_bucket": 69,
+          "character_id": "kamaji",
+          "path": "data/character_refs/kamaji__score69__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen03__seed3d9e3edf.png",
+          "sha256": "02b571fa3016b4196259c5072a907040bcd64887dd5d607d8f24d8676b0f7e2e",
+          "quality_score": 0.7231840849619744,
+          "quality_bucket": 72,
+          "character_id": "kamaji",
+          "path": "data/character_refs/kamaji__score72__rank01.png",
+          "quality_rank": 1
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen04__seed5f3037cc.png",
+          "sha256": "029a4bace58837cdca05a5b3469a041527bf920cf7038e57e11e3320b2ac1ea0",
+          "quality_score": 0.7110218812366124,
+          "quality_bucket": 70,
+          "character_id": "kamaji",
+          "path": "data/character_refs/kamaji__score70__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen05__seedf53ba0e2.png",
+          "sha256": "d2b75aa21b520909c83303b14ddd4d3139cdfd949a9336e709357538d0ff00ed",
+          "quality_score": 0.6984096831370138,
+          "quality_bucket": 69,
+          "character_id": "kamaji",
+          "path": "data/character_refs/kamaji__score69__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\kamaji\\kamaji_local_refs__gen06__seed542b980e.png",
+          "sha256": "e09aaa28d8c4b71c2142868f3f6a872d91d53acb4b6abea2ffb964af3abfcd1b",
+          "quality_score": 0.7114799111841341,
+          "quality_bucket": 70,
+          "character_id": "kamaji",
+          "path": "data/character_refs/kamaji__score70__rank02.png",
+          "quality_rank": 2
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "lin_local_refs",
+      "character": "lin",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen01__seedbdd327bb.png",
+          "sha256": "90a369d23eb078f216b4d28f6e1ac1d02218bc660ebffaf1c346b513e1882c26",
+          "quality_score": 0.7223815748996684,
+          "quality_bucket": 72,
+          "character_id": "lin",
+          "path": "data/character_refs/lin__score72__rank01.png",
+          "quality_rank": 1
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen02__seed8cc08e20.png",
+          "sha256": "ff9e75f0158b326e29cc03224383111a82fa34e1b2fb1341ae293e6ff32e330b",
+          "quality_score": 0.6990866495994893,
+          "quality_bucket": 69,
+          "character_id": "lin",
+          "path": "data/character_refs/lin__score69__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen03__seed300203bc.png",
+          "sha256": "9b1183820a68e73fb250303461e8a203cc70621ab57fd092bdd66801f3a243fd",
+          "quality_score": 0.6980848818717785,
+          "quality_bucket": 69,
+          "character_id": "lin",
+          "path": "data/character_refs/lin__score69__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen04__seedb5fb1b9c.png",
+          "sha256": "59df3491ecb834a182bc7fcb618d620393450842c0a66b6bdba768f65260e3d7",
+          "quality_score": 0.7186285319065667,
+          "quality_bucket": 71,
+          "character_id": "lin",
+          "path": "data/character_refs/lin__score71__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen05__seed3a03dedc.png",
+          "sha256": "26ff4317c2e64b083e076f73779ff027ad82fbc752dd7ae726f76aa67e4f3a16",
+          "quality_score": 0.7079400089177605,
+          "quality_bucket": 70,
+          "character_id": "lin",
+          "path": "data/character_refs/lin__score70__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\lin\\lin_local_refs__gen06__seed63b72333.png",
+          "sha256": "e1e82c884d4caa00f5f967bf623da70102a45ee32c240a59a1742efa50f2fcc0",
+          "quality_score": 0.7144565469028934,
+          "quality_bucket": 71,
+          "character_id": "lin",
+          "path": "data/character_refs/lin__score71__rank03.png",
+          "quality_rank": 3
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "no_face_local_refs",
+      "character": "no_face",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen01__seed356552f1.png",
+          "sha256": "13e84c96930aa22a7340e90ea1819405c6da0f9b2df250b922053876ee650366",
+          "quality_score": 0.6963574517524721,
+          "quality_bucket": 69,
+          "character_id": "no_face",
+          "path": "data/character_refs/no_face__score69__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen02__seedd55fff54.png",
+          "sha256": "bf7f627d900598eb7ecf9925416c03355cedfe2664365d0917f2a3e8cd06f1a3",
+          "quality_score": 0.6928906765298918,
+          "quality_bucket": 69,
+          "character_id": "no_face",
+          "path": "data/character_refs/no_face__score69__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen03__seed4c2db0d0.png",
+          "sha256": "ad528b0a81d7c68c88dd51abc1c982717c175205b9157af75a54b3b817bf8e01",
+          "quality_score": 0.6879027947702585,
+          "quality_bucket": 68,
+          "character_id": "no_face",
+          "path": "data/character_refs/no_face__score68__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen04__seed7d2867ef.png",
+          "sha256": "acb85ffdcf0015106dc6482e0eecedf648c05a51e2a06953a226f59348460644",
+          "quality_score": 0.7224326575844325,
+          "quality_bucket": 72,
+          "character_id": "no_face",
+          "path": "data/character_refs/no_face__score72__rank01.png",
+          "quality_rank": 1
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen05__seedeb2a7ff9.png",
+          "sha256": "215da5394255ac3a58cad2b166fd20bf40d491f58dabdd22ac1a1d1f0f20bca1",
+          "quality_score": 0.6970873502341728,
+          "quality_bucket": 69,
+          "character_id": "no_face",
+          "path": "data/character_refs/no_face__score69__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\no_face\\no_face_local_refs__gen06__seed83258e62.png",
+          "sha256": "7fb709b0861b32817f5818666e1367c53d287a1fab4c9acf7dc0bbd5f98adaf0",
+          "quality_score": 0.6959591396565964,
+          "quality_bucket": 69,
+          "character_id": "no_face",
+          "path": "data/character_refs/no_face__score69__rank04.png",
+          "quality_rank": 4
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "river_spirit_local_refs",
+      "character": "river_spirit",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen01__seedc394bec4.png",
+          "sha256": "c38f0806b893bcd320b1b4bb47c56659b061036eb3eb83301711b32bc83dd60a",
+          "quality_score": 0.7015264855832728,
+          "quality_bucket": 69,
+          "character_id": "river_spirit",
+          "path": "data/character_refs/river_spirit__score69__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen02__seed48b51a83.png",
+          "sha256": "8b2287abdcfeade5523cc17e4cfdf2453f986215f17f40298f51b35ed6b5dad8",
+          "quality_score": 0.7127864062267723,
+          "quality_bucket": 71,
+          "character_id": "river_spirit",
+          "path": "data/character_refs/river_spirit__score71__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen03__seedafa61f22.png",
+          "sha256": "d76a74099d193b0dff5862d965340ad237ccd28dfc653b5052bea23efb9804b7",
+          "quality_score": 0.7054323407188583,
+          "quality_bucket": 70,
+          "character_id": "river_spirit",
+          "path": "data/character_refs/river_spirit__score70__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen04__seedf0c0e366.png",
+          "sha256": "7e22520abb7017fb8fc1358f7c1242c07f829f1e5deba4826a21f7ec309fc284",
+          "quality_score": 0.7169350662393627,
+          "quality_bucket": 71,
+          "character_id": "river_spirit",
+          "path": "data/character_refs/river_spirit__score71__rank01.png",
+          "quality_rank": 1
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen05__seedfb4c52b3.png",
+          "sha256": "c3a0d1bb8a363d7cac2b4ee329f283366e078617f9ea42bb10e4f46f7733ee93",
+          "quality_score": 0.7147559151646017,
+          "quality_bucket": 71,
+          "character_id": "river_spirit",
+          "path": "data/character_refs/river_spirit__score71__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\river_spirit\\river_spirit_local_refs__gen06__seedc6de4f83.png",
+          "sha256": "93facba6fb2755410fef86f9b474f985970deebb604f2c13e1d29eed2ee3925f",
+          "quality_score": 0.7038622633878526,
+          "quality_bucket": 70,
+          "character_id": "river_spirit",
+          "path": "data/character_refs/river_spirit__score70__rank05.png",
+          "quality_rank": 5
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "stink_spirit_local_refs",
+      "character": "stink_spirit",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen01__seed449e89b4.png",
+          "sha256": "6b3cc3b122470d07d823fd710b3d3e59e854bc55485a8a9660eac620fff285ec",
+          "quality_score": 0.6939222799124242,
+          "quality_bucket": 69,
+          "character_id": "stink_spirit",
+          "path": "data/character_refs/stink_spirit__score69__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen02__seed6b50b412.png",
+          "sha256": "b7121cc8a333fceaff9c444b2e9736ac2dbe413f5addc54ced0093c7138381a3",
+          "quality_score": 0.7051471041157149,
+          "quality_bucket": 70,
+          "character_id": "stink_spirit",
+          "path": "data/character_refs/stink_spirit__score70__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen03__seed16867185.png",
+          "sha256": "d7aef87382a5e69d523ed2e6c2d46beaaaadc8b1a3ad2e1b10d450c1165269e6",
+          "quality_score": 0.708092591602202,
+          "quality_bucket": 70,
+          "character_id": "stink_spirit",
+          "path": "data/character_refs/stink_spirit__score70__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen04__seed5eaeb80a.png",
+          "sha256": "f716cbe9c05a6954b7e1ea9e9b75d4afdc1384dd37d60804c82eab923bec211b",
+          "quality_score": 0.7163310376415911,
+          "quality_bucket": 71,
+          "character_id": "stink_spirit",
+          "path": "data/character_refs/stink_spirit__score71__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen05__seed506b5958.png",
+          "sha256": "4312e0a7c9b28308b3aa2aa40f8d6df983535e519ea3ab3340c9b1af46ca571f",
+          "quality_score": 0.6956336675026163,
+          "quality_bucket": 69,
+          "character_id": "stink_spirit",
+          "path": "data/character_refs/stink_spirit__score69__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\stink_spirit\\stink_spirit_local_refs__gen06__seeddfc9e84f.png",
+          "sha256": "b77663d99dd790972e95edea378cc3c90ec760bc2169b8b684ab8ee5fa852ce6",
+          "quality_score": 0.724041722633049,
+          "quality_bucket": 72,
+          "character_id": "stink_spirit",
+          "path": "data/character_refs/stink_spirit__score72__rank01.png",
+          "quality_rank": 1
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "yubaba_local_refs",
+      "character": "yubaba",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen01__seedec9d29d3.png",
+          "sha256": "36e3a80263205eaa8309f1bcc9547d71fab05f69408d45dd80e507a4b93df751",
+          "quality_score": 0.7051570672077536,
+          "quality_bucket": 70,
+          "character_id": "yubaba",
+          "path": "data/character_refs/yubaba__score70__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen02__seed191e80e7.png",
+          "sha256": "da530ae0ed92dddb49ec3a3b7569f086a42ac4cb2849e0cb3d9d374ba71e3b1f",
+          "quality_score": 0.7096614721793886,
+          "quality_bucket": 70,
+          "character_id": "yubaba",
+          "path": "data/character_refs/yubaba__score70__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen03__seedf7894fdf.png",
+          "sha256": "a0234cb53101050078d55e691f00295e7835e50f1257b8eb90a8fd733d357176",
+          "quality_score": 0.7207785794253732,
+          "quality_bucket": 71,
+          "character_id": "yubaba",
+          "path": "data/character_refs/yubaba__score71__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen04__seed8b7b39eb.png",
+          "sha256": "eceb1999a74229366dc742dd1867410e85872d8646fc3c19d5205f9407bdaad6",
+          "quality_score": 0.7232857389941301,
+          "quality_bucket": 72,
+          "character_id": "yubaba",
+          "path": "data/character_refs/yubaba__score72__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen05__seeda27cc05d.png",
+          "sha256": "5382803a8908ddc3dfe4abf52de16c17f61e736ea79bdc2e40c592710be10276",
+          "quality_score": 0.72014188536026,
+          "quality_bucket": 71,
+          "character_id": "yubaba",
+          "path": "data/character_refs/yubaba__score71__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yubaba\\yubaba_local_refs__gen06__seedb763c17f.png",
+          "sha256": "1fa859634b41982f665b8072d9308f0d38f815b7204a7a2fc3dfb80d91a8b6d5",
+          "quality_score": 0.7274471676155331,
+          "quality_bucket": 72,
+          "character_id": "yubaba",
+          "path": "data/character_refs/yubaba__score72__rank01.png",
+          "quality_rank": 1
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "yuko_ogino_local_refs",
+      "character": "yuko_ogino",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen01__seed3422c710.png",
+          "sha256": "7ef514fe717175412ceba403d23c4f9bd391df933749b556934b83dd720b2f5c",
+          "quality_score": 0.6911814577257371,
+          "quality_bucket": 68,
+          "character_id": "yuko_ogino",
+          "path": "data/character_refs/yuko_ogino__score68__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen02__seed26198472.png",
+          "sha256": "349fbd0004eecc109e1c05ee189b106877c99bbaa0c936680d534e566bce690c",
+          "quality_score": 0.6914658578049023,
+          "quality_bucket": 68,
+          "character_id": "yuko_ogino",
+          "path": "data/character_refs/yuko_ogino__score68__rank04.png",
+          "quality_rank": 4
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen03__seed60ec7a49.png",
+          "sha256": "fc33b0956e828586b0924d3133b8818c5d74d5633a7bcb7c379117638d4d290b",
+          "quality_score": 0.704149227855971,
+          "quality_bucket": 70,
+          "character_id": "yuko_ogino",
+          "path": "data/character_refs/yuko_ogino__score70__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen04__seedaee19dd2.png",
+          "sha256": "8d554a6a581db40366c270508976d165afbaa247d0867eb29c1f58079919c7c2",
+          "quality_score": 0.6912169822732744,
+          "quality_bucket": 68,
+          "character_id": "yuko_ogino",
+          "path": "data/character_refs/yuko_ogino__score68__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen05__seedd2d7a016.png",
+          "sha256": "e593d8f6d8a39d6bfb76e0c7b4c6ef692c9ea288cad241c4eef8c752ecf4960c",
+          "quality_score": 0.7168348267847884,
+          "quality_bucket": 71,
+          "character_id": "yuko_ogino",
+          "path": "data/character_refs/yuko_ogino__score71__rank01.png",
+          "quality_rank": 1
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino\\yuko_ogino_local_refs__gen06__seed5c2884a9.png",
+          "sha256": "99af6ec11f3b34972e27e4c403f94872e9c2e4ca8e32d6e875ca8299bf3f36dd",
+          "quality_score": 0.7123448643702289,
+          "quality_bucket": 71,
+          "character_id": "yuko_ogino",
+          "path": "data/character_refs/yuko_ogino__score71__rank02.png",
+          "quality_rank": 2
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    },
+    {
+      "asset_id": "zeniba_local_refs",
+      "character": "zeniba",
+      "source_kind": "local_folder",
+      "status": "success",
+      "resolved": [
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen01__seedf9c925c0.png",
+          "sha256": "4f8c6bf54ea95ed9fb9223630e4864598e9ba9ed1ad11f98b3bb047b60551da1",
+          "quality_score": 0.681285054114472,
+          "quality_bucket": 67,
+          "character_id": "zeniba",
+          "path": "data/character_refs/zeniba__score67__rank06.png",
+          "quality_rank": 6
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen02__seedb409951d.png",
+          "sha256": "96275951dbf0ef8cd087521b9e25786e7406a9bf34bb6c0ffe9958e836a22939",
+          "quality_score": 0.7216841282435548,
+          "quality_bucket": 71,
+          "character_id": "zeniba",
+          "path": "data/character_refs/zeniba__score71__rank01.png",
+          "quality_rank": 1
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen03__seed17f4f967.png",
+          "sha256": "eeb337d7aa6de5498791f6eb240e78c7a8d417e2ca80ab2a7dcf88e74134691b",
+          "quality_score": 0.7072299990943232,
+          "quality_bucket": 70,
+          "character_id": "zeniba",
+          "path": "data/character_refs/zeniba__score70__rank03.png",
+          "quality_rank": 3
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen04__seed8610218d.png",
+          "sha256": "129a18cbcf774c60fae140fb3efc72b4777ea419a81c6bfa2afe1fc0f576cb68",
+          "quality_score": 0.712470958005755,
+          "quality_bucket": 71,
+          "character_id": "zeniba",
+          "path": "data/character_refs/zeniba__score71__rank02.png",
+          "quality_rank": 2
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen05__seedca5d2385.png",
+          "sha256": "a56bb422c7248de99553d6a5cb321be51a77a9ecf23c942713b281cf47cd2181",
+          "quality_score": 0.6934177822472208,
+          "quality_bucket": 69,
+          "character_id": "zeniba",
+          "path": "data/character_refs/zeniba__score69__rank05.png",
+          "quality_rank": 5
+        },
+        {
+          "source_ref": "D:\\spirited-away\\data\\character_refs_sources\\zeniba\\zeniba_local_refs__gen06__seed4bd7f161.png",
+          "sha256": "6bfe6735967ba7e7132bee7d4394aed5af64f4e2daff00ea0416c831b91f2c0e",
+          "quality_score": 0.7016701253682716,
+          "quality_bucket": 69,
+          "character_id": "zeniba",
+          "path": "data/character_refs/zeniba__score69__rank04.png",
+          "quality_rank": 4
+        }
+      ],
+      "duplicates": [],
+      "errors": []
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "generated_at": "2026-03-02T17:41:05.556934+00:00"
+}

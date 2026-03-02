@@ -1,0 +1,5 @@
+data/Fotos-Aurora/
+.ssh/
+configs/env/*.env
+!configs/env/*.env.example
+!configs/env/.env.example

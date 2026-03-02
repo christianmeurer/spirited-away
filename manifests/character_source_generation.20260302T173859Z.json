@@ -1,0 +1,252 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-03-02T17:38:59.720225+00:00",
+  "source_manifest": "configs/characters/spirited_away_sources.internal_rnd.json",
+  "local_source_root": "data/character_refs_sources",
+  "images_per_asset": 6,
+  "refresh_existing": false,
+  "purge_stale_generated": true,
+  "summary": {
+    "assets_processed": 13,
+    "images_created": 78,
+    "images_refreshed": 0,
+    "images_reused": 0,
+    "images_removed_stale": 0
+  },
+  "assets": [
+    {
+      "asset_id": "akio_ogino_local_refs",
+      "character_id": "akio_ogino",
+      "source_folder": "data/character_refs_sources/akio_ogino",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/akio_ogino/akio_ogino_local_refs__gen01__seed81b2c838.png",
+        "data/character_refs_sources/akio_ogino/akio_ogino_local_refs__gen02__seedf4e239fa.png",
+        "data/character_refs_sources/akio_ogino/akio_ogino_local_refs__gen03__seed01476c8b.png",
+        "data/character_refs_sources/akio_ogino/akio_ogino_local_refs__gen04__seeddce03029.png",
+        "data/character_refs_sources/akio_ogino/akio_ogino_local_refs__gen05__seed632b812b.png",
+        "data/character_refs_sources/akio_ogino/akio_ogino_local_refs__gen06__seed82c77a7a.png"
+      ]
+    },
+    {
+      "asset_id": "aogaeru_local_refs",
+      "character_id": "aogaeru",
+      "source_folder": "data/character_refs_sources/aogaeru",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/aogaeru/aogaeru_local_refs__gen01__seed4a21dcd6.png",
+        "data/character_refs_sources/aogaeru/aogaeru_local_refs__gen02__seedf0dface3.png",
+        "data/character_refs_sources/aogaeru/aogaeru_local_refs__gen03__seed4d139352.png",
+        "data/character_refs_sources/aogaeru/aogaeru_local_refs__gen04__seed376d80f9.png",
+        "data/character_refs_sources/aogaeru/aogaeru_local_refs__gen05__seed7d3ee822.png",
+        "data/character_refs_sources/aogaeru/aogaeru_local_refs__gen06__seedfc232a9f.png"
+      ]
+    },
+    {
+      "asset_id": "boh_local_refs",
+      "character_id": "boh",
+      "source_folder": "data/character_refs_sources/boh",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/boh/boh_local_refs__gen01__seedf600e676.png",
+        "data/character_refs_sources/boh/boh_local_refs__gen02__seedb197b35d.png",
+        "data/character_refs_sources/boh/boh_local_refs__gen03__seed7d9332d0.png",
+        "data/character_refs_sources/boh/boh_local_refs__gen04__seed9e5cc99e.png",
+        "data/character_refs_sources/boh/boh_local_refs__gen05__seede24b0588.png",
+        "data/character_refs_sources/boh/boh_local_refs__gen06__seed9d7cbc54.png"
+      ]
+    },
+    {
+      "asset_id": "chihiro_ogino_local_refs",
+      "character_id": "chihiro_ogino",
+      "source_folder": "data/character_refs_sources/chihiro_ogino",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/chihiro_ogino/chihiro_ogino_local_refs__gen01__seedfd0185b3.png",
+        "data/character_refs_sources/chihiro_ogino/chihiro_ogino_local_refs__gen02__seed34771247.png",
+        "data/character_refs_sources/chihiro_ogino/chihiro_ogino_local_refs__gen03__seedee1b5b90.png",
+        "data/character_refs_sources/chihiro_ogino/chihiro_ogino_local_refs__gen04__seed97b942a4.png",
+        "data/character_refs_sources/chihiro_ogino/chihiro_ogino_local_refs__gen05__seed5a7d8434.png",
+        "data/character_refs_sources/chihiro_ogino/chihiro_ogino_local_refs__gen06__seedbbbc638e.png"
+      ]
+    },
+    {
+      "asset_id": "haku_local_refs",
+      "character_id": "haku",
+      "source_folder": "data/character_refs_sources/haku",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/haku/haku_local_refs__gen01__seed839ec5b1.png",
+        "data/character_refs_sources/haku/haku_local_refs__gen02__seed6a5d1b46.png",
+        "data/character_refs_sources/haku/haku_local_refs__gen03__seed3eece1b5.png",
+        "data/character_refs_sources/haku/haku_local_refs__gen04__seedc4f86a47.png",
+        "data/character_refs_sources/haku/haku_local_refs__gen05__seedc81d99ed.png",
+        "data/character_refs_sources/haku/haku_local_refs__gen06__seed8c0ba0b3.png"
+      ]
+    },
+    {
+      "asset_id": "kamaji_local_refs",
+      "character_id": "kamaji",
+      "source_folder": "data/character_refs_sources/kamaji",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/kamaji/kamaji_local_refs__gen01__seedfe672466.png",
+        "data/character_refs_sources/kamaji/kamaji_local_refs__gen02__seedb10db382.png",
+        "data/character_refs_sources/kamaji/kamaji_local_refs__gen03__seed3d9e3edf.png",
+        "data/character_refs_sources/kamaji/kamaji_local_refs__gen04__seed5f3037cc.png",
+        "data/character_refs_sources/kamaji/kamaji_local_refs__gen05__seedf53ba0e2.png",
+        "data/character_refs_sources/kamaji/kamaji_local_refs__gen06__seed542b980e.png"
+      ]
+    },
+    {
+      "asset_id": "lin_local_refs",
+      "character_id": "lin",
+      "source_folder": "data/character_refs_sources/lin",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/lin/lin_local_refs__gen01__seedbdd327bb.png",
+        "data/character_refs_sources/lin/lin_local_refs__gen02__seed8cc08e20.png",
+        "data/character_refs_sources/lin/lin_local_refs__gen03__seed300203bc.png",
+        "data/character_refs_sources/lin/lin_local_refs__gen04__seedb5fb1b9c.png",
+        "data/character_refs_sources/lin/lin_local_refs__gen05__seed3a03dedc.png",
+        "data/character_refs_sources/lin/lin_local_refs__gen06__seed63b72333.png"
+      ]
+    },
+    {
+      "asset_id": "no_face_local_refs",
+      "character_id": "no_face",
+      "source_folder": "data/character_refs_sources/no_face",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/no_face/no_face_local_refs__gen01__seed356552f1.png",
+        "data/character_refs_sources/no_face/no_face_local_refs__gen02__seedd55fff54.png",
+        "data/character_refs_sources/no_face/no_face_local_refs__gen03__seed4c2db0d0.png",
+        "data/character_refs_sources/no_face/no_face_local_refs__gen04__seed7d2867ef.png",
+        "data/character_refs_sources/no_face/no_face_local_refs__gen05__seedeb2a7ff9.png",
+        "data/character_refs_sources/no_face/no_face_local_refs__gen06__seed83258e62.png"
+      ]
+    },
+    {
+      "asset_id": "river_spirit_local_refs",
+      "character_id": "river_spirit",
+      "source_folder": "data/character_refs_sources/river_spirit",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/river_spirit/river_spirit_local_refs__gen01__seedc394bec4.png",
+        "data/character_refs_sources/river_spirit/river_spirit_local_refs__gen02__seed48b51a83.png",
+        "data/character_refs_sources/river_spirit/river_spirit_local_refs__gen03__seedafa61f22.png",
+        "data/character_refs_sources/river_spirit/river_spirit_local_refs__gen04__seedf0c0e366.png",
+        "data/character_refs_sources/river_spirit/river_spirit_local_refs__gen05__seedfb4c52b3.png",
+        "data/character_refs_sources/river_spirit/river_spirit_local_refs__gen06__seedc6de4f83.png"
+      ]
+    },
+    {
+      "asset_id": "stink_spirit_local_refs",
+      "character_id": "stink_spirit",
+      "source_folder": "data/character_refs_sources/stink_spirit",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/stink_spirit/stink_spirit_local_refs__gen01__seed449e89b4.png",
+        "data/character_refs_sources/stink_spirit/stink_spirit_local_refs__gen02__seed6b50b412.png",
+        "data/character_refs_sources/stink_spirit/stink_spirit_local_refs__gen03__seed16867185.png",
+        "data/character_refs_sources/stink_spirit/stink_spirit_local_refs__gen04__seed5eaeb80a.png",
+        "data/character_refs_sources/stink_spirit/stink_spirit_local_refs__gen05__seed506b5958.png",
+        "data/character_refs_sources/stink_spirit/stink_spirit_local_refs__gen06__seeddfc9e84f.png"
+      ]
+    },
+    {
+      "asset_id": "yubaba_local_refs",
+      "character_id": "yubaba",
+      "source_folder": "data/character_refs_sources/yubaba",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/yubaba/yubaba_local_refs__gen01__seedec9d29d3.png",
+        "data/character_refs_sources/yubaba/yubaba_local_refs__gen02__seed191e80e7.png",
+        "data/character_refs_sources/yubaba/yubaba_local_refs__gen03__seedf7894fdf.png",
+        "data/character_refs_sources/yubaba/yubaba_local_refs__gen04__seed8b7b39eb.png",
+        "data/character_refs_sources/yubaba/yubaba_local_refs__gen05__seeda27cc05d.png",
+        "data/character_refs_sources/yubaba/yubaba_local_refs__gen06__seedb763c17f.png"
+      ]
+    },
+    {
+      "asset_id": "yuko_ogino_local_refs",
+      "character_id": "yuko_ogino",
+      "source_folder": "data/character_refs_sources/yuko_ogino",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/yuko_ogino/yuko_ogino_local_refs__gen01__seed3422c710.png",
+        "data/character_refs_sources/yuko_ogino/yuko_ogino_local_refs__gen02__seed26198472.png",
+        "data/character_refs_sources/yuko_ogino/yuko_ogino_local_refs__gen03__seed60ec7a49.png",
+        "data/character_refs_sources/yuko_ogino/yuko_ogino_local_refs__gen04__seedaee19dd2.png",
+        "data/character_refs_sources/yuko_ogino/yuko_ogino_local_refs__gen05__seedd2d7a016.png",
+        "data/character_refs_sources/yuko_ogino/yuko_ogino_local_refs__gen06__seed5c2884a9.png"
+      ]
+    },
+    {
+      "asset_id": "zeniba_local_refs",
+      "character_id": "zeniba",
+      "source_folder": "data/character_refs_sources/zeniba",
+      "images_per_asset": 6,
+      "created": 6,
+      "refreshed": 0,
+      "reused": 0,
+      "removed_stale": 0,
+      "expected_files": [
+        "data/character_refs_sources/zeniba/zeniba_local_refs__gen01__seedf9c925c0.png",
+        "data/character_refs_sources/zeniba/zeniba_local_refs__gen02__seedb409951d.png",
+        "data/character_refs_sources/zeniba/zeniba_local_refs__gen03__seed17f4f967.png",
+        "data/character_refs_sources/zeniba/zeniba_local_refs__gen04__seed8610218d.png",
+        "data/character_refs_sources/zeniba/zeniba_local_refs__gen05__seedca5d2385.png",
+        "data/character_refs_sources/zeniba/zeniba_local_refs__gen06__seed4bd7f161.png"
+      ]
+    }
+  ]
+}

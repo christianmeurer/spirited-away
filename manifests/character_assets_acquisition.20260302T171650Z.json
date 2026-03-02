@@ -1,0 +1,255 @@
+{
+  "valid": true,
+  "source_manifest": "configs/characters/spirited_away_sources.internal_rnd.json",
+  "output_dir": "data/character_refs",
+  "local_source_root": "data/character_refs_sources",
+  "state_file": "data/character_refs/.character_refs_state.json",
+  "quality_report": "manifests/image_quality_report.json",
+  "summary": {
+    "assets_configured": 13,
+    "assets_success": 0,
+    "assets_partial": 0,
+    "assets_failed": 13,
+    "refs_total": 0
+  },
+  "characters": [
+    {
+      "character_id": "akio_ogino",
+      "display_name": "Akio Ogino",
+      "aliases": [
+        "Akio"
+      ]
+    },
+    {
+      "character_id": "aogaeru",
+      "display_name": "Aogaeru",
+      "aliases": [
+        "Frog",
+        "Aogaeru (frog)"
+      ]
+    },
+    {
+      "character_id": "boh",
+      "display_name": "Boh",
+      "aliases": [
+        "Bou"
+      ]
+    },
+    {
+      "character_id": "chihiro_ogino",
+      "display_name": "Chihiro Ogino",
+      "aliases": [
+        "Chihiro",
+        "Sen"
+      ]
+    },
+    {
+      "character_id": "haku",
+      "display_name": "Haku",
+      "aliases": [
+        "Nigihayami Kohakunushi"
+      ]
+    },
+    {
+      "character_id": "kamaji",
+      "display_name": "Kamaji",
+      "aliases": []
+    },
+    {
+      "character_id": "lin",
+      "display_name": "Lin",
+      "aliases": [
+        "Linha"
+      ]
+    },
+    {
+      "character_id": "no_face",
+      "display_name": "No-Face",
+      "aliases": [
+        "No Face",
+        "Kaonashi"
+      ]
+    },
+    {
+      "character_id": "river_spirit",
+      "display_name": "River Spirit",
+      "aliases": [
+        "Kawa no Kami"
+      ]
+    },
+    {
+      "character_id": "stink_spirit",
+      "display_name": "Stink Spirit",
+      "aliases": [
+        "Stink God"
+      ]
+    },
+    {
+      "character_id": "yubaba",
+      "display_name": "Yubaba",
+      "aliases": []
+    },
+    {
+      "character_id": "yuko_ogino",
+      "display_name": "Yuko Ogino",
+      "aliases": [
+        "Yuko"
+      ]
+    },
+    {
+      "character_id": "zeniba",
+      "display_name": "Zeniba",
+      "aliases": []
+    }
+  ],
+  "acquired": [],
+  "file_transforms": [],
+  "asset_results": [
+    {
+      "asset_id": "akio_ogino_local_refs",
+      "character": "akio_ogino",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\akio_ogino"
+      ]
+    },
+    {
+      "asset_id": "aogaeru_local_refs",
+      "character": "aogaeru",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\aogaeru"
+      ]
+    },
+    {
+      "asset_id": "boh_local_refs",
+      "character": "boh",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\boh"
+      ]
+    },
+    {
+      "asset_id": "chihiro_ogino_local_refs",
+      "character": "chihiro_ogino",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\chihiro_ogino"
+      ]
+    },
+    {
+      "asset_id": "haku_local_refs",
+      "character": "haku",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\haku"
+      ]
+    },
+    {
+      "asset_id": "kamaji_local_refs",
+      "character": "kamaji",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\kamaji"
+      ]
+    },
+    {
+      "asset_id": "lin_local_refs",
+      "character": "lin",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\lin"
+      ]
+    },
+    {
+      "asset_id": "no_face_local_refs",
+      "character": "no_face",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\no_face"
+      ]
+    },
+    {
+      "asset_id": "river_spirit_local_refs",
+      "character": "river_spirit",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\river_spirit"
+      ]
+    },
+    {
+      "asset_id": "stink_spirit_local_refs",
+      "character": "stink_spirit",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\stink_spirit"
+      ]
+    },
+    {
+      "asset_id": "yubaba_local_refs",
+      "character": "yubaba",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\yubaba"
+      ]
+    },
+    {
+      "asset_id": "yuko_ogino_local_refs",
+      "character": "yuko_ogino",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\yuko_ogino"
+      ]
+    },
+    {
+      "asset_id": "zeniba_local_refs",
+      "character": "zeniba",
+      "source_kind": "local_folder",
+      "status": "failed",
+      "resolved": [],
+      "duplicates": [],
+      "errors": [
+        "source folder not found: D:\\spirited-away\\data\\character_refs_sources\\zeniba"
+      ]
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "generated_at": "2026-03-02T17:16:50.736568+00:00"
+}

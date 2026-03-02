@@ -1,0 +1,11 @@
+{
+  "valid": false,
+  "source_manifest": "configs/characters/spirited_away_sources.internal_rnd.json",
+  "output_dir": "data\\character_refs",
+  "acquired": [],
+  "errors": [
+    "chihiro_ref_01: manual source path not found: \\opt\\aurora\\data\\manual_refs\\chihiro_ref_01.jpg",
+    "haku_ref_01: manual source path not found: \\opt\\aurora\\data\\manual_refs\\haku_ref_01.jpg"
+  ],
+  "generated_at": "2026-03-02T03:48:45.234683+00:00"
+}

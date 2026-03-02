@@ -1,0 +1,16 @@
+{
+  "summary": {
+    "count": 0,
+    "min_pixels": 0,
+    "max_pixels": 0,
+    "avg_brightness": 0.0,
+    "avg_contrast": 0.0,
+    "avg_sharpness": 0.0,
+    "avg_quality_score": 0.0,
+    "lowest_sharpness_files": [],
+    "highest_sharpness_files": [],
+    "top_quality_files": [],
+    "lowest_quality_files": []
+  },
+  "files": []
+}

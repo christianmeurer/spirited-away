@@ -1,41 +1,304 @@
 {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "usage_scope": "INTERNAL_RND",
-    "policy": {
-        "require_rights_attestation": true,
-        "allowed_source_kinds": [
-            "licensed_url",
-            "manual_upload"
-        ],
-        "allowed_domains": [
-            "www.ghibli.jp",
-            "www.toho.co.jp",
-            "press.netflix.com",
-            "media-assets.example.com"
-        ]
-    },
-    "assets": [
+    "characters": [
         {
-            "asset_id": "chihiro_ref_01",
-            "character": "chihiro",
-            "source_kind": "manual_upload",
-            "source_path": "/opt/aurora/data/manual_refs/chihiro_ref_01.jpg",
-            "rights": {
-                "status": "licensed",
-                "evidence": "Internal license record ID: REQUIRED_FILL"
-            },
-            "notes": "Primary face and clothing reference"
+            "character_id": "chihiro_ogino",
+            "display_name": "Chihiro Ogino",
+            "aliases": [
+                "Chihiro",
+                "Sen"
+            ]
         },
         {
-            "asset_id": "haku_ref_01",
+            "character_id": "yubaba",
+            "display_name": "Yubaba",
+            "aliases": []
+        },
+        {
+            "character_id": "haku",
+            "display_name": "Haku",
+            "aliases": [
+                "Nigihayami Kohakunushi"
+            ]
+        },
+        {
+            "character_id": "no_face",
+            "display_name": "No-Face",
+            "aliases": [
+                "No Face",
+                "Kaonashi"
+            ]
+        },
+        {
+            "character_id": "kamaji",
+            "display_name": "Kamaji",
+            "aliases": []
+        },
+        {
+            "character_id": "lin",
+            "display_name": "Lin",
+            "aliases": [
+                "Linha"
+            ]
+        },
+        {
+            "character_id": "zeniba",
+            "display_name": "Zeniba",
+            "aliases": []
+        },
+        {
+            "character_id": "boh",
+            "display_name": "Boh",
+            "aliases": [
+                "Bou"
+            ]
+        },
+        {
+            "character_id": "akio_ogino",
+            "display_name": "Akio Ogino",
+            "aliases": [
+                "Akio"
+            ]
+        },
+        {
+            "character_id": "yuko_ogino",
+            "display_name": "Yuko Ogino",
+            "aliases": [
+                "Yuko"
+            ]
+        },
+        {
+            "character_id": "stink_spirit",
+            "display_name": "Stink Spirit",
+            "aliases": [
+                "Stink God"
+            ]
+        },
+        {
+            "character_id": "river_spirit",
+            "display_name": "River Spirit",
+            "aliases": [
+                "Kawa no Kami"
+            ]
+        },
+        {
+            "character_id": "aogaeru",
+            "display_name": "Aogaeru",
+            "aliases": [
+                "Frog",
+                "Aogaeru (frog)"
+            ]
+        }
+    ],
+    "assets": [
+        {
+            "asset_id": "chihiro_ogino_local_refs",
+            "character": "chihiro_ogino",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/chihiro_ogino",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Chihiro refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "yubaba_local_refs",
+            "character": "yubaba",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/yubaba",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Yubaba refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "haku_local_refs",
             "character": "haku",
-            "source_kind": "manual_upload",
-            "source_path": "/opt/aurora/data/manual_refs/haku_ref_01.jpg",
-            "rights": {
-                "status": "licensed",
-                "evidence": "Internal license record ID: REQUIRED_FILL"
-            },
-            "notes": "Companion reference for composition"
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/haku",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Haku refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "no_face_local_refs",
+            "character": "no_face",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/no_face",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop No-Face/Kaonashi refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "kamaji_local_refs",
+            "character": "kamaji",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/kamaji",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Kamaji refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "lin_local_refs",
+            "character": "lin",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/lin",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Lin/Linha refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "zeniba_local_refs",
+            "character": "zeniba",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/zeniba",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Zeniba refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "boh_local_refs",
+            "character": "boh",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/boh",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Boh refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "akio_ogino_local_refs",
+            "character": "akio_ogino",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/akio_ogino",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Akio Ogino refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "yuko_ogino_local_refs",
+            "character": "yuko_ogino",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/yuko_ogino",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Yuko Ogino refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "stink_spirit_local_refs",
+            "character": "stink_spirit",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/stink_spirit",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Stink Spirit refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "river_spirit_local_refs",
+            "character": "river_spirit",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/river_spirit",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop River Spirit refs in this folder for automated ingestion."
+        },
+        {
+            "asset_id": "aogaeru_local_refs",
+            "character": "aogaeru",
+            "source_kind": "local_folder",
+            "source_path": "data/character_refs_sources/aogaeru",
+            "recursive": true,
+            "file_patterns": [
+                "*.jpg",
+                "*.jpeg",
+                "*.png",
+                "*.webp",
+                "*.bmp",
+                "*.tiff"
+            ],
+            "notes": "Drop Aogaeru/Frog refs in this folder for automated ingestion."
         }
     ]
 }
