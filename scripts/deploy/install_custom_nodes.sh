@@ -16,8 +16,8 @@ set +a
 
 COMFYUI_ROOT="${COMFYUI_ROOT:-/opt/aurora/ComfyUI}"
 CUSTOM_NODES_DIR="$COMFYUI_ROOT/custom_nodes"
-TP_BLEND_NODE_REPO_URL="${TP_BLEND_NODE_REPO_URL:-https://github.com/example-org/ComfyUI-TP-Blend.git}"
-PS_BLEND_NODE_REPO_URL="${PS_BLEND_NODE_REPO_URL:-https://github.com/example-org/ComfyUI_PS_Blend_Node.git}"
+TP_BLEND_NODE_REPO_URL="${TP_BLEND_NODE_REPO_URL:-https://github.com/felixxinjin1/TP-Blend.git}"
+PS_BLEND_NODE_REPO_URL="${PS_BLEND_NODE_REPO_URL:-https://github.com/bluevisor/ComfyUI_PS_Blend_Node.git}"
 
 mkdir -p "$CUSTOM_NODES_DIR"
 
