@@ -3,3 +3,4 @@ data/Fotos-Aurora/
 configs/env/*.env
 !configs/env/*.env.example
 !configs/env/.env.example
+spirited-away-all-images
