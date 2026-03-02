@@ -42,15 +42,48 @@ Deploy a reproducible, internal-only image pipeline on DigitalOcean H100 GPU inf
 
 ## Operational Sequence
 
-1. Provision droplet and bootstrap baseline dependencies.
-2. Pull or update GitHub repository on VM.
-3. Sync env file and secret values (`HF_TOKEN`, Spaces credentials, SSH keys).
-4. Acquire models from Hugging Face registry.
-5. Acquire and validate character references from approved sources.
-6. Prepare identity dataset and run adapter training.
-7. Execute scenario generation pipeline (A/B/C).
-8. Validate resulting manifests and quality gates.
-9. Run pre-export guard and archive to internal Spaces paths.
+1. Prepare env contract from [`configs/env/digitalocean_h100.env.example`](configs/env/digitalocean_h100.env.example) including `DO_SSH_FINGERPRINT` and Scenario C asset/mask keys.
+2. Provision droplet with strict preflight validation.
+3. Bootstrap VM with deterministic repo/runtime setup.
+4. Install and validate Scenario C custom nodes from workflow references.
+5. Enable and verify persistent ComfyUI API systemd service.
+6. Acquire models from Hugging Face registry.
+7. Acquire and validate character references from approved sources.
+8. Prepare identity dataset and run adapter training.
+9. Execute scenario generation pipeline (operational generation mode).
+10. Run strict validation as an explicit step on generated manifests.
+11. Run pre-export guard and archive to internal Spaces paths.
+
+## Required Env Contract (Minimum)
+
+`scripts/deploy/provision_do_h100.sh` now fails fast unless these keys are present and not unresolved placeholders:
+
+- `DO_DROPLET_NAME`
+- `DO_REGION`
+- `DO_IMAGE`
+- `DO_SIZE`
+- `DO_SSH_FINGERPRINT`
+- `GITHUB_REPO_URL`
+- `GITHUB_BRANCH`
+- `AURORA_ROOT`
+- `COMFYUI_ROOT`
+
+Scenario C generation contract keys (CLI can override):
+
+- `SCENARIO_C_TRACK`
+- `SCENARIO_C_SUBJECT_IMAGE`
+- `SCENARIO_C_COMPANION_IMAGE_A`
+- `SCENARIO_C_COMPANION_IMAGE_B`
+- `SCENARIO_C_SUBJECT_MASK_IMAGE`
+- `SCENARIO_C_COMPANION_MASK_IMAGE`
+- `SCENARIO_C_PS_BLEND_MODE`
+
+Optional archival keys:
+
+- `ENABLE_SPACES_ARCHIVAL`
+- `DO_SPACES_ACCESS_KEY_ID`
+- `DO_SPACES_SECRET_ACCESS_KEY`
+- `DO_SPACES_ARCHIVE_PREFIX`
 
 ## Implementation Commands
 
@@ -58,6 +91,10 @@ Control machine provisioning:
 
 ```bash
 cp configs/env/digitalocean_h100.env.example configs/env/digitalocean_h100.env
+# Fill placeholders before provisioning:
+# - DO_SSH_FINGERPRINT
+# - HF_TOKEN
+# - Spaces keys if archival is enabled
 ./scripts/deploy/provision_do_h100.sh configs/env/digitalocean_h100.env
 ```
 
@@ -69,7 +106,16 @@ cd /opt/aurora/Aurora-Fotos
 ./scripts/deploy/update_repo.sh configs/env/digitalocean_h100.env
 ```
 
-Install required mixed-media custom nodes (TP-Blend + PS Blend):
+Bootstrap now performs deterministic ComfyUI service setup using [`scripts/deploy/comfyui.service`](scripts/deploy/comfyui.service) and verifies readiness via `http://127.0.0.1:${COMFYUI_PORT:-8188}/system_stats`.
+
+Service checks:
+
+```bash
+sudo systemctl status comfyui.service --no-pager
+curl -fsS http://127.0.0.1:8188/system_stats
+```
+
+Install required mixed-media custom nodes (TP-Blend + PS Blend + optional `SCENARIO_C_EXTRA_NODE_REPOS`) and validate required Scenario C classes:
 
 ```bash
 ./scripts/deploy/install_custom_nodes.sh configs/env/digitalocean_h100.env
@@ -103,7 +149,7 @@ python scripts/assets/acquire_character_refs.py \
   --output-dir /opt/aurora/data/character_refs
 ```
 
-Run all scenarios (A/B/C) through ComfyUI:
+Run all scenarios with smooth defaults (`scenario_c` auto-skips if Scenario C contract/assets are incomplete):
 
 ```bash
 python scripts/pipeline/run_scenarios.py \
@@ -111,29 +157,46 @@ python scripts/pipeline/run_scenarios.py \
   --scenario all
 ```
 
-First experiment (Scenario A, Anything2Real validation, style tokens excluded):
+Enforce strict all-scenarios behavior (fail instead of skip when Scenario C contract/assets are incomplete):
 
 ```bash
 python scripts/pipeline/run_scenarios.py \
   --env-file configs/env/digitalocean_h100.env \
-  --scenario scenario_a \
-  --prompt-override "Real portrait of [subj_name_2026] walking with two companions in natural daylight, physically plausible shadows, 85mm photography" \
-  --negative-prompt-override "cartoon, cel-shading, painterly textures"
+  --scenario all \
+  --require-scenario-c
 ```
 
-OOM monitoring and mitigation:
+Run Scenario C only with CLI overrides:
 
 ```bash
-watch -n 1 nvidia-smi
-# If memory pressure spikes during CAOF/attention fusion, reduce TRAIN_BATCH_SIZE in env and relaunch.
+python scripts/pipeline/run_scenarios.py \
+  --env-file configs/env/digitalocean_h100.env \
+  --scenario scenario_c \
+  --scenario-c-track track_c \
+  --scenario-c-subject-image input/subject.png \
+  --scenario-c-companion-image-a input/companion_a.png \
+  --scenario-c-companion-image-b input/companion_b.png \
+  --scenario-c-subject-mask-image input/subject_mask.png \
+  --scenario-c-companion-mask-image input/companion_mask.png \
+  --scenario-c-ps-blend-mode Multiply
 ```
 
-Orchestrate full flow in one command:
+Orchestrate full flow in one command (default keeps A/B smooth and auto-skips Scenario C if incomplete):
 
 ```bash
 python scripts/pipeline/run_full_pipeline.py \
   --env-file configs/env/digitalocean_h100.env \
   --scenario all \
+  --dry-run-training
+```
+
+Strict full-flow mode requiring Scenario C in all-mode:
+
+```bash
+python scripts/pipeline/run_full_pipeline.py \
+  --env-file configs/env/digitalocean_h100.env \
+  --scenario all \
+  --require-scenario-c \
   --dry-run-training
 ```
 
@@ -145,10 +208,31 @@ python scripts/internal_rnd_cli.py validate --manifest manifests/generated/<run_
 python scripts/internal_rnd_cli.py validate --manifest manifests/generated/<run_id>_scenario_c.internal_rnd.json
 ```
 
+Generation output manifests are not auto-approved. They remain pending manual approvals and human/metric scoring until [`scripts/internal_rnd_cli.py`](scripts/internal_rnd_cli.py) strict validation and review gates are completed.
+
+Archive internal outputs to Spaces (runbook-promised path):
+
+```bash
+python scripts/pipeline/archive_to_spaces.py \
+  --env-file configs/env/digitalocean_h100.env \
+  --input manifests/generated
+```
+
+Dry-run archival preview:
+
+```bash
+python scripts/pipeline/archive_to_spaces.py \
+  --env-file configs/env/digitalocean_h100.env \
+  --input manifests/generated \
+  --dry-run
+```
+
 ## Failure Domains and Recovery
 
-- All long jobs produce manifests and checkpoints for resumability.
+- Provision/bootstrap preflight catches unresolved env placeholders before long-running operations.
+- ComfyUI service is persistent (`systemd`) and restarts automatically.
 - Generation can be resumed by scenario and seed.
 - Training output adapters are versioned by run ID.
 - Model acquisition lockfile prevents silent model drift.
+- Spaces archival has `--dry-run` and explicit opt-in via `ENABLE_SPACES_ARCHIVAL=true`.
 

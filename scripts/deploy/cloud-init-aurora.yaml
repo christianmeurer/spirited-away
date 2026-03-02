@@ -1,16 +1,99 @@
 #cloud-config
 package_update: true
-package_upgrade: true
+package_upgrade: false
+package_reboot_if_required: false
+timezone: Etc/UTC
+
 packages:
-  - git
-  - jq
+  - ca-certificates
   - curl
+  - git
+  - git-lfs
+  - jq
+  - rsync
   - unzip
+  - build-essential
   - python3
+  - python3-dev
   - python3-venv
   - python3-pip
+  - python3-setuptools
+  - python3-wheel
+
+write_files:
+  - path: /opt/aurora/bin/cloud-init-aurora-bootstrap.sh
+    permissions: '0755'
+    owner: root:root
+    content: |
+      #!/usr/bin/env bash
+      set -Eeuo pipefail
+
+      LOG_FILE="/var/log/aurora-cloud-init.log"
+
+      mkdir -p \
+        /opt/aurora \
+        /opt/aurora/bin \
+        /opt/aurora/hooks/post-cloud-init.d \
+        /opt/aurora/logs \
+        /opt/aurora/data \
+        /opt/aurora/models \
+        /opt/aurora/outputs \
+        /opt/aurora/manifests \
+        /opt/aurora/.cache
+
+      touch "$LOG_FILE"
+      exec > >(tee -a "$LOG_FILE") 2>&1
+
+      echo "[$(date -Iseconds)] cloud-init aurora bootstrap start"
+
+      if id -u ubuntu >/dev/null 2>&1; then
+        AURORA_OWNER="ubuntu"
+      elif id -u root >/dev/null 2>&1; then
+        AURORA_OWNER="root"
+      else
+        AURORA_OWNER="$(id -un)"
+      fi
+
+      AURORA_GROUP="$(id -gn "$AURORA_OWNER" 2>/dev/null || echo "$AURORA_OWNER")"
+      chown -R "$AURORA_OWNER":"$AURORA_GROUP" /opt/aurora || true
+
+      chmod 0755 /opt/aurora
+      chmod 0755 /opt/aurora/logs
+
+      git lfs install --system || true
+
+      if systemctl list-unit-files --type=service | grep -q '^comfyui.service'; then
+        echo "Found comfyui.service; enabling for boot."
+        systemctl daemon-reload || true
+        systemctl enable comfyui.service || true
+      fi
+
+      shopt -s nullglob
+      for hook in /opt/aurora/hooks/post-cloud-init.d/*.sh; do
+        if [[ -x "$hook" ]]; then
+          echo "Running executable hook: $hook"
+          "$hook"
+        else
+          echo "Running hook with bash: $hook"
+          bash "$hook"
+        fi
+      done
+
+      touch /opt/aurora/.cloud-init-bootstrap.completed
+      echo "[$(date -Iseconds)] cloud-init aurora bootstrap complete"
+
+  - path: /etc/profile.d/aurora-env.sh
+    permissions: '0644'
+    owner: root:root
+    content: |
+      export AURORA_ROOT=/opt/aurora/Aurora-Fotos
+      export DATA_ROOT=/opt/aurora/data
+      export MODELS_ROOT=/opt/aurora/models
+      export OUTPUTS_ROOT=/opt/aurora/outputs
+      export MANIFESTS_ROOT=/opt/aurora/manifests
 
 runcmd:
-  - mkdir -p /opt/aurora
-  - chmod 755 /opt/aurora
+  - [bash, -lc, /opt/aurora/bin/cloud-init-aurora-bootstrap.sh]
+
+final_message: "Aurora cloud-init complete after $UPTIME seconds. Log: /var/log/aurora-cloud-init.log"
 

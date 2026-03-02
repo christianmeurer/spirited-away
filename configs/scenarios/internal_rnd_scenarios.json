@@ -36,8 +36,7 @@
         },
         "scenario_c": {
             "allowed_track_ids": [
-                "track_a",
-                "track_b"
+                "track_c"
             ],
             "required_manifest_fields": [
                 "declared_target_track",

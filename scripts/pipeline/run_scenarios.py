@@ -16,10 +16,10 @@ import requests
 
 
 SCENARIO_ORDER = ["scenario_a", "scenario_b", "scenario_c"]
-SCENARIO_TRACK = {
+SCENARIO_DEFAULT_TRACK = {
     "scenario_a": "track_a",
     "scenario_b": "track_b",
-    "scenario_c": "track_a",
+    "scenario_c": "track_c",
 }
 SCENARIO_PROMPTS = {
     "scenario_a": "Realistic cinematic photograph of [subj_name_2026] with inspired companions, coherent shadows and perspective, natural skin texture",
@@ -33,6 +33,13 @@ SCENARIO_NEGATIVE = {
 }
 
 FORBIDDEN_SCENARIO_A_TOKENS = {"anime", "illustration"}
+
+
+def _resolve_arg_or_env(arg_value: str | None, env_key: str, default: str = "") -> str:
+    if arg_value is not None and arg_value.strip():
+        return arg_value.strip()
+    env_value = os.getenv(env_key, default)
+    return env_value.strip()
 
 
 def load_env_file(path: Path) -> None:
@@ -72,6 +79,44 @@ def replace_tokens(node: Any, values: dict[str, Any]) -> Any:
                 return value
             node = node.replace(token, str(value))
     return node
+
+
+def _resolve_comfy_asset_path(comfy_root: Path, asset_ref: str) -> Path:
+    asset = Path(asset_ref)
+    if asset.is_absolute():
+        return asset
+    primary = comfy_root / asset
+    if primary.exists():
+        return primary
+    return comfy_root / "input" / asset
+
+
+def preflight_scenario_c_assets(comfy_root: Path, assets: dict[str, str]) -> list[str]:
+    missing: list[str] = []
+    for key, value in assets.items():
+        resolved = _resolve_comfy_asset_path(comfy_root, value)
+        if not resolved.exists():
+            missing.append(f"{key}={value} (expected at {resolved})")
+    return missing
+
+
+def validate_scenario_track_policy(
+    scenario_id: str,
+    track_id: str,
+    scenario_config: dict[str, Any],
+) -> None:
+    scenario_rule = scenario_config["scenarios"][scenario_id]
+    required_track = scenario_rule.get("track_id")
+    if isinstance(required_track, str) and required_track != track_id:
+        raise ValueError(
+            f"Scenario '{scenario_id}' requires track_id='{required_track}', got '{track_id}'."
+        )
+
+    allowed_track_ids = scenario_rule.get("allowed_track_ids", [])
+    if isinstance(allowed_track_ids, list) and allowed_track_ids and track_id not in allowed_track_ids:
+        raise ValueError(
+            f"Scenario '{scenario_id}' does not allow track_id='{track_id}' (allowed: {allowed_track_ids})."
+        )
 
 
 class ComfyClient:
@@ -119,6 +164,7 @@ def extract_output_images(history_entry: dict[str, Any]) -> list[dict[str, str]]
 def make_manifest(
     run_id: str,
     scenario_id: str,
+    track_id: str,
     prompt: str,
     negative_prompt: str,
     seed: int,
@@ -130,12 +176,14 @@ def make_manifest(
     scenario_checks = {check: True for check in required_checks}
     manifest = {
         "run_id": f"{run_id}_{scenario_id}",
-        "track_id": SCENARIO_TRACK[scenario_id],
+        "track_id": track_id,
         "scenario_id": scenario_id,
         "usage_scope": "INTERNAL_RND",
         "internal_tag": "INTERNAL_RND",
         "sharing_allowed": False,
         "provider_policy_ack": True,
+        "compliance_status": "pending_manual_approvals_and_metric_scoring",
+        "strict_validation_mode": "explicit_step_required",
         "manual_final_candidate_approval": False,
         "provider_policy": {
             "execution_order": [
@@ -183,7 +231,7 @@ def make_manifest(
     }
 
     if scenario_id == "scenario_c":
-        manifest["declared_target_track"] = "track_a"
+        manifest["declared_target_track"] = track_id
         manifest["mixed_media_boundary_approval"] = {
             "approved": False,
             "approved_by": None,
@@ -204,17 +252,92 @@ def main() -> int:
     parser.add_argument("--run-id", default=None)
     parser.add_argument("--prompt-override", default=None)
     parser.add_argument("--negative-prompt-override", default=None)
+    parser.add_argument("--scenario-c-track", default=None)
+    parser.add_argument("--scenario-c-subject-image", default=None)
+    parser.add_argument("--scenario-c-companion-image-a", default=None)
+    parser.add_argument("--scenario-c-companion-image-b", default=None)
+    parser.add_argument("--scenario-c-subject-mask-image", default=None)
+    parser.add_argument("--scenario-c-companion-mask-image", default=None)
+    parser.add_argument("--scenario-c-ps-blend-mode", default=None)
+    parser.add_argument(
+        "--require-scenario-c",
+        action="store_true",
+        help="When --scenario all is used, fail if Scenario C contract is missing instead of auto-skipping Scenario C.",
+    )
     args = parser.parse_args()
 
     load_env_file(Path(args.env_file))
     comfy_base_url = os.getenv("COMFYUI_BASE_URL", "http://127.0.0.1:8188")
     timeout_seconds = int(os.getenv("COMFYUI_TIMEOUT_SECONDS", "900"))
+    comfy_root = Path(os.getenv("COMFYUI_ROOT", "/opt/aurora/ComfyUI"))
 
     run_id = args.run_id or datetime.now(timezone.utc).strftime("run_%Y%m%dT%H%M%SZ")
     scenario_config = read_json(Path(args.scenario_config))
 
     scenarios = SCENARIO_ORDER if args.scenario == "all" else [args.scenario]
     client = ComfyClient(base_url=comfy_base_url, timeout_seconds=timeout_seconds)
+
+    scenario_c_assets = {
+        "SUBJECT_IMAGE": _resolve_arg_or_env(
+            args.scenario_c_subject_image,
+            "SCENARIO_C_SUBJECT_IMAGE",
+        ),
+        "COMPANION_IMAGE_A": _resolve_arg_or_env(
+            args.scenario_c_companion_image_a,
+            "SCENARIO_C_COMPANION_IMAGE_A",
+        ),
+        "COMPANION_IMAGE_B": _resolve_arg_or_env(
+            args.scenario_c_companion_image_b,
+            "SCENARIO_C_COMPANION_IMAGE_B",
+        ),
+        "SUBJECT_MASK_IMAGE": _resolve_arg_or_env(
+            args.scenario_c_subject_mask_image,
+            "SCENARIO_C_SUBJECT_MASK_IMAGE",
+        ),
+        "COMPANION_MASK_IMAGE": _resolve_arg_or_env(
+            args.scenario_c_companion_mask_image,
+            "SCENARIO_C_COMPANION_MASK_IMAGE",
+        ),
+    }
+    scenario_c_ps_blend_mode = _resolve_arg_or_env(
+        args.scenario_c_ps_blend_mode,
+        "SCENARIO_C_PS_BLEND_MODE",
+    )
+    scenario_c_track_id = _resolve_arg_or_env(
+        args.scenario_c_track,
+        "SCENARIO_C_TRACK",
+    )
+
+    if "scenario_c" in scenarios:
+        missing_config: list[str] = []
+        unresolved_assets = [key for key, value in scenario_c_assets.items() if not value]
+        if unresolved_assets:
+            missing_config.append("missing inputs/masks: " + ", ".join(sorted(unresolved_assets)))
+        if not scenario_c_track_id:
+            missing_config.append("missing track: SCENARIO_C_TRACK / --scenario-c-track")
+        if not scenario_c_ps_blend_mode:
+            missing_config.append("missing blend mode: SCENARIO_C_PS_BLEND_MODE / --scenario-c-ps-blend-mode")
+
+        missing_assets: list[str] = []
+        if not missing_config:
+            missing_assets = preflight_scenario_c_assets(comfy_root, scenario_c_assets)
+
+        if missing_config or missing_assets:
+            reason_lines: list[str] = []
+            reason_lines.extend(missing_config)
+            if missing_assets:
+                reason_lines.append("missing files:")
+                reason_lines.extend(f"  - {entry}" for entry in missing_assets)
+
+            if args.scenario == "all" and not args.require_scenario_c:
+                scenarios = [scenario for scenario in scenarios if scenario != "scenario_c"]
+                print("WARNING: Scenario C skipped in --scenario all due to incomplete contract.")
+                for line in reason_lines:
+                    print(f"WARNING: {line}")
+            else:
+                raise ValueError(
+                    "Scenario C is required but preflight failed:\n" + "\n".join(reason_lines)
+                )
 
     out_manifest_dir = Path("manifests/generated")
     out_manifest_dir.mkdir(parents=True, exist_ok=True)
@@ -229,6 +352,11 @@ def main() -> int:
         if scenario_id == "scenario_a":
             validate_scenario_a_prompt_policy(prompt, negative_prompt)
 
+        track_id = SCENARIO_DEFAULT_TRACK[scenario_id]
+        if scenario_id == "scenario_c":
+            track_id = scenario_c_track_id
+        validate_scenario_track_policy(scenario_id, track_id, scenario_config)
+
         seed = args.seed_base + idx
         filename_prefix = f"{run_id}_{scenario_id}"
 
@@ -238,12 +366,12 @@ def main() -> int:
             "NEGATIVE_PROMPT": negative_prompt,
             "SEED": seed,
             "FILENAME_PREFIX": filename_prefix,
-            "SUBJECT_IMAGE": "input/subject.png",
-            "COMPANION_IMAGE_A": "input/companion_a.png",
-            "COMPANION_IMAGE_B": "input/companion_b.png",
-            "SUBJECT_MASK_IMAGE": "input/subject_mask.png",
-            "COMPANION_MASK_IMAGE": "input/companion_mask.png",
-            "PS_BLEND_MODE": "Multiply",
+            "SUBJECT_IMAGE": scenario_c_assets["SUBJECT_IMAGE"],
+            "COMPANION_IMAGE_A": scenario_c_assets["COMPANION_IMAGE_A"],
+            "COMPANION_IMAGE_B": scenario_c_assets["COMPANION_IMAGE_B"],
+            "SUBJECT_MASK_IMAGE": scenario_c_assets["SUBJECT_MASK_IMAGE"],
+            "COMPANION_MASK_IMAGE": scenario_c_assets["COMPANION_MASK_IMAGE"],
+            "PS_BLEND_MODE": scenario_c_ps_blend_mode,
         }
 
         workflow = replace_tokens(copy.deepcopy(workflow_template), values)
@@ -255,6 +383,7 @@ def main() -> int:
         manifest = make_manifest(
             run_id=run_id,
             scenario_id=scenario_id,
+            track_id=track_id,
             prompt=prompt,
             negative_prompt=negative_prompt,
             seed=seed,
@@ -265,6 +394,10 @@ def main() -> int:
         manifest_path = out_manifest_dir / f"{run_id}_{scenario_id}.internal_rnd.json"
         manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
         print(f"Scenario {scenario_id} complete. Manifest: {manifest_path}")
+        print(
+            "INFO: Manifest compliance status is pending manual approvals and metric scoring. "
+            f"Strict validation is an explicit step: python scripts/internal_rnd_cli.py validate --manifest {manifest_path}"
+        )
 
     return 0
 

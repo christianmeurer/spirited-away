@@ -1,0 +1,19 @@
+[Unit]
+Description=ComfyUI API Service (Aurora INTERNAL_RND)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__SERVICE_USER__
+WorkingDirectory=__COMFYUI_ROOT__
+Environment=PYTHONUNBUFFERED=1
+ExecStart=__AURORA_ROOT__/.venv/bin/python main.py --listen 127.0.0.1 --port __COMFYUI_PORT__
+Restart=always
+RestartSec=5
+TimeoutStartSec=120
+StandardOutput=append:/opt/aurora/logs/comfyui.log
+StandardError=append:/opt/aurora/logs/comfyui.log
+
+[Install]
+WantedBy=multi-user.target

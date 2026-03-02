@@ -28,6 +28,22 @@ def run_cmd(cmd: list[str]) -> None:
         raise RuntimeError(f"Command failed ({completed.returncode}): {' '.join(cmd)}")
 
 
+def _resolve_arg_or_env(arg_value: str | None, env_key: str) -> str:
+    if arg_value is not None and arg_value.strip():
+        return arg_value.strip()
+    return os.getenv(env_key, "").strip()
+
+
+def _resolve_comfy_asset_path(comfy_root: Path, asset_ref: str) -> Path:
+    candidate = Path(asset_ref)
+    if candidate.is_absolute():
+        return candidate
+    first = comfy_root / candidate
+    if first.exists():
+        return first
+    return comfy_root / "input" / candidate
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run full INTERNAL_RND pipeline")
     parser.add_argument("--env-file", default="configs/env/digitalocean_h100.env")
@@ -47,6 +63,18 @@ def main() -> int:
     parser.add_argument("--skip-training", action="store_true")
     parser.add_argument("--skip-generation", action="store_true")
     parser.add_argument("--dry-run-training", action="store_true")
+    parser.add_argument("--scenario-c-track", default=None)
+    parser.add_argument("--scenario-c-subject-image", default=None)
+    parser.add_argument("--scenario-c-companion-image-a", default=None)
+    parser.add_argument("--scenario-c-companion-image-b", default=None)
+    parser.add_argument("--scenario-c-subject-mask-image", default=None)
+    parser.add_argument("--scenario-c-companion-mask-image", default=None)
+    parser.add_argument("--scenario-c-ps-blend-mode", default=None)
+    parser.add_argument(
+        "--require-scenario-c",
+        action="store_true",
+        help="When --scenario all is used, fail if Scenario C contract is missing instead of auto-skipping Scenario C.",
+    )
     args = parser.parse_args()
 
     load_env_file(Path(args.env_file))
@@ -69,6 +97,67 @@ def main() -> int:
         "CHARACTER_QUALITY_AUDIT_REPORT",
         "manifests/image_quality_report.audit.json",
     )
+    comfy_root = Path(os.getenv("COMFYUI_ROOT", "/opt/aurora/ComfyUI"))
+
+    scenario_c_requested = args.scenario in {"all", "scenario_c"}
+    scenario_c_assets = {
+        "scenario-c-subject-image": _resolve_arg_or_env(
+            args.scenario_c_subject_image,
+            "SCENARIO_C_SUBJECT_IMAGE",
+        ),
+        "scenario-c-companion-image-a": _resolve_arg_or_env(
+            args.scenario_c_companion_image_a,
+            "SCENARIO_C_COMPANION_IMAGE_A",
+        ),
+        "scenario-c-companion-image-b": _resolve_arg_or_env(
+            args.scenario_c_companion_image_b,
+            "SCENARIO_C_COMPANION_IMAGE_B",
+        ),
+        "scenario-c-subject-mask-image": _resolve_arg_or_env(
+            args.scenario_c_subject_mask_image,
+            "SCENARIO_C_SUBJECT_MASK_IMAGE",
+        ),
+        "scenario-c-companion-mask-image": _resolve_arg_or_env(
+            args.scenario_c_companion_mask_image,
+            "SCENARIO_C_COMPANION_MASK_IMAGE",
+        ),
+    }
+    scenario_c_track = _resolve_arg_or_env(args.scenario_c_track, "SCENARIO_C_TRACK")
+    scenario_c_ps_blend_mode = _resolve_arg_or_env(
+        args.scenario_c_ps_blend_mode,
+        "SCENARIO_C_PS_BLEND_MODE",
+    )
+
+    if scenario_c_requested and not args.skip_generation:
+        missing = [name for name, value in scenario_c_assets.items() if not value]
+        if not scenario_c_track:
+            missing.append("scenario-c-track")
+        if not scenario_c_ps_blend_mode:
+            missing.append("scenario-c-ps-blend-mode")
+
+        missing_files: list[str] = []
+        if not missing:
+            for name, asset_ref in scenario_c_assets.items():
+                resolved = _resolve_comfy_asset_path(comfy_root, asset_ref)
+                if not resolved.exists():
+                    missing_files.append(f"{name}={asset_ref} (expected at {resolved})")
+
+        if missing or missing_files:
+            reason_lines: list[str] = []
+            if missing:
+                reason_lines.append("missing values: " + ", ".join(sorted(missing)))
+            if missing_files:
+                reason_lines.append("missing files:")
+                reason_lines.extend(f"  - {entry}" for entry in missing_files)
+
+            if args.scenario == "all" and not args.require_scenario_c:
+                print("WARNING: Scenario C preflight failed in --scenario all. Scenario C will be auto-skipped.")
+                for line in reason_lines:
+                    print(f"WARNING: {line}")
+            else:
+                raise ValueError(
+                    "Scenario C is required but preflight failed:\n" + "\n".join(reason_lines)
+                )
 
     if not args.skip_models:
         run_cmd(
@@ -138,16 +227,38 @@ def main() -> int:
         run_cmd(train_cmd)
 
     if not args.skip_generation:
-        run_cmd(
-            [
-                python_exec,
-                "scripts/pipeline/run_scenarios.py",
-                "--env-file",
-                args.env_file,
-                "--scenario",
-                args.scenario,
-            ]
-        )
+        generation_cmd = [
+            python_exec,
+            "scripts/pipeline/run_scenarios.py",
+            "--env-file",
+            args.env_file,
+            "--scenario",
+            args.scenario,
+        ]
+
+        if scenario_c_requested:
+            generation_cmd.extend(
+                [
+                    "--scenario-c-track",
+                    scenario_c_track,
+                    "--scenario-c-subject-image",
+                    scenario_c_assets["scenario-c-subject-image"],
+                    "--scenario-c-companion-image-a",
+                    scenario_c_assets["scenario-c-companion-image-a"],
+                    "--scenario-c-companion-image-b",
+                    scenario_c_assets["scenario-c-companion-image-b"],
+                    "--scenario-c-subject-mask-image",
+                    scenario_c_assets["scenario-c-subject-mask-image"],
+                    "--scenario-c-companion-mask-image",
+                    scenario_c_assets["scenario-c-companion-mask-image"],
+                    "--scenario-c-ps-blend-mode",
+                    scenario_c_ps_blend_mode,
+                ]
+            )
+        if args.require_scenario_c:
+            generation_cmd.append("--require-scenario-c")
+
+        run_cmd(generation_cmd)
 
     print("Full pipeline execution finished.")
     return 0
