@@ -126,6 +126,7 @@ fi
 
 python3 - "$SCENARIO_C_WORKFLOW_TEMPLATE" "$COMFYUI_ROOT" <<'PY'
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -158,14 +159,20 @@ to_check = class_types & required_custom
 missing = []
 for class_name in sorted(to_check):
     found = False
-    for candidate in custom_nodes.rglob("*.py"):
-        try:
-            text = candidate.read_text(encoding="utf-8", errors="ignore")
-        except OSError:
-            continue
-        # Check that the class name is registered in NODE_CLASS_MAPPINGS
-        if f'"{class_name}"' in text or f"'{class_name}'" in text:
-            found = True
+    for root, _, files in os.walk(custom_nodes, followlinks=True):
+        for filename in files:
+            if not filename.endswith(".py"):
+                continue
+            candidate = Path(root) / filename
+            try:
+                text = candidate.read_text(encoding="utf-8", errors="ignore")
+            except OSError:
+                continue
+            # Check that the class name is registered in NODE_CLASS_MAPPINGS
+            if f'"{class_name}"' in text or f"'{class_name}'" in text:
+                found = True
+                break
+        if found:
             break
     if not found:
         missing.append(class_name)
