@@ -47,6 +47,54 @@ def parse_boolish(value: str | bool) -> bool:
     raise ValueError(f"Invalid boolean-like value: {value}")
 
 
+def parse_resolution_list(raw_resolution: str) -> list[int]:
+    """Parse TRAIN_RESOLUTION values from env/CLI into integer edge sizes.
+
+    Supported formats:
+      - "1024,1408"
+      - "1024x1024,1408x1408"
+      - Mixed forms like "1024,1408x1408"
+    """
+    values: list[int] = []
+
+    for token in raw_resolution.split(","):
+        clean = token.strip().lower()
+        if not clean:
+            continue
+
+        if "x" in clean:
+            parts = [p.strip() for p in clean.split("x") if p.strip()]
+            if len(parts) != 2:
+                raise ValueError(
+                    "Invalid TRAIN_RESOLUTION token "
+                    f"'{token}'. Expected INT or WIDTHxHEIGHT."
+                )
+            try:
+                width = int(parts[0])
+                height = int(parts[1])
+            except ValueError as exc:
+                raise ValueError(
+                    "Invalid TRAIN_RESOLUTION token "
+                    f"'{token}'. Width/height must be integers."
+                ) from exc
+            values.extend([width, height])
+            continue
+
+        try:
+            values.append(int(clean))
+        except ValueError as exc:
+            raise ValueError(
+                "Invalid TRAIN_RESOLUTION token "
+                f"'{token}'. Expected INT or WIDTHxHEIGHT."
+            ) from exc
+
+    # Keep first-seen order while deduplicating.
+    deduped = list(dict.fromkeys(values))
+    if not deduped:
+        raise ValueError("No valid values found in TRAIN_RESOLUTION.")
+    return deduped
+
+
 def _find_latest_lora(output_dir: Path) -> Path | None:
     """Return the most recently modified .safetensors file under output_dir."""
     candidates = sorted(
@@ -120,7 +168,7 @@ def main() -> int:
     timestep_bias = args.timestep_bias or os.getenv("TRAIN_TIMESTEP_BIAS", "balanced")
 
     raw_resolution = args.resolution or os.getenv("TRAIN_RESOLUTION", "1024,1408")
-    resolutions = [int(r.strip()) for r in raw_resolution.split(",") if r.strip()]
+    resolutions = parse_resolution_list(raw_resolution)
 
     comfyui_loras_dir_raw = args.comfyui_loras_dir or os.getenv("COMFYUI_LORAS_DIR", "")
     comfyui_loras_dir: Path | None = Path(comfyui_loras_dir_raw) if comfyui_loras_dir_raw else None
