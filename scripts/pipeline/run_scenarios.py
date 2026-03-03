@@ -62,6 +62,14 @@ def _resolve_arg_or_env(arg_value: str | None, env_key: str, default: str = "") 
     return os.getenv(env_key, default).strip()
 
 
+def _normalize_comfy_input_ref(asset_ref: str) -> str:
+    """Normalize Scenario C image refs so both `subject.png` and `input/subject.png` work."""
+    clean = asset_ref.strip().replace("\\", "/")
+    if clean.lower().startswith("input/"):
+        return clean.split("/", 1)[1]
+    return clean
+
+
 def load_env_file(path: Path) -> None:
     if not path.exists():
         return
@@ -105,10 +113,16 @@ def _resolve_comfy_asset_path(comfy_root: Path, asset_ref: str) -> Path:
     asset = Path(asset_ref)
     if asset.is_absolute():
         return asset
+
+    normalized = Path(_normalize_comfy_input_ref(asset_ref))
+    direct = comfy_root / normalized
+    if direct.exists():
+        return direct
+
     primary = comfy_root / asset
     if primary.exists():
         return primary
-    return comfy_root / "input" / asset
+    return comfy_root / "input" / normalized
 
 
 def preflight_scenario_c_assets(comfy_root: Path, assets: dict[str, str]) -> list[str]:
@@ -176,6 +190,14 @@ class ComfyClient:
     def queue_prompt(self, prompt: dict[str, Any], client_id: str) -> str:
         payload = {"prompt": prompt, "client_id": client_id}
         resp = self.session.post(f"{self.base_url}/prompt", json=payload, timeout=60)
+        if resp.status_code >= 400:
+            body = resp.text.strip()
+            snippet = body[:2000] if body else "<empty body>"
+            raise requests.HTTPError(
+                f"ComfyUI prompt queue failed ({resp.status_code}) at {self.base_url}/prompt\n"
+                f"Response body:\n{snippet}",
+                response=resp,
+            )
         resp.raise_for_status()
         data = resp.json()
         return data["prompt_id"]
@@ -372,20 +394,20 @@ def main() -> int:
     client = ComfyClient(base_url=comfy_base_url, timeout_seconds=timeout_seconds)
 
     scenario_c_assets = {
-        "SUBJECT_IMAGE": _resolve_arg_or_env(
-            args.scenario_c_subject_image, "SCENARIO_C_SUBJECT_IMAGE"
+        "SUBJECT_IMAGE": _normalize_comfy_input_ref(
+            _resolve_arg_or_env(args.scenario_c_subject_image, "SCENARIO_C_SUBJECT_IMAGE")
         ),
-        "COMPANION_IMAGE_A": _resolve_arg_or_env(
-            args.scenario_c_companion_image_a, "SCENARIO_C_COMPANION_IMAGE_A"
+        "COMPANION_IMAGE_A": _normalize_comfy_input_ref(
+            _resolve_arg_or_env(args.scenario_c_companion_image_a, "SCENARIO_C_COMPANION_IMAGE_A")
         ),
-        "COMPANION_IMAGE_B": _resolve_arg_or_env(
-            args.scenario_c_companion_image_b, "SCENARIO_C_COMPANION_IMAGE_B"
+        "COMPANION_IMAGE_B": _normalize_comfy_input_ref(
+            _resolve_arg_or_env(args.scenario_c_companion_image_b, "SCENARIO_C_COMPANION_IMAGE_B")
         ),
-        "SUBJECT_MASK_IMAGE": _resolve_arg_or_env(
-            args.scenario_c_subject_mask_image, "SCENARIO_C_SUBJECT_MASK_IMAGE"
+        "SUBJECT_MASK_IMAGE": _normalize_comfy_input_ref(
+            _resolve_arg_or_env(args.scenario_c_subject_mask_image, "SCENARIO_C_SUBJECT_MASK_IMAGE")
         ),
-        "COMPANION_MASK_IMAGE": _resolve_arg_or_env(
-            args.scenario_c_companion_mask_image, "SCENARIO_C_COMPANION_MASK_IMAGE"
+        "COMPANION_MASK_IMAGE": _normalize_comfy_input_ref(
+            _resolve_arg_or_env(args.scenario_c_companion_mask_image, "SCENARIO_C_COMPANION_MASK_IMAGE")
         ),
     }
     scenario_c_ps_blend_mode = _resolve_arg_or_env(
@@ -425,6 +447,31 @@ def main() -> int:
                 raise ValueError(
                     "Scenario C is required but preflight failed:\n" + "\n".join(reason_lines)
                 )
+
+    # Explicit preflight for LoRA dependencies to avoid opaque ComfyUI 400 errors.
+    if "scenario_a" in scenarios:
+        if not identity_lora_name:
+            raise ValueError(
+                "Scenario A requires IDENTITY_LORA_NAME (env or --identity-lora-name)."
+            )
+        identity_lora_path = comfy_root / "models" / "loras" / identity_lora_name
+        if not identity_lora_path.exists():
+            raise ValueError(
+                "Scenario A identity LoRA not found: "
+                f"{identity_lora_path}. Train first or set IDENTITY_LORA_NAME to an existing file."
+            )
+
+    if "scenario_b" in scenarios:
+        if not anime_lora_name:
+            raise ValueError(
+                "Scenario B requires ANIME_LORA_NAME (env or --anime-lora-name)."
+            )
+        anime_lora_path = comfy_root / "models" / "loras" / anime_lora_name
+        if not anime_lora_path.exists():
+            raise ValueError(
+                "Scenario B anime LoRA not found: "
+                f"{anime_lora_path}. Ensure models were fetched and linked to ComfyUI."
+            )
 
     out_manifest_dir = Path("manifests/generated")
     out_manifest_dir.mkdir(parents=True, exist_ok=True)
