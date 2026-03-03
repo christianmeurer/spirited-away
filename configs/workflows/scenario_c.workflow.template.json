@@ -1,117 +1,142 @@
 {
     "1": {
-        "class_type": "CheckpointLoaderSimple",
+        "class_type": "UNETLoader",
         "inputs": {
-            "ckpt_name": "{{CHECKPOINT_NAME}}"
+            "unet_name": "{{UNET_NAME}}",
+            "weight_dtype": "default"
         }
     },
     "2": {
+        "class_type": "DualCLIPLoader",
+        "inputs": {
+            "clip_name1": "{{T5_ENCODER_NAME}}",
+            "clip_name2": "{{CLIP_L_NAME}}",
+            "type": "flux"
+        }
+    },
+    "3": {
+        "class_type": "VAELoader",
+        "inputs": {
+            "vae_name": "{{VAE_NAME}}"
+        }
+    },
+    "4": {
         "class_type": "CLIPTextEncode",
         "inputs": {
             "text": "{{PROMPT}}",
             "clip": [
-                "1",
-                1
+                "2",
+                0
             ]
-        }
-    },
-    "3": {
-        "class_type": "CLIPTextEncode",
-        "inputs": {
-            "text": "{{NEGATIVE_PROMPT}}",
-            "clip": [
-                "1",
-                1
-            ]
-        }
-    },
-    "4": {
-        "class_type": "LoadImage",
-        "inputs": {
-            "image": "{{SUBJECT_IMAGE}}"
         }
     },
     "5": {
-        "class_type": "LoadImage",
+        "class_type": "CLIPTextEncode",
         "inputs": {
-            "image": "{{COMPANION_IMAGE_A}}"
+            "text": "",
+            "clip": [
+                "2",
+                0
+            ]
         }
     },
     "6": {
-        "class_type": "LoadImage",
+        "class_type": "FluxGuidance",
         "inputs": {
-            "image": "{{COMPANION_IMAGE_B}}"
+            "conditioning": [
+                "4",
+                0
+            ],
+            "guidance": 3.5
         }
     },
     "7": {
         "class_type": "LoadImage",
         "inputs": {
-            "image": "{{SUBJECT_MASK_IMAGE}}"
+            "image": "{{SUBJECT_IMAGE}}"
         }
     },
     "8": {
         "class_type": "LoadImage",
         "inputs": {
-            "image": "{{COMPANION_MASK_IMAGE}}"
+            "image": "{{COMPANION_IMAGE_A}}"
         }
     },
     "9": {
+        "class_type": "LoadImage",
+        "inputs": {
+            "image": "{{COMPANION_IMAGE_B}}"
+        }
+    },
+    "10": {
+        "class_type": "LoadImage",
+        "inputs": {
+            "image": "{{SUBJECT_MASK_IMAGE}}"
+        }
+    },
+    "11": {
+        "class_type": "LoadImage",
+        "inputs": {
+            "image": "{{COMPANION_MASK_IMAGE}}"
+        }
+    },
+    "12": {
         "class_type": "Flux2MultiReference",
         "inputs": {
-            "subject_image": [
-                "4",
+            "conditioning": [
+                "6",
                 0
             ],
-            "reference_images": [
-                [
-                    "5",
-                    0
-                ],
-                [
-                    "6",
-                    0
-                ]
+            "subject_image": [
+                "7",
+                0
+            ],
+            "reference_image_a": [
+                "8",
+                0
+            ],
+            "reference_image_b": [
+                "9",
+                0
             ],
             "subject_strength": 1.0,
             "reference_strength": 0.92
         }
     },
-    "10": {
+    "13": {
         "class_type": "ImageStitch",
         "inputs": {
             "base": [
-                "4",
+                "7",
                 0
             ],
-            "overlays": [
-                [
-                    "5",
-                    0
-                ],
-                [
-                    "6",
-                    0
-                ]
+            "overlay_a": [
+                "8",
+                0
+            ],
+            "overlay_b": [
+                "9",
+                0
             ],
             "layout": "context_stitching",
             "canvas_width": 1024,
             "canvas_height": 1024
         }
     },
-    "11": {
+    "14": {
         "class_type": "VAEEncode",
         "inputs": {
             "pixels": [
-                "10",
+                "13",
                 0
             ],
             "vae": [
-                "1",
-                2
+                "3",
+                0
             ]
         }
     },
-    "12": {
+    "15": {
         "class_type": "TPBlendAttentionProcessor",
         "inputs": {
             "model": [
@@ -119,11 +144,11 @@
                 0
             ],
             "subject_mask": [
-                "7",
+                "10",
                 0
             ],
             "companion_mask": [
-                "8",
+                "11",
                 0
             ],
             "sasf_mode": "DSIN",
@@ -132,67 +157,67 @@
             "boundary_strength": 0.9
         }
     },
-    "13": {
+    "16": {
         "class_type": "KSampler",
         "inputs": {
             "seed": "{{SEED}}",
             "steps": 36,
-            "cfg": 5.2,
-            "sampler_name": "dpmpp_2m",
-            "scheduler": "karras",
+            "cfg": 1.0,
+            "sampler_name": "euler",
+            "scheduler": "simple",
             "denoise": 0.35,
             "model": [
-                "12",
+                "15",
                 0
             ],
             "positive": [
-                "2",
+                "12",
                 0
             ],
             "negative": [
-                "3",
+                "5",
                 0
             ],
             "latent_image": [
-                "11",
+                "14",
                 0
             ]
         }
     },
-    "14": {
+    "17": {
         "class_type": "VAEDecode",
         "inputs": {
             "samples": [
-                "13",
+                "16",
                 0
             ],
             "vae": [
-                "1",
-                2
+                "3",
+                0
             ]
         }
     },
-    "15": {
-        "class_type": "ComfyUI_PS_Blend_Node",
+    "18": {
+        "class_type": "PSBlendNode",
         "inputs": {
             "image_a": [
-                "10",
+                "13",
                 0
             ],
             "image_b": [
-                "14",
+                "17",
                 0
             ],
             "blend_mode": "{{PS_BLEND_MODE}}",
             "blend_factor": 0.42
         }
     },
-    "16": {
+    "19": {
         "class_type": "SaveImage",
         "inputs": {
             "filename_prefix": "{{FILENAME_PREFIX}}",
             "images": [
-                "15",
+                "18",
                 0
             ]
         }

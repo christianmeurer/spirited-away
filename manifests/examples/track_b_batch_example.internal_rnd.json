@@ -29,25 +29,22 @@
     "batch": [
         {
             "item_id": "b_001",
-            "prompt": "[subj_name_2026] in 2D cel style, watercolor background, with anime companions",
-            "negative_prompt": "photoreal, live-action, 3d render",
-            "seed": 5172001,
-            "sampler": "dpmpp_2m",
-            "scheduler": "karras",
+            "prompt": "[subj_name_2026] in 2D anime cel style walking with two anime spirit companions, watercolor sky background",
+            "negative_prompt": "photoreal, live action, realistic skin",
+            "seed": 4272001,
+            "sampler": "euler",
+            "scheduler": "simple",
             "base_model_hash": "flux2dev_sha256_example",
             "adapter_versions": [
-                "identity_adapter_track_b_v2",
-                "anime_style_lora_miyazaki_like"
+                "f2k_anything2real_a.safetensors"
             ],
-            "postprocess_chain": [
-                "line_cleanup",
-                "watercolor_harmonize"
-            ],
+            "postprocess_chain": [],
             "external_component_provenance": [
                 "FLUX.2 [dev]",
-                "Seedream 5.0 Lite Edit"
+                "Anything2Real 2601 A (anime LoRA)",
+                "Seedream 5.0 Lite (subject anime pre-stylization)"
             ],
-            "external_component_licensing_notes": "Reviewed for internal R&D usage.",
+            "external_component_licensing_notes": "Reviewed for internal R&D usage. FLUX.2 [dev] under FLUX Non-Commercial License.",
             "scenario_checks": {
                 "anime_style_lora_loaded": true,
                 "anime_subject_routing": true,
@@ -56,32 +53,29 @@
             },
             "metrics": {
                 "anatomy_failed": false,
-                "identity_similarity": 0.87,
+                "identity_similarity": 0.86,
                 "style_fidelity": 0.92,
-                "pairing_score": 0.94
+                "pairing_score": 0.91
             }
         },
         {
             "item_id": "b_002",
-            "prompt": "[subj_name_2026] and companions crossing a bridge, anime frame composition",
-            "negative_prompt": "photoreal, lens blur, cinematic grain",
-            "seed": 5172002,
-            "sampler": "dpmpp_2m",
-            "scheduler": "karras",
+            "prompt": "[subj_name_2026] anime cel frame with companion spirits in traditional bathhouse, flat shading, consistent line art",
+            "negative_prompt": "photoreal, live action, 3D render",
+            "seed": 4272002,
+            "sampler": "euler",
+            "scheduler": "simple",
             "base_model_hash": "flux2dev_sha256_example",
             "adapter_versions": [
-                "identity_adapter_track_b_v2",
-                "anime_style_lora_miyazaki_like"
+                "f2k_anything2real_a.safetensors"
             ],
-            "postprocess_chain": [
-                "line_cleanup",
-                "watercolor_harmonize"
-            ],
+            "postprocess_chain": [],
             "external_component_provenance": [
                 "FLUX.2 [dev]",
-                "Seedream 5.0 Lite Edit"
+                "Anything2Real 2601 A (anime LoRA)",
+                "Seedream 5.0 Lite (subject anime pre-stylization)"
             ],
-            "external_component_licensing_notes": "Reviewed for internal R&D usage.",
+            "external_component_licensing_notes": "Reviewed for internal R&D usage. FLUX.2 [dev] under FLUX Non-Commercial License.",
             "scenario_checks": {
                 "anime_style_lora_loaded": true,
                 "anime_subject_routing": true,
@@ -90,9 +84,9 @@
             },
             "metrics": {
                 "anatomy_failed": false,
-                "identity_similarity": 0.83,
-                "style_fidelity": 0.9,
-                "pairing_score": 0.91
+                "identity_similarity": 0.84,
+                "style_fidelity": 0.91,
+                "pairing_score": 0.93
             }
         }
     ]

@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Generate scenario images through ComfyUI API and emit manifests."""
+"""Generate scenario images through ComfyUI API and emit manifests.
+
+Scenario A: Real person + photoreal companions (identity LoRA + Flux2MultiReference)
+Scenario B: Anime-stylized subject + 2D companions (anime LoRA via Anything2Real)
+Scenario C: Mixed-media composition with strict domain boundaries (TPBlendAttentionProcessor)
+
+Workflow templates use FLUX.2-native loading topology (UNETLoader + DualCLIPLoader +
+VAELoader + LoraLoader + FluxGuidance) instead of CheckpointLoaderSimple.
+"""
 
 from __future__ import annotations
 
@@ -22,9 +30,18 @@ SCENARIO_DEFAULT_TRACK = {
     "scenario_c": "track_c",
 }
 SCENARIO_PROMPTS = {
-    "scenario_a": "Realistic cinematic photograph of [subj_name_2026] with inspired companions, coherent shadows and perspective, natural skin texture",
-    "scenario_b": "2D anime cel frame of [subj_name_2026] with anime companions, watercolor background, consistent line art",
-    "scenario_c": "Mixed-media composition: real [subj_name_2026] with 2D companions, clear style boundaries and grounded contact shadows",
+    "scenario_a": (
+        "Realistic cinematic photograph of [subj_name_2026] with inspired companions, "
+        "coherent shadows and perspective, natural skin texture"
+    ),
+    "scenario_b": (
+        "2D anime cel frame of [subj_name_2026] with anime companions, "
+        "watercolor background, consistent line art"
+    ),
+    "scenario_c": (
+        "Mixed-media composition: real [subj_name_2026] with 2D companions, "
+        "clear style boundaries and grounded contact shadows"
+    ),
 }
 SCENARIO_NEGATIVE = {
     "scenario_a": "cartoon, cel-shading, painterly textures",
@@ -34,12 +51,15 @@ SCENARIO_NEGATIVE = {
 
 FORBIDDEN_SCENARIO_A_TOKENS = {"anime", "illustration"}
 
+# FLUX.2 sampler defaults (euler + simple, cfg=1.0)
+FLUX2_SAMPLER = "euler"
+FLUX2_SCHEDULER = "simple"
+
 
 def _resolve_arg_or_env(arg_value: str | None, env_key: str, default: str = "") -> str:
     if arg_value is not None and arg_value.strip():
         return arg_value.strip()
-    env_value = os.getenv(env_key, default)
-    return env_value.strip()
+    return os.getenv(env_key, default).strip()
 
 
 def load_env_file(path: Path) -> None:
@@ -62,8 +82,8 @@ def validate_scenario_a_prompt_policy(prompt: str, negative_prompt: str) -> None
     hits = [token for token in FORBIDDEN_SCENARIO_A_TOKENS if token in text]
     if hits:
         raise ValueError(
-            "Scenario A prompt policy violation. Remove style tokens for Anything2Real photoreal translation: "
-            + ", ".join(sorted(hits))
+            "Scenario A prompt policy violation. Remove style tokens for Anything2Real "
+            "photoreal translation: " + ", ".join(sorted(hits))
         )
 
 
@@ -111,12 +131,40 @@ def validate_scenario_track_policy(
         raise ValueError(
             f"Scenario '{scenario_id}' requires track_id='{required_track}', got '{track_id}'."
         )
-
     allowed_track_ids = scenario_rule.get("allowed_track_ids", [])
     if isinstance(allowed_track_ids, list) and allowed_track_ids and track_id not in allowed_track_ids:
         raise ValueError(
-            f"Scenario '{scenario_id}' does not allow track_id='{track_id}' (allowed: {allowed_track_ids})."
+            f"Scenario '{scenario_id}' does not allow track_id='{track_id}' "
+            f"(allowed: {allowed_track_ids})."
         )
+
+
+def _build_scenario_checks(
+    scenario_id: str,
+    required_checks: list[str],
+    identity_lora_name: str,
+    anime_lora_name: str,
+) -> dict[str, bool]:
+    """Build scenario_checks dict with real enforcement for LoRA-dependent checks.
+
+    Checks that depend on actual workflow node execution are evaluated based on
+    whether the required resource is configured. Other checks (requiring human
+    evaluation like light_shadow_coherence, perspective_consistency) are set to
+    True by default — these are verified at the human review gate, not here.
+    """
+    checks: dict[str, bool] = {}
+    for check in required_checks:
+        if check == "identity_adapter_loaded":
+            # True only when an identity LoRA is actually configured
+            checks[check] = bool(identity_lora_name)
+        elif check == "anime_style_lora_loaded":
+            # True only when an anime LoRA is actually configured
+            checks[check] = bool(anime_lora_name)
+        else:
+            # All other checks require human review; default to True here,
+            # auditable through the human_review_approved gate at validation time.
+            checks[check] = True
+    return checks
 
 
 class ComfyClient:
@@ -170,10 +218,26 @@ def make_manifest(
     seed: int,
     outputs: list[dict[str, str]],
     scenario_config: dict[str, Any],
+    identity_lora_name: str,
+    anime_lora_name: str,
 ) -> dict[str, Any]:
     required_checks = scenario_config["scenarios"][scenario_id].get("required_item_checks", [])
+    scenario_checks = _build_scenario_checks(
+        scenario_id=scenario_id,
+        required_checks=required_checks,
+        identity_lora_name=identity_lora_name,
+        anime_lora_name=anime_lora_name,
+    )
 
-    scenario_checks = {check: True for check in required_checks}
+    # Determine adapter versions for provenance tracking
+    adapter_versions: list[str] = []
+    if scenario_id == "scenario_a" and identity_lora_name:
+        adapter_versions.append(identity_lora_name)
+    if scenario_id == "scenario_b" and anime_lora_name:
+        adapter_versions.append(anime_lora_name)
+    if not adapter_versions:
+        adapter_versions = ["pending_adapter_versions"]
+
     manifest = {
         "run_id": f"{run_id}_{scenario_id}",
         "track_id": track_id,
@@ -199,7 +263,7 @@ def make_manifest(
         },
         "outputs": [
             {
-                "artifact_id": f"{scenario_id}_{i+1:03d}",
+                "artifact_id": f"{scenario_id}_{i + 1:03d}",
                 "destination": f"comfy://{o['type']}/{o['subfolder']}/{o['filename']}",
                 "internal_only": True,
             }
@@ -211,13 +275,16 @@ def make_manifest(
                 "prompt": prompt,
                 "negative_prompt": negative_prompt,
                 "seed": seed,
-                "sampler": "dpmpp_2m",
-                "scheduler": "karras",
+                "sampler": FLUX2_SAMPLER,
+                "scheduler": FLUX2_SCHEDULER,
                 "base_model_hash": "pending_model_hash",
-                "adapter_versions": ["pending_adapter_versions"],
+                "adapter_versions": adapter_versions,
                 "postprocess_chain": [],
-                "external_component_provenance": ["ComfyUI", "HuggingFace Models"],
-                "external_component_licensing_notes": "Internal use only; verify each component license before export.",
+                "external_component_provenance": ["ComfyUI", "FLUX.2 [dev]", "HuggingFace Models"],
+                "external_component_licensing_notes": (
+                    "Internal use only; verify each component license before export. "
+                    "FLUX.2 [dev] is under FLUX Non-Commercial License."
+                ),
                 "scenario_checks": scenario_checks,
                 "metrics": {
                     "anatomy_failed": False,
@@ -247,11 +314,20 @@ def main() -> int:
     parser.add_argument("--scenario", default="all", choices=["all", *SCENARIO_ORDER])
     parser.add_argument("--workflow-dir", default="configs/workflows")
     parser.add_argument("--scenario-config", default="configs/scenarios/internal_rnd_scenarios.json")
-    parser.add_argument("--checkpoint-name", default="flux_base.safetensors")
     parser.add_argument("--seed-base", type=int, default=120000)
     parser.add_argument("--run-id", default=None)
     parser.add_argument("--prompt-override", default=None)
     parser.add_argument("--negative-prompt-override", default=None)
+
+    # FLUX.2 model file names (relative to ComfyUI model subdirectories)
+    parser.add_argument("--unet-name", default=None)
+    parser.add_argument("--t5-encoder-name", default=None)
+    parser.add_argument("--clip-l-name", default=None)
+    parser.add_argument("--vae-name", default=None)
+    parser.add_argument("--identity-lora-name", default=None)
+    parser.add_argument("--anime-lora-name", default=None)
+
+    # Scenario C contract
     parser.add_argument("--scenario-c-track", default=None)
     parser.add_argument("--scenario-c-subject-image", default=None)
     parser.add_argument("--scenario-c-companion-image-a", default=None)
@@ -262,14 +338,32 @@ def main() -> int:
     parser.add_argument(
         "--require-scenario-c",
         action="store_true",
-        help="When --scenario all is used, fail if Scenario C contract is missing instead of auto-skipping Scenario C.",
+        help=(
+            "When --scenario all is used, fail if Scenario C contract is missing "
+            "instead of auto-skipping Scenario C."
+        ),
     )
     args = parser.parse_args()
 
     load_env_file(Path(args.env_file))
+
     comfy_base_url = os.getenv("COMFYUI_BASE_URL", "http://127.0.0.1:8188")
     timeout_seconds = int(os.getenv("COMFYUI_TIMEOUT_SECONDS", "900"))
     comfy_root = Path(os.getenv("COMFYUI_ROOT", "/opt/aurora/ComfyUI"))
+
+    # FLUX.2 model file names
+    unet_name = _resolve_arg_or_env(args.unet_name, "COMFYUI_UNET_NAME", "flux1-dev.safetensors")
+    t5_encoder_name = _resolve_arg_or_env(
+        args.t5_encoder_name, "COMFYUI_T5_ENCODER_NAME", "t5xxl_fp8_e4m3fn.safetensors"
+    )
+    clip_l_name = _resolve_arg_or_env(args.clip_l_name, "COMFYUI_CLIP_L_NAME", "clip_l.safetensors")
+    vae_name = _resolve_arg_or_env(args.vae_name, "COMFYUI_VAE_NAME", "ae.safetensors")
+    identity_lora_name = _resolve_arg_or_env(
+        args.identity_lora_name, "IDENTITY_LORA_NAME", ""
+    )
+    anime_lora_name = _resolve_arg_or_env(
+        args.anime_lora_name, "ANIME_LORA_NAME", "f2k_anything2real_a.safetensors"
+    )
 
     run_id = args.run_id or datetime.now(timezone.utc).strftime("run_%Y%m%dT%H%M%SZ")
     scenario_config = read_json(Path(args.scenario_config))
@@ -279,34 +373,25 @@ def main() -> int:
 
     scenario_c_assets = {
         "SUBJECT_IMAGE": _resolve_arg_or_env(
-            args.scenario_c_subject_image,
-            "SCENARIO_C_SUBJECT_IMAGE",
+            args.scenario_c_subject_image, "SCENARIO_C_SUBJECT_IMAGE"
         ),
         "COMPANION_IMAGE_A": _resolve_arg_or_env(
-            args.scenario_c_companion_image_a,
-            "SCENARIO_C_COMPANION_IMAGE_A",
+            args.scenario_c_companion_image_a, "SCENARIO_C_COMPANION_IMAGE_A"
         ),
         "COMPANION_IMAGE_B": _resolve_arg_or_env(
-            args.scenario_c_companion_image_b,
-            "SCENARIO_C_COMPANION_IMAGE_B",
+            args.scenario_c_companion_image_b, "SCENARIO_C_COMPANION_IMAGE_B"
         ),
         "SUBJECT_MASK_IMAGE": _resolve_arg_or_env(
-            args.scenario_c_subject_mask_image,
-            "SCENARIO_C_SUBJECT_MASK_IMAGE",
+            args.scenario_c_subject_mask_image, "SCENARIO_C_SUBJECT_MASK_IMAGE"
         ),
         "COMPANION_MASK_IMAGE": _resolve_arg_or_env(
-            args.scenario_c_companion_mask_image,
-            "SCENARIO_C_COMPANION_MASK_IMAGE",
+            args.scenario_c_companion_mask_image, "SCENARIO_C_COMPANION_MASK_IMAGE"
         ),
     }
     scenario_c_ps_blend_mode = _resolve_arg_or_env(
-        args.scenario_c_ps_blend_mode,
-        "SCENARIO_C_PS_BLEND_MODE",
+        args.scenario_c_ps_blend_mode, "SCENARIO_C_PS_BLEND_MODE"
     )
-    scenario_c_track_id = _resolve_arg_or_env(
-        args.scenario_c_track,
-        "SCENARIO_C_TRACK",
-    )
+    scenario_c_track_id = _resolve_arg_or_env(args.scenario_c_track, "SCENARIO_C_TRACK")
 
     if "scenario_c" in scenarios:
         missing_config: list[str] = []
@@ -316,7 +401,9 @@ def main() -> int:
         if not scenario_c_track_id:
             missing_config.append("missing track: SCENARIO_C_TRACK / --scenario-c-track")
         if not scenario_c_ps_blend_mode:
-            missing_config.append("missing blend mode: SCENARIO_C_PS_BLEND_MODE / --scenario-c-ps-blend-mode")
+            missing_config.append(
+                "missing blend mode: SCENARIO_C_PS_BLEND_MODE / --scenario-c-ps-blend-mode"
+            )
 
         missing_assets: list[str] = []
         if not missing_config:
@@ -330,7 +417,7 @@ def main() -> int:
                 reason_lines.extend(f"  - {entry}" for entry in missing_assets)
 
             if args.scenario == "all" and not args.require_scenario_c:
-                scenarios = [scenario for scenario in scenarios if scenario != "scenario_c"]
+                scenarios = [s for s in scenarios if s != "scenario_c"]
                 print("WARNING: Scenario C skipped in --scenario all due to incomplete contract.")
                 for line in reason_lines:
                     print(f"WARNING: {line}")
@@ -360,12 +447,23 @@ def main() -> int:
         seed = args.seed_base + idx
         filename_prefix = f"{run_id}_{scenario_id}"
 
-        values = {
-            "CHECKPOINT_NAME": args.checkpoint_name,
+        # Build template token values — covers all scenarios A, B, and C
+        values: dict[str, Any] = {
+            # FLUX.2 model files
+            "UNET_NAME": unet_name,
+            "T5_ENCODER_NAME": t5_encoder_name,
+            "CLIP_L_NAME": clip_l_name,
+            "VAE_NAME": vae_name,
+            # Common
             "PROMPT": prompt,
             "NEGATIVE_PROMPT": negative_prompt,
             "SEED": seed,
             "FILENAME_PREFIX": filename_prefix,
+            # Scenario A
+            "IDENTITY_LORA_NAME": identity_lora_name,
+            # Scenario B
+            "ANIME_LORA_NAME": anime_lora_name,
+            # Scenario C
             "SUBJECT_IMAGE": scenario_c_assets["SUBJECT_IMAGE"],
             "COMPANION_IMAGE_A": scenario_c_assets["COMPANION_IMAGE_A"],
             "COMPANION_IMAGE_B": scenario_c_assets["COMPANION_IMAGE_B"],
@@ -389,6 +487,8 @@ def main() -> int:
             seed=seed,
             outputs=outputs,
             scenario_config=scenario_config,
+            identity_lora_name=identity_lora_name,
+            anime_lora_name=anime_lora_name,
         )
 
         manifest_path = out_manifest_dir / f"{run_id}_{scenario_id}.internal_rnd.json"
@@ -396,7 +496,8 @@ def main() -> int:
         print(f"Scenario {scenario_id} complete. Manifest: {manifest_path}")
         print(
             "INFO: Manifest compliance status is pending manual approvals and metric scoring. "
-            f"Strict validation is an explicit step: python scripts/internal_rnd_cli.py validate --manifest {manifest_path}"
+            f"Strict validation is an explicit step: "
+            f"python scripts/internal_rnd_cli.py validate --manifest {manifest_path}"
         )
 
     return 0
@@ -404,4 +505,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

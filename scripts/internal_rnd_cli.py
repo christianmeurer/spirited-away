@@ -76,6 +76,15 @@ def _mean(values: list[float]) -> float:
     return statistics.fmean(values) if values else 0.0
 
 
+def _has_pending_human_scoring(items: list[dict[str, Any]]) -> bool:
+    """Return True if any batch item has needs_human_scoring=True in its metrics."""
+    for item in items:
+        metrics = item.get("metrics", {})
+        if isinstance(metrics, dict) and metrics.get("needs_human_scoring") is True:
+            return True
+    return False
+
+
 def _compute_batch_metrics(
     manifest: dict[str, Any],
     items: list[dict[str, Any]],
@@ -291,13 +300,26 @@ def validate_manifest(
     scenario_config_path: Path,
 ) -> ValidationResult:
     manifest = _load_json(manifest_path)
-    track_cfg = _load_json(_resolve_track_config(manifest, str(track_config_path) if track_config_path else None))
+    track_cfg = _load_json(
+        _resolve_track_config(manifest, str(track_config_path) if track_config_path else None)
+    )
     scenarios_cfg = _load_json(scenario_config_path)
 
     errors: list[str] = []
     warnings: list[str] = []
 
     items = _get_batch_items(manifest)
+
+    # Emit early warning when metrics are still pending human scoring.
+    # Threshold validation will produce meaningless failures (all zeros) until
+    # human reviewers fill in actual scores. Warn rather than silently mislead.
+    if _has_pending_human_scoring(items):
+        warnings.append(
+            "One or more batch items have needs_human_scoring=true. "
+            "Metric thresholds cannot be meaningfully evaluated until human reviewers "
+            "fill in actual scores (identity_similarity, style_fidelity, pairing_score). "
+            "Run strict validation only after scoring is complete."
+        )
 
     required_manifest_fields = track_cfg.get("required_manifest_fields", [])
     required_item_fields = track_cfg.get("required_batch_item_fields", [])

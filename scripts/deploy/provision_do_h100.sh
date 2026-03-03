@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ENV_FILE="${1:-configs/env/digitalocean_h100.env}"
+ACTION="${2:-ensure-running}"
 
 if [[ ! -f "$ENV_FILE" ]]; then
   echo "Env file not found: $ENV_FILE" >&2
@@ -50,17 +51,77 @@ if (( ${#missing_keys[@]} > 0 )); then
   exit 1
 fi
 
-echo "Creating droplet '$DO_DROPLET_NAME' in region '$DO_REGION' with size '$DO_SIZE'..."
+get_droplet_info() {
+  doctl compute droplet get "$DO_DROPLET_NAME" --format ID,Status,PublicIPv4 --no-header 2>/dev/null
+}
 
-doctl compute droplet create "$DO_DROPLET_NAME" \
-  --region "$DO_REGION" \
-  --image "$DO_IMAGE" \
-  --size "$DO_SIZE" \
-  --ssh-keys "$DO_SSH_FINGERPRINT" \
-  --enable-monitoring \
-  --wait \
-  --user-data-file scripts/deploy/cloud-init-aurora.yaml
+print_droplet_ip() {
+  doctl compute droplet get "$DO_DROPLET_NAME" --format PublicIPv4 --no-header
+}
 
-echo "Droplet created. Fetching public IPv4..."
-doctl compute droplet get "$DO_DROPLET_NAME" --format PublicIPv4 --no-header
+create_droplet() {
+  echo "Creating droplet '$DO_DROPLET_NAME' in region '$DO_REGION' with size '$DO_SIZE'..."
+
+  doctl compute droplet create "$DO_DROPLET_NAME" \
+    --region "$DO_REGION" \
+    --image "$DO_IMAGE" \
+    --size "$DO_SIZE" \
+    --ssh-keys "$DO_SSH_FINGERPRINT" \
+    --enable-monitoring \
+    --wait \
+    --user-data-file scripts/deploy/cloud-init-aurora.yaml
+}
+
+start_existing_droplet() {
+  local info="$1"
+  local droplet_id
+  local droplet_status
+
+  droplet_id="$(awk '{print $1}' <<<"$info")"
+  droplet_status="$(awk '{print $2}' <<<"$info")"
+
+  if [[ "$droplet_status" == "active" ]]; then
+    echo "Droplet '$DO_DROPLET_NAME' is already active."
+    return
+  fi
+
+  echo "Powering on droplet '$DO_DROPLET_NAME' (id=$droplet_id, current status=$droplet_status)..."
+  doctl compute droplet-action power-on "$droplet_id" --wait
+}
+
+case "$ACTION" in
+  create)
+    if existing_info="$(get_droplet_info)"; then
+      echo "Droplet '$DO_DROPLET_NAME' already exists. Use action 'start' or 'ensure-running'." >&2
+      echo "Existing droplet: $existing_info" >&2
+      exit 1
+    fi
+    create_droplet
+    ;;
+
+  start)
+    if ! existing_info="$(get_droplet_info)"; then
+      echo "Droplet '$DO_DROPLET_NAME' does not exist. Use action 'create' or 'ensure-running'." >&2
+      exit 1
+    fi
+    start_existing_droplet "$existing_info"
+    ;;
+
+  ensure-running)
+    if existing_info="$(get_droplet_info)"; then
+      echo "Droplet '$DO_DROPLET_NAME' already exists. Ensuring it is running..."
+      start_existing_droplet "$existing_info"
+    else
+      create_droplet
+    fi
+    ;;
+
+  *)
+    echo "Unknown action '$ACTION'. Expected one of: create, start, ensure-running" >&2
+    exit 1
+    ;;
+esac
+
+echo "Droplet is ready. Public IPv4:"
+print_droplet_ip
 

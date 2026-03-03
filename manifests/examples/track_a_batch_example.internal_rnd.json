@@ -32,8 +32,8 @@
             "prompt": "[subj_name_2026] in a realistic sunset park, walking with two inspired companions",
             "negative_prompt": "anime, illustration, cartoon",
             "seed": 4172001,
-            "sampler": "dpmpp_2m",
-            "scheduler": "karras",
+            "sampler": "euler",
+            "scheduler": "simple",
             "base_model_hash": "flux2dev_sha256_example",
             "adapter_versions": [
                 "identity_adapter_track_a_v4",
@@ -67,8 +67,8 @@
             "prompt": "[subj_name_2026] and companions in realistic street market, natural camera perspective",
             "negative_prompt": "anime, painting",
             "seed": 4172002,
-            "sampler": "dpmpp_2m",
-            "scheduler": "karras",
+            "sampler": "euler",
+            "scheduler": "simple",
             "base_model_hash": "flux2dev_sha256_example",
             "adapter_versions": [
                 "identity_adapter_track_a_v4",

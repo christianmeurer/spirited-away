@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "usage_scope": "INTERNAL_RND",
     "download_policy": {
         "pin_revisions": true,
@@ -12,6 +12,9 @@
             "revision": "main",
             "required": true,
             "local_dir": "base/flux2_dev",
+            "gated": true,
+            "license_url": "https://huggingface.co/black-forest-labs/FLUX.2-dev",
+            "license_note": "FLUX Non-Commercial License. Operator must accept at the URL above while logged in with the HF account whose token is set in HF_TOKEN before this download will succeed.",
             "download": {
                 "mode": "snapshot",
                 "allow_patterns": [
@@ -19,6 +22,12 @@
                     "*.json",
                     "*.txt"
                 ]
+            },
+            "comfyui_layout": {
+                "transformer": "models/diffusion_models/flux1-dev.safetensors",
+                "t5_encoder": "models/text_encoders/t5xxl_fp8_e4m3fn.safetensors",
+                "clip_l": "models/text_encoders/clip_l.safetensors",
+                "vae": "models/vae/ae.safetensors"
             }
         },
         {
@@ -30,18 +39,21 @@
             "download": {
                 "mode": "snapshot",
                 "allow_patterns": [
-                    "*pytorch_lora_weights.safetensors",
+                    "*.safetensors",
                     "*.json",
                     "*.txt"
                 ]
+            },
+            "comfyui_layout": {
+                "lora": "models/loras/f2k_anything2real_a.safetensors"
             }
         },
         {
-            "alias": "qwen_edit_2511",
-            "repo_id": "Qwen/Qwen-Image",
-            "revision": "2511",
+            "alias": "qwen_image_edit_2511",
+            "repo_id": "Qwen/Qwen-Image-Edit-2511",
+            "revision": "main",
             "required": true,
-            "local_dir": "editors/qwen_edit_2511",
+            "local_dir": "editors/qwen_image_edit_2511",
             "download": {
                 "mode": "snapshot",
                 "allow_patterns": [
@@ -49,29 +61,30 @@
                     "*.json",
                     "*.txt"
                 ]
-            }
-        },
+            },
+            "usage_note": "Used for Scenario A pre-processing: anime companions -> photoreal via Anything2Real LoRA. Invoked via scripts/pipeline/qwen_anime_to_real.py, not via ComfyUI."
+        }
+    ],
+    "api_only_models": [
         {
             "alias": "seedream_5_lite",
-            "repo_id": "ByteDance-Seed/Seedream-v5.0-lite",
-            "revision": "main",
-            "required": true,
-            "local_dir": "editors/seedream_5_lite",
-            "download": {
-                "mode": "snapshot",
-                "allow_patterns": [
-                    "*.safetensors",
-                    "*.json",
-                    "*.txt"
-                ]
-            }
-        },
+            "provider": "byteplus_modelark",
+            "model_id": "seedream-5-0-260128",
+            "required_env": "BYTEPLUS_API_KEY",
+            "usage_note": "Seedream 5.0 Lite is API-only (BytePlus ModelArk). Not downloadable from HuggingFace. Used for Scenario B pre-processing: real subject -> anime stylization. Invoked via scripts/pipeline/seedream_api_stylize.py.",
+            "api_docs": "https://www.byteplus.com/en/blog/seedream5-0-lite"
+        }
+    ],
+    "optional_llm_models": [
         {
-            "alias": "mistral_small_3_1_text_encoder",
+            "alias": "mistral_small_3_1_prompt_enricher",
             "repo_id": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
             "revision": "main",
-            "required": true,
-            "local_dir": "text_encoders/mistral_small_3_1",
+            "required": false,
+            "local_dir": "llm/mistral_small_3_1",
+            "gated": true,
+            "license_url": "https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+            "license_note": "Gated model. Accept Mistral terms at the URL above. Requires ~55GB VRAM in bf16. NOT a diffusion text encoder; used only for optional prompt enrichment via --enrich-prompts flag in run_scenarios.py.",
             "download": {
                 "mode": "snapshot",
                 "allow_patterns": [

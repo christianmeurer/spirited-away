@@ -27,10 +27,32 @@ write_files:
     content: |
       #!/usr/bin/env bash
       set -Eeuo pipefail
+      umask 022
+
+      PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 
       LOG_FILE="/var/log/aurora-cloud-init.log"
+      STATE_DIR="/var/lib/aurora-cloud-init"
+      LOCK_FILE="${STATE_DIR}/bootstrap.lock"
+      DONE_FILE="${STATE_DIR}/bootstrap.done"
+      HOOK_STAMP_DIR="${STATE_DIR}/hook-stamps"
+
+      log() {
+        printf '[%s] %s\n' "$(date -Iseconds)" "$*"
+      }
+
+      on_error() {
+        local exit_code="$?"
+        local line_no="${1:-unknown}"
+        log "ERROR: bootstrap failed at line ${line_no} (exit=${exit_code})"
+        exit "${exit_code}"
+      }
+
+      trap 'on_error ${LINENO}' ERR
 
       mkdir -p \
+        "$STATE_DIR" \
+        "$HOOK_STAMP_DIR" \
         /opt/aurora \
         /opt/aurora/bin \
         /opt/aurora/hooks/post-cloud-init.d \
@@ -44,7 +66,16 @@ write_files:
       touch "$LOG_FILE"
       exec > >(tee -a "$LOG_FILE") 2>&1
 
-      echo "[$(date -Iseconds)] cloud-init aurora bootstrap start"
+      exec 9>"$LOCK_FILE"
+      if ! flock -n 9; then
+        log "Another bootstrap process is already running; exiting safely."
+        exit 0
+      fi
+
+      log "cloud-init aurora bootstrap start"
+      if [[ -f "$DONE_FILE" ]]; then
+        log "Previous bootstrap marker detected; rerun will reconcile state idempotently."
+      fi
 
       if id -u ubuntu >/dev/null 2>&1; then
         AURORA_OWNER="ubuntu"
@@ -55,32 +86,61 @@ write_files:
       fi
 
       AURORA_GROUP="$(id -gn "$AURORA_OWNER" 2>/dev/null || echo "$AURORA_OWNER")"
-      chown -R "$AURORA_OWNER":"$AURORA_GROUP" /opt/aurora || true
 
-      chmod 0755 /opt/aurora
-      chmod 0755 /opt/aurora/logs
+      for dir in \
+        /opt/aurora \
+        /opt/aurora/bin \
+        /opt/aurora/hooks \
+        /opt/aurora/hooks/post-cloud-init.d \
+        /opt/aurora/logs \
+        /opt/aurora/data \
+        /opt/aurora/models \
+        /opt/aurora/outputs \
+        /opt/aurora/manifests \
+        /opt/aurora/.cache; do
+        chown "$AURORA_OWNER":"$AURORA_GROUP" "$dir"
+        chmod 0755 "$dir"
+      done
 
-      git lfs install --system || true
+      chmod 0644 "$LOG_FILE"
+
+      if command -v git-lfs >/dev/null 2>&1; then
+        git lfs install --system || log "git-lfs system install returned non-zero; continuing"
+      else
+        log "git-lfs binary not found; skipping git-lfs install"
+      fi
 
       if systemctl list-unit-files --type=service | grep -q '^comfyui.service'; then
-        echo "Found comfyui.service; enabling for boot."
+        log "Found comfyui.service; enabling for boot."
         systemctl daemon-reload || true
         systemctl enable comfyui.service || true
       fi
 
       shopt -s nullglob
       for hook in /opt/aurora/hooks/post-cloud-init.d/*.sh; do
+        hook_name="$(basename "$hook")"
+        stamp_file="${HOOK_STAMP_DIR}/${hook_name}.done"
+
+        if [[ -f "$stamp_file" && "${AURORA_CLOUD_INIT_RERUN_HOOKS:-0}" != "1" ]]; then
+          log "Skipping hook already marked done: $hook"
+          continue
+        fi
+
         if [[ -x "$hook" ]]; then
-          echo "Running executable hook: $hook"
+          log "Running executable hook: $hook"
           "$hook"
         else
-          echo "Running hook with bash: $hook"
+          log "Running hook with bash: $hook"
           bash "$hook"
         fi
+
+        touch "$stamp_file"
+        log "Hook completed: $hook"
       done
 
+      date -Iseconds > "$DONE_FILE"
       touch /opt/aurora/.cloud-init-bootstrap.completed
-      echo "[$(date -Iseconds)] cloud-init aurora bootstrap complete"
+      log "cloud-init aurora bootstrap complete"
 
   - path: /etc/profile.d/aurora-env.sh
     permissions: '0644'
@@ -95,5 +155,5 @@ write_files:
 runcmd:
   - [bash, -lc, /opt/aurora/bin/cloud-init-aurora-bootstrap.sh]
 
-final_message: "Aurora cloud-init complete after $UPTIME seconds. Log: /var/log/aurora-cloud-init.log"
+final_message: "Aurora cloud-init complete after $UPTIME seconds. Logs: /var/log/cloud-init-output.log and /var/log/aurora-cloud-init.log"
 
