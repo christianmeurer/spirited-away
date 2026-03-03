@@ -84,7 +84,7 @@ if [[ -f "$COMFYUI_ROOT/requirements.txt" ]]; then
   python -m pip install -r "$COMFYUI_ROOT/requirements.txt"
 fi
 
-"$AURORA_ROOT/scripts/deploy/install_custom_nodes.sh" "$ENV_FILE"
+bash "$AURORA_ROOT/scripts/deploy/install_custom_nodes.sh" "$ENV_FILE"
 
 SERVICE_TEMPLATE="$AURORA_ROOT/scripts/deploy/comfyui.service"
 SERVICE_FILE="/etc/systemd/system/comfyui.service"
@@ -129,4 +129,3 @@ Bootstrap completed.
 ComfyUI service is enabled and healthy on 127.0.0.1:${COMFYUI_PORT}.
 Next: run pipeline commands from $AURORA_ROOT using $ENV_FILE.
 EOF
-
