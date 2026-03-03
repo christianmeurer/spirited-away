@@ -48,6 +48,7 @@ def build_config(
     optimizer: str,
     enable_dop: bool,
     timestep_bias: str,
+    quantize: bool,
     resolutions: list[int],
     sample_prompts: list[str] | None = None,
 ) -> str:
@@ -66,6 +67,7 @@ def build_config(
     # AI Toolkit calls this "do_cfg" / "do_diff_guide" depending on version;
     # the canonical field in current ai-toolkit is `differential_output_preservation`.
     dop_field = "true" if enable_dop else "false"
+    quantize_field = "true" if quantize else "false"
 
     # Timestep bias: map our convention to ai-toolkit's sampler_bias setting
     # "balanced" → no bias; "low" → favor low-noise timesteps
@@ -141,7 +143,7 @@ config:
       model:
         name_or_path: {flux2_model_path}
         is_flux: true
-        quantize: true
+        quantize: {quantize_field}
 
       sample:
         sampler: flowmatch
@@ -180,6 +182,11 @@ def main() -> int:
     parser.add_argument("--weight-decay", type=float, default=0.0001)
     parser.add_argument("--optimizer", default="AdamW8Bit")
     parser.add_argument("--enable-dop", default="true")
+    parser.add_argument(
+        "--quantize",
+        default="false",
+        help="Enable model quantization in ai-toolkit config (true/false). Default: false",
+    )
     parser.add_argument("--timestep-bias", default="balanced", choices=["balanced", "low", "high"])
     parser.add_argument(
         "--resolution",
@@ -198,6 +205,7 @@ def main() -> int:
     args = parser.parse_args()
 
     enable_dop = str(args.enable_dop).strip().lower() in {"1", "true", "yes", "on"}
+    quantize = str(args.quantize).strip().lower() in {"1", "true", "yes", "on"}
     resolutions = args.resolutions or [1024, 1408]
     sample_prompts = args.sample_prompts  # None → default inside build_config
 
@@ -217,6 +225,7 @@ def main() -> int:
         optimizer=args.optimizer,
         enable_dop=enable_dop,
         timestep_bias=args.timestep_bias,
+        quantize=quantize,
         resolutions=resolutions,
         sample_prompts=sample_prompts,
     )

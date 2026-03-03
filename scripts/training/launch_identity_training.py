@@ -134,6 +134,11 @@ def main() -> int:
     parser.add_argument("--weight-decay", type=float, default=None)
     parser.add_argument("--optimizer", default=None, help="Optimizer name (default: AdamW8Bit)")
     parser.add_argument("--enable-dop", default=None)
+    parser.add_argument(
+        "--quantize",
+        default=None,
+        help="Enable model quantization for training config (true/false). Defaults to TRAIN_QUANTIZE or false.",
+    )
     parser.add_argument("--timestep-bias", default=None)
     parser.add_argument("--resolution", default=None, help="Comma-separated resolution list, e.g. 1024,1408")
     parser.add_argument(
@@ -174,6 +179,8 @@ def main() -> int:
         args.enable_dop if args.enable_dop is not None else os.getenv("TRAIN_ENABLE_DOP", "true")
     )
     enable_dop = parse_boolish(enable_dop_raw)
+    quantize_raw = args.quantize if args.quantize is not None else os.getenv("TRAIN_QUANTIZE", "false")
+    quantize = parse_boolish(quantize_raw)
     timestep_bias = args.timestep_bias or os.getenv("TRAIN_TIMESTEP_BIAS", "balanced")
 
     raw_resolution = args.resolution or os.getenv("TRAIN_RESOLUTION", "1024,1408")
@@ -219,6 +226,7 @@ def main() -> int:
         "--weight-decay", str(weight_decay),
         "--optimizer", optimizer,
         "--enable-dop", str(enable_dop).lower(),
+        "--quantize", str(quantize).lower(),
         "--timestep-bias", timestep_bias,
     ]
     for r in resolutions:
@@ -237,6 +245,7 @@ def main() -> int:
         "weight_decay": weight_decay,
         "optimizer": optimizer,
         "enable_dop": enable_dop,
+        "quantize": quantize,
         "timestep_bias": timestep_bias,
         "resolutions": resolutions,
         "flux2_model_path": flux2_model_path,
