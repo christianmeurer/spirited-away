@@ -70,12 +70,24 @@ def build_config(
     # Timestep bias: map our convention to ai-toolkit's sampler_bias setting
     # "balanced" → no bias; "low" → favor low-noise timesteps
     if timestep_bias == "low":
-        timestep_cfg = "      timestep_type: logit_normal\n      timestep_mu: -1.0\n      timestep_sigma: 1.0"
+        timestep_cfg = (
+            "        timestep_type: logit_normal\n"
+            "        timestep_mu: -1.0\n"
+            "        timestep_sigma: 1.0"
+        )
     elif timestep_bias == "high":
-        timestep_cfg = "      timestep_type: logit_normal\n      timestep_mu: 1.0\n      timestep_sigma: 1.0"
+        timestep_cfg = (
+            "        timestep_type: logit_normal\n"
+            "        timestep_mu: 1.0\n"
+            "        timestep_sigma: 1.0"
+        )
     else:
         # balanced
-        timestep_cfg = "      timestep_type: logit_normal\n      timestep_mu: 0.0\n      timestep_sigma: 1.0"
+        timestep_cfg = (
+            "        timestep_type: logit_normal\n"
+            "        timestep_mu: 0.0\n"
+            "        timestep_sigma: 1.0"
+        )
 
     config = f"""\
 job: extension
