@@ -115,6 +115,14 @@ def main() -> int:
         default=None,
         help="Path to cloned ostris/ai-toolkit repository. Defaults to AI_TOOLKIT_ROOT env.",
     )
+    parser.add_argument(
+        "--ai-toolkit-python",
+        default=None,
+        help=(
+            "Python executable to run ai-toolkit (e.g. /opt/aurora/ai-toolkit/.venv/bin/python). "
+            "Defaults to AI_TOOLKIT_PYTHON env or {ai_toolkit_root}/.venv/bin/python when present."
+        ),
+    )
     parser.add_argument("--dataset-dir", default=None)
     parser.add_argument("--output-dir", default=None)
     parser.add_argument("--trigger-token", default=None)
@@ -149,6 +157,7 @@ def main() -> int:
     ai_toolkit_root = Path(
         args.ai_toolkit_root or os.getenv("AI_TOOLKIT_ROOT", "/opt/aurora/ai-toolkit")
     )
+    ai_toolkit_python_arg = args.ai_toolkit_python or os.getenv("AI_TOOLKIT_PYTHON", "")
     dataset_dir = args.dataset_dir or os.getenv("IDENTITY_DATASET_DIR")
     base_output_dir = Path(
         args.output_dir or os.getenv("IDENTITY_OUTPUT_DIR", "models/identity_adapters")
@@ -268,8 +277,15 @@ def main() -> int:
             f"Then install: cd {ai_toolkit_root} && pip install -r requirements.txt"
         )
 
+    # Resolve Python runtime for AI Toolkit itself.
+    if ai_toolkit_python_arg:
+        ai_toolkit_python = Path(ai_toolkit_python_arg)
+    else:
+        default_venv_python = ai_toolkit_root / ".venv" / "bin" / "python"
+        ai_toolkit_python = default_venv_python if default_venv_python.exists() else Path("python")
+
     # Step 3: Run training
-    train_cmd = ["python", str(run_py), str(config_path)]
+    train_cmd = [str(ai_toolkit_python), str(run_py), str(config_path)]
     print(f"Executing: {' '.join(train_cmd)}")
     completed = subprocess.run(train_cmd, check=False)
     if completed.returncode != 0:
